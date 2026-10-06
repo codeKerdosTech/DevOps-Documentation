@@ -20,6 +20,19 @@ flowchart LR
     B -->|Yes| D[Ask for user password]
     D --> E[Run command as target user]
     E --> F[Log in auth log]
+    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
+    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
+    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
+    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
+    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
+    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
+    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
+    class A start
+    class B dec
+    class C err
+    class D proc
+    class E ok
+    class F out
 ```
 
 ## Options/Flags
