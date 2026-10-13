@@ -785,13 +785,13 @@ docker   3401 deploy    3u  unix 0xffff8a3b4c2d5000      0t0 20990 type=STREAM
 ```
 
 ## Related Commands
-- [`ss`](ss.md) - faster socket statistics, `ss -tlnp` lists listening ports with their processes
-- [`netstat`](netstat.md) - the older tool for connections and ports
-- [`nc`](nc.md) - test if a port is open
-- [`tcpdump`](tcpdump.md) - capture the packets of a connection
-- [`ip`](ip.md) - show addresses and routes
-- [`curl`](curl.md) - make a request to the port you found
-- [`ssh`](ssh.md) - the sessions that `lsof -i :22` shows
+- [`ss`](../networking/ss.md) - faster socket statistics, `ss -tlnp` lists listening ports with their processes
+- [`netstat`](../networking/netstat.md) - the older tool for connections and ports
+- [`nc`](../networking/nc.md) - test if a port is open
+- [`tcpdump`](../networking/tcpdump.md) - capture the packets of a connection
+- [`ip`](../networking/ip.md) - show addresses and routes
+- [`curl`](../networking/curl.md) - make a request to the port you found
+- [`ssh`](../networking/ssh.md) - the sessions that `lsof -i :22` shows
 - `ps` - show the processes you found
 - `kill` / `pkill` - stop a process by PID or by name
 - `fuser` - find the processes that use a file or a port (`fuser 3000/tcp`)

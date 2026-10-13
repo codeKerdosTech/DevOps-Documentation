@@ -664,6 +664,6 @@ ALERT: 3 critical log lines
 
 ## Related Commands
 - [systemctl](systemctl.md) - start, stop and inspect the services whose logs you read
-- [apt](apt.md) / [dnf](dnf.md) / [yum](yum.md) - installs and upgrades that you may want to correlate with log entries
-- [tar](tar.md) / [zip-unzip](zip-unzip.md) - archive logs for tickets
+- [apt](../package-management/apt.md) / [dnf](../package-management/dnf.md) / [yum](../package-management/yum.md) - installs and upgrades that you may want to correlate with log entries
+- [tar](../archiving/tar.md) / [zip-unzip](../archiving/zip-unzip.md) - archive logs for tickets
 - [curl](../networking/curl.md) / [ss](../networking/ss.md) - reproduce and check the problem while following the logs

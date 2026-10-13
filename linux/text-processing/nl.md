@@ -472,8 +472,8 @@ nl -b a -n ln -w 2 -s ' | ' Dockerfile
 ```
 
 ## Related Commands
-- [`cat`](cat.md) - `cat -n` also numbers lines, but with fewer options
-- [`head`](head.md) / [`tail`](tail.md) - show part of a file
+- [`cat`](../file-management/cat.md) - `cat -n` also numbers lines, but with fewer options
+- [`head`](../file-management/head.md) / [`tail`](../file-management/tail.md) - show part of a file
 - [`wc`](wc.md) - count lines
 - [`tac`](tac.md) - reverse the order of lines
 - `grep -n` - search and show line numbers

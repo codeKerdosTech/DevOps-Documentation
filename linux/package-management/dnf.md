@@ -792,4 +792,4 @@ openssl-1:3.0.7-28.el9_4.*
 - [yum](yum.md) - the older version, same family
 - [rpm](rpm.md) - low level tool underneath dnf
 - [apt](apt.md) - Debian family equivalent
-- [systemctl](systemctl.md) - control `dnf-automatic.timer` and services
+- [systemctl](../services-logging/systemctl.md) - control `dnf-automatic.timer` and services

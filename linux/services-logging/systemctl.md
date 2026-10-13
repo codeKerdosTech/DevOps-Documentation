@@ -735,6 +735,6 @@ web1 | SUCCESS => {
 
 ## Related Commands
 - [journalctl](journalctl.md) - read the logs of services managed by systemd
-- [apt](apt.md) / [dnf](dnf.md) / [yum](yum.md) - install the packages that provide services
+- [apt](../package-management/apt.md) / [dnf](../package-management/dnf.md) / [yum](../package-management/yum.md) - install the packages that provide services
 - [ss](../networking/ss.md) / [netstat](../networking/netstat.md) - check the ports a service listens on
 - [curl](../networking/curl.md) - test a service after starting it

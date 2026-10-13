@@ -521,6 +521,6 @@ LANG=C.UTF-8
 - [`sudo`](../user-management/sudo.md) - removes most of the environment (`-E` keeps it)
 - [`xargs`](../text-processing/xargs.md) - uses exported functions with `bash -c`
 - [`grep`](../text-processing/grep.md) - search in the list of variables
-- [`systemctl`](../package-management/systemctl.md) - `Environment=` for services
+- [`systemctl`](../services-logging/systemctl.md) - `Environment=` for services
 - `unset` - delete a variable or a function
 - `declare` / `readonly` / `local` - other ways to create variables with attributes

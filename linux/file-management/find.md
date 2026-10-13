@@ -1099,7 +1099,7 @@ The `.env` file counts as extension `env`, and the symlink `link.py` is skipped 
 - [`locate`](locate.md) - fast search using a prebuilt database
 - [`tree`](tree.md) - show a directory tree
 - [`file`](file.md) - find out the type of a file
-- [`wc`](wc.md) - count the results
+- [`wc`](../text-processing/wc.md) - count the results
 - `xargs` - build command lines from the results
 - `grep` - search the content of the files you found
 - `chmod` / `chown` - change permissions and owners in bulk with `-exec`

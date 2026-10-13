@@ -656,6 +656,6 @@ git ls-files -z | xargs -0 wc -l
 - [`awk`](awk.md) - select the column to pass on
 - [`tee`](tee.md) - save the list before using it
 - [`tr`](tr.md) - turn newlines into other separators
-- [`wc`](../file-management/wc.md) - count lines of many files
+- [`wc`](wc.md) - count lines of many files
 - `parallel` - a more powerful tool for parallel jobs (GNU parallel)
 - `ssh` - run a command on remote hosts

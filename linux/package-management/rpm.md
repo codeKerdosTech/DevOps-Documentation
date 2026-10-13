@@ -683,5 +683,5 @@ systemctl stop agent.service
 ## Related Commands
 - [dnf](dnf.md) / [yum](yum.md) - high level tools that fetch from repositories
 - [dpkg](dpkg.md) - the Debian family equivalent
-- [tar](tar.md) - `rpm2cpio` output is a cpio archive, tar handles similar jobs
-- [systemctl](systemctl.md) - manage services installed by packages
+- [tar](../archiving/tar.md) - `rpm2cpio` output is a cpio archive, tar handles similar jobs
+- [systemctl](../services-logging/systemctl.md) - manage services installed by packages

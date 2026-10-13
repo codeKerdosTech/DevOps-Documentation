@@ -1280,5 +1280,5 @@ b$
 - [`diff`](diff.md) - compare a file before and after the edit
 - [`tee`](tee.md) - save the result and show it
 - [`cat`](../file-management/cat.md) - print files, `cat -A` shows hidden characters
-- [`tac`](../file-management/tac.md) - reverse the lines of a file
+- [`tac`](tac.md) - reverse the lines of a file
 - `perl -pe` - a more powerful stream editor

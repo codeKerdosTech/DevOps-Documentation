@@ -482,7 +482,7 @@ The Ansible module `ansible.builtin.hostname` does the same, and it uses `hostna
 - [`uname`](uname.md) - the kernel name, release and architecture
 - [`lscpu`](lscpu.md) - the CPU and the hypervisor
 - [`uptime`](uptime.md) - how long the system is up
-- [`systemctl`](../package-management/systemctl.md) - control `systemd-hostnamed`
+- [`systemctl`](../services-logging/systemctl.md) - control `systemd-hostnamed`
 - [`cat`](../file-management/cat.md) - read `/etc/hostname` and `/etc/machine-info`
 - [`tee`](../text-processing/tee.md) - append lines to `/etc/hosts` with sudo
 - [`ssh`](../networking/ssh.md) - run `hostnamectl -H` on remote hosts

@@ -418,10 +418,10 @@ wc -c < payload.json
 ```
 
 ## Related Commands
-- [`cat`](cat.md) - print a file
-- [`head`](head.md) / [`tail`](tail.md) - show part of a file
+- [`cat`](../file-management/cat.md) - print a file
+- [`head`](../file-management/head.md) / [`tail`](../file-management/tail.md) - show part of a file
 - [`nl`](nl.md) - number lines
-- [`find`](find.md) - list files to count
+- [`find`](../file-management/find.md) - list files to count
 - `grep -c` - count matching lines
 - `sort` / `uniq -c` - count unique values
 - `du` - disk usage of files

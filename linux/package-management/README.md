@@ -268,5 +268,5 @@ This README is an overview. Separate pages for each tool will be added in this f
 - `yum`, `dnf`, `rpm` (Red Hat family)
 - `apk` (Alpine)
 - `snap`, `flatpak`
-- `tar`, `zip`, `unzip`, `gzip` (archives and source installs)
+- `tar`, `zip`, `unzip`, `gzip` (archives and source installs, see [archiving](../archiving/))
 - `wget`, `curl` (downloading packages, see [networking](../networking/))

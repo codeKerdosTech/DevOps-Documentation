@@ -515,8 +515,8 @@ With `chrony`, use `sudo chronyc makestep`.
 - [`hostnamectl`](hostnamectl.md) - the same kind of tool for the host name
 - [`uptime`](uptime.md) - how long the system is up
 - [`dmesg`](dmesg.md) - kernel time and boot messages
-- [`journalctl`](../package-management/journalctl.md) - logs, shown in the zone you set
-- [`systemctl`](../package-management/systemctl.md) - control `systemd-timesyncd` and `chrony`
+- [`journalctl`](../services-logging/journalctl.md) - logs, shown in the zone you set
+- [`systemctl`](../services-logging/systemctl.md) - control `systemd-timesyncd` and `chrony`
 - [`sleep`](../shell-basics/sleep.md) - wait for some seconds
 - [`time`](../shell-basics/time.md) - measure how long a command runs
 - `hwclock` - read or write the hardware clock directly

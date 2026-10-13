@@ -845,7 +845,7 @@ Every 2.0s: ps -p 2045 -o pid,%cpu,%mem,rss,etime,cmd       web01: Mon Oct 12 10
 - [`watch`](watch.md) - repeat `ps` at an interval
 - [`nice`](nice.md) / [`renice`](renice.md) - change the priority of a process
 - [`jobs`](jobs.md) - the jobs of the current shell
-- [`lsof`](../networking/lsof.md) - the files and ports that a process has open
+- [`lsof`](lsof.md) - the files and ports that a process has open
 - `pstree` - the process tree, drawn as a tree
 - `uptime` - the load average
 - `free` - the memory of the whole system

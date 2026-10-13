@@ -317,9 +317,9 @@ kubectl get events --sort-by=.lastTimestamp | tac | head -n 3
 ```
 
 ## Related Commands
-- [`cat`](cat.md) - print a file in normal order
-- [`tail`](tail.md) - show the end of a file
-- [`head`](head.md) - show the start of a file
+- [`cat`](../file-management/cat.md) - print a file in normal order
+- [`tail`](../file-management/tail.md) - show the end of a file
+- [`head`](../file-management/head.md) - show the start of a file
 - [`nl`](nl.md) - number lines
 - `rev` - reverse characters inside each line
 - `sort -r` - sort in reverse order

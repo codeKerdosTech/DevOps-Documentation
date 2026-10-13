@@ -489,6 +489,6 @@ Without it, an inherited ignored `SIGPIPE` makes `yes` print `write error: Broke
 - [`diff`](../text-processing/diff.md) - compare two environments
 - [`xargs`](../text-processing/xargs.md) - build commands
 - [`sudo`](../user-management/sudo.md) - resets the environment of the command
-- [`systemctl`](../package-management/systemctl.md) - `systemctl show-environment` and `Environment=`
+- [`systemctl`](../services-logging/systemctl.md) - `systemctl show-environment` and `Environment=`
 - `printenv` - print one or all variables (exit code 1 for missing ones)
 - `declare -p` - list all variables with their attributes in Bash

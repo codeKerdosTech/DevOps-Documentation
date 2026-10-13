@@ -595,7 +595,7 @@ full in 24 hours
 - [`iostat`](iostat.md) - the disk load, not the free space
 - [`vmstat`](vmstat.md) - memory, swap and I/O in one view
 - [`find`](../file-management/find.md) - find big files (`find / -xdev -size +1G`)
-- [`lsof`](../networking/lsof.md) - find deleted files that still use space (`lsof +L1`)
+- [`lsof`](../process-management/lsof.md) - find deleted files that still use space (`lsof +L1`)
 - [`watch`](../process-management/watch.md) - repeat `df` every few seconds
 - [`timeout`](../process-management/timeout.md) - protect a script from a hung NFS mount
 - `tune2fs -m` - change the space that is reserved for `root`

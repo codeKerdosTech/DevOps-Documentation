@@ -427,6 +427,6 @@ tail -f --pid=5100 backup.log
 - [`cat`](cat.md) - print a whole file
 - [`head`](head.md) - show the start of a file
 - [`less`](less.md) - page through a file, press `F` to follow
-- [`tac`](tac.md) - print lines in reverse order
+- [`tac`](../text-processing/tac.md) - print lines in reverse order
 - `grep` - search text
 - `journalctl` - follow systemd logs with `-f`

@@ -761,11 +761,11 @@ findmnt -rno TARGET,OPTIONS /tmp /var/tmp /dev/shm /home /data | awk '{
 - [`blkid`](blkid.md) - the UUID, LABEL and type of a device
 - [`dmesg`](dmesg.md) - kernel messages about mount errors and I/O errors
 - [`iostat`](iostat.md) - the load of the disks
-- [`ulimit`](ulimit.md) - limits of processes (open files)
-- [`lsof`](../networking/lsof.md) - find what keeps a mount busy
+- [`ulimit`](../process-management/ulimit.md) - limits of processes (open files)
+- [`lsof`](../process-management/lsof.md) - find what keeps a mount busy
 - [`chmod`](../permissions/chmod.md) / [`chown`](../permissions/chown.md) - the permissions of the mounted files
 - [`rsync`](../file-management/rsync.md) - copy data between mounts
-- [`systemctl`](../package-management/systemctl.md) - `.mount` and `.automount` units
+- [`systemctl`](../services-logging/systemctl.md) - `.mount` and `.automount` units
 - [`ln`](../file-management/ln.md) - links (not the same as bind mounts)
 - `umount` - detach a file system (`umount -R`, `-l`, `-f`)
 - `findmnt` - show mounts as a tree, with filters, and verify `fstab` (`--verify`)

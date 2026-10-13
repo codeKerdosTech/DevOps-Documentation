@@ -723,6 +723,6 @@ logs-2026-10-05  logs-2026-10-06  logs-2026-10-07
 
 ## Related Commands
 - [tar](tar.md) - archives that keep Linux permissions and ownership, the usual choice for backups
-- [apt](apt.md) / [dnf](dnf.md) / [apk](apk.md) - install `zip` and `unzip`
+- [apt](../package-management/apt.md) / [dnf](../package-management/dnf.md) / [apk](../package-management/apk.md) - install `zip` and `unzip`
 - [wget](../networking/wget.md) / [curl](../networking/curl.md) - download ZIP files
 - [scp](../networking/scp.md) - copy archives to other servers

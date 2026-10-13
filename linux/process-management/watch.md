@@ -469,6 +469,6 @@ With `-d`, the change of the address is highlighted. When it shows the new addre
 - [`nohup`](nohup.md) - run a long job, and watch its output file
 - [`tail`](../file-management/tail.md) - follow a growing log file
 - [`ss`](../networking/ss.md) - the connections that you often watch
-- [`lsof`](../networking/lsof.md) - open files and ports
+- [`lsof`](lsof.md) - open files and ports
 - `df` / `du` / `free` / `uptime` - system numbers to watch
 - `kubectl get -w` / `docker stats` - tools with their own live mode

@@ -505,7 +505,7 @@ SYNOPSIS
 - [`which`](which.md) - find the file of a program (built-ins have none)
 - [`alias`](alias.md) - `help alias` explains aliases
 - [`echo`](echo.md) / [`export`](export.md) / [`set`](set.md) / [`source`](source.md) / [`read`](read.md) / [`test`](test.md) / [`exit`](exit.md) - built-ins that you can study with `help`
-- [`ulimit`](../system-info/ulimit.md) - a built-in, documented with `help ulimit`
+- [`ulimit`](../process-management/ulimit.md) - a built-in, documented with `help ulimit`
 - [`cd`](../file-management/cd.md) / [`pwd`](../file-management/pwd.md) - the most used built-ins
 - [`history`](history.md) - the built-in for the list of earlier commands
 - [`clear`](clear.md) - clear the screen

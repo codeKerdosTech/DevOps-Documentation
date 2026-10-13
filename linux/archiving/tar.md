@@ -703,7 +703,7 @@ paths OK
 
 ## Related Commands
 - [zip-unzip](zip-unzip.md) - the zip format, common on Windows
-- [apt](apt.md) / [dnf](dnf.md) / [apk](apk.md) - package managers, whose packages are tar based archives
-- [rpm](rpm.md) - `rpm2cpio` extracts RPM payloads
+- [apt](../package-management/apt.md) / [dnf](../package-management/dnf.md) / [apk](../package-management/apk.md) - package managers, whose packages are tar based archives
+- [rpm](../package-management/rpm.md) - `rpm2cpio` extracts RPM payloads
 - [wget](../networking/wget.md) / [curl](../networking/curl.md) - download tarballs
 - [scp](../networking/scp.md) / [ssh](../networking/ssh.md) - move archives between servers

@@ -537,5 +537,5 @@ uniq -c noisy.log
 - [`awk`](awk.md) - count with arrays, `!seen[$0]++` removes duplicates in order
 - [`grep`](grep.md) - select the lines to count
 - [`tr`](tr.md) - `tr -s` squeezes repeated characters (not lines)
-- [`wc`](../file-management/wc.md) - count lines
+- [`wc`](wc.md) - count lines
 - `comm` - compare two sorted files

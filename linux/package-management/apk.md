@@ -653,5 +653,5 @@ OK: 22983 distinct packages available
 ## Related Commands
 - [apt](apt.md) - Debian and Ubuntu equivalent
 - [dnf](dnf.md) / [yum](yum.md) - Red Hat family equivalents
-- [tar](tar.md) - an `.apk` file is a tar.gz archive under the hood
+- [tar](../archiving/tar.md) - an `.apk` file is a tar.gz archive under the hood
 - [wget](../networking/wget.md) / [curl](../networking/curl.md) - download tools often installed with apk

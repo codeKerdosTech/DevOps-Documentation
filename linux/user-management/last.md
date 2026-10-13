@@ -598,7 +598,7 @@ A `shutdown` record before each `reboot` means a clean stop. A `reboot` without 
 - [`userdel`](userdel.md) - remove an unused account
 - [`getent`](getent.md) - read the account databases
 - [`tail`](../file-management/tail.md) - follow `/var/log/auth.log`
-- [`journalctl`](../package-management/journalctl.md) - read the `systemd` journal of logins
+- [`journalctl`](../services-logging/journalctl.md) - read the `systemd` journal of logins
 - `lastb` - failed logins (`/var/log/btmp`)
 - `lastlog` - the last login of every account
 - `uptime -s` / `who -b` - the boot time

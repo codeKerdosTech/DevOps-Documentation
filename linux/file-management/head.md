@@ -356,5 +356,5 @@ web03 down
 - [`cat`](cat.md) - print a whole file
 - [`tail`](tail.md) - show the end of a file
 - [`less`](less.md) - page through a long file
-- [`wc`](wc.md) - count lines, words and bytes
+- [`wc`](../text-processing/wc.md) - count lines, words and bytes
 - `sort` - sort lines

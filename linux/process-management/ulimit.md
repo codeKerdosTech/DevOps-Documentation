@@ -666,18 +666,18 @@ NOFILE   max number of open files 65535 65535 files
 `prlimit` (util-linux) uses the call `prlimit64` and changes a process live. It does not survive a restart, so also fix the unit file.
 
 ## Related Commands
-- [`free`](free.md) - the memory use of the system
-- [`vmstat`](vmstat.md) - memory, swap and processes
-- [`mount`](mount.md) - mount options such as `noexec`
-- [`lscpu`](lscpu.md) - the CPUs
-- [`nproc`](nproc.md) - the number of CPUs
-- [`dmesg`](dmesg.md) - messages of the OOM killer and core dumps
+- [`free`](../system-info/free.md) - the memory use of the system
+- [`vmstat`](../system-info/vmstat.md) - memory, swap and processes
+- [`mount`](../system-info/mount.md) - mount options such as `noexec`
+- [`lscpu`](../system-info/lscpu.md) - the CPUs
+- [`nproc`](../system-info/nproc.md) - the number of CPUs
+- [`dmesg`](../system-info/dmesg.md) - messages of the OOM killer and core dumps
 - [`ps`](../process-management/ps.md) - the processes of a user (count against `-u`)
 - [`kill`](../process-management/kill.md) - signals such as `SIGXCPU` and `SIGSEGV`
 - [`nice`](../process-management/nice.md) - the priority of a process
 - [`timeout`](../process-management/timeout.md) - a limit of the clock time
-- [`lsof`](../networking/lsof.md) - the open files of a process
-- [`systemctl`](../package-management/systemctl.md) - the `Limit...=` options of services
+- [`lsof`](lsof.md) - the open files of a process
+- [`systemctl`](../services-logging/systemctl.md) - the `Limit...=` options of services
 - [`help`](../shell-basics/help.md) - the help of the Bash built-ins
 - [`type`](../shell-basics/type.md) - shows that `ulimit` is a built-in
 - `prlimit` - show or change the limits of a running process

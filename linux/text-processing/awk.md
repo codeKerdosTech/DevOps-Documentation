@@ -1253,6 +1253,6 @@ awk -F'load average: ' '{print $2}' uptime.txt
 - [`sort`](sort.md) / [`uniq`](uniq.md) - sort and count values
 - [`printf`](printf.md) - format text in the shell
 - [`xargs`](xargs.md) - turn output into command arguments
-- [`wc`](../file-management/wc.md) - count lines, words and bytes
+- [`wc`](wc.md) - count lines, words and bytes
 - `column` - align the output in columns
 - `perl` / `python` - for bigger text processing jobs

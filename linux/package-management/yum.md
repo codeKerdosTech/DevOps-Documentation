@@ -694,4 +694,4 @@ yum list installed | awk '{print $3}' | sort | uniq -c | sort -rn | head -4
 - [dnf](dnf.md) - the modern replacement for yum
 - [rpm](rpm.md) - low level tool that yum uses
 - [apt](apt.md) - the Debian family equivalent
-- [tar](tar.md) / [zip-unzip](zip-unzip.md) - archives and source installs
+- [tar](../archiving/tar.md) / [zip-unzip](../archiving/zip-unzip.md) - archives and source installs

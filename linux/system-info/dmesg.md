@@ -596,7 +596,7 @@ systemd-analyze blame | head -n 3
 The 190 second gap before `sdb` was mounted points to a slow disk check or a network wait. `systemd-analyze blame` shows the services that took the time.
 
 ## Related Commands
-- [`journalctl`](../package-management/journalctl.md) - `journalctl -k` shows the kernel messages with exact times, also of old boots
+- [`journalctl`](../services-logging/journalctl.md) - `journalctl -k` shows the kernel messages with exact times, also of old boots
 - [`free`](free.md) - the memory, after an OOM message
 - [`lsblk`](lsblk.md) - the disks, after a "disk attached" message
 - [`blkid`](blkid.md) - the file system data of a new disk

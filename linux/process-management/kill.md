@@ -564,6 +564,6 @@ There is no output. With `kill` you would first list the children (`pgrep -P 812
 - [`jobs`](jobs.md) / [`bg`](bg.md) / [`fg`](fg.md) - the jobs that `kill %1` addresses
 - [`nohup`](nohup.md) - a process that ignores `SIGHUP`
 - [`timeout`](timeout.md) - send a signal after a time limit
-- [`lsof`](../networking/lsof.md) - find the process that uses a port or a file
+- [`lsof`](lsof.md) - find the process that uses a port or a file
 - `trap` - catch signals in a shell script
 - `systemctl` - stop and reload services in a clean way
