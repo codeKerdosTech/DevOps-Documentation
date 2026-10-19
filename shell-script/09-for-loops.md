@@ -42,21 +42,24 @@ Imagine a worker at a factory conveyor belt. Boxes arrive **one at a time**. The
 
 One list, one job, done once per item. You write the job **once**.
 
+**Follow the arrows:** the loop takes one item, runs the commands, then asks whether any items are left. Yes goes back to the start. No leaves the loop.
+
 ```mermaid
-flowchart TD
-    A["Take the next item from the list"] --> B["Put it in the loop variable"]
-    B --> C["Run the commands between do and done"]
-    C --> D{"Any items left"}
-    D -- Yes --> A
-    D -- No --> E["Leave the loop and carry on after done"]
+%%{init: {"flowchart": {"nodeSpacing": 30, "rankSpacing": 40}}}%%
+flowchart LR
+    A["Take the next item<br/>web1, web2, db1"] --> B["Run the commands<br/>between do and done"]
+    B --> C{"Items<br/>left?"}
+    C -- Yes --> A
+    C -- No --> D["Leave<br/>the loop"]
     classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
     classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
     classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
+    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
     classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A,B start
-    class C proc
-    class D dec
-    class E out
+    class A start
+    class B proc
+    class C dec
+    class D out
 ```
 
 ---

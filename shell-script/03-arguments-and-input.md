@@ -57,21 +57,20 @@ The staff already know *how* to make drinks. Your words are only the **details o
 
 You already know variables from page 02. Arguments are simply variables that are **filled in by whoever runs the script**, not by the script itself.
 
+**Read it left to right:** the shell cuts the line you typed into words and hands them to the script as `$0`, `$1` and so on. The script then uses `$1`.
+
 ```mermaid
-flowchart TD
-    A["You type: ./greet.sh Asha"] --> B["The shell splits the line into words"]
-    B --> C["First word is the script name, it goes into dollar 0"]
-    C --> D["Next word Asha goes into dollar 1"]
-    D --> E["The script runs and can use dollar 1"]
-    E --> F["It prints: Hello Asha"]
+%%{init: {"flowchart": {"nodeSpacing": 30, "rankSpacing": 40}}}%%
+flowchart LR
+    A["You type<br/>./greet.sh Asha"] --> B["Shell splits the words<br/>$0 = ./greet.sh<br/>$1 = Asha"] --> C["Script prints<br/>Hello, Asha"]
     classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
     classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
+    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
     classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
     classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A,B start
-    class C,D proc
-    class E ok
-    class F out
+    class A start
+    class B proc
+    class C out
 ```
 
 ---

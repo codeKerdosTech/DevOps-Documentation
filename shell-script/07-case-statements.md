@@ -71,27 +71,24 @@ That is the **`case` statement**:
 | "Anything else" | The catch-all pattern `*` |
 | Hang up after the option | `;;` ends that option |
 
+**Read it from the left:** `case` looks at one value (`$action`) and follows the arrow whose label matches it. The last arrow is the catch-all `*)`.
+
 ```mermaid
-flowchart TD
-    A["case looks at one value: action"] --> B{"Which pattern matches first"}
-    B -- start --> C["Run the start commands"]
-    B -- stop --> D["Run the stop commands"]
-    B -- status --> E["Run the status commands"]
-    B -- anything else --> F["Run the catch all commands"]
-    C --> G["Jump to esac and carry on"]
-    D --> G
-    E --> G
-    F --> G
+%%{init: {"flowchart": {"nodeSpacing": 30, "rankSpacing": 40, "wrappingWidth": 150, "padding": 8}}}%%
+flowchart LR
+    A["case looks at one value: action"]
+    A -- start --> B["Starting the service"]
+    A -- stop --> C["Stopping the service"]
+    A -- status --> D["The service is running"]
+    A -- anything else --> E["Unknown action"]
     classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
     classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
     classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
     classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
     classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
     class A start
-    class B dec
-    class C,D,E ok
-    class F out
-    class G proc
+    class B,C,D ok
+    class E out
 ```
 
 ---
@@ -546,23 +543,24 @@ ok
 
 **So numbers and thresholds belong to `if`.** Words and names belong to `case`.
 
+**Read it from the left:** two questions are enough to choose.
+
 ```mermaid
-flowchart TD
-    A["I need to choose a path"] --> B{"Am I matching one value against a list of options"}
-    B -- Yes --> C{"Are they words, names or wildcard patterns"}
-    B -- No --> F["Use if"]
-    C -- Yes --> D["Use case"]
-    C -- No --> E{"Are they number ranges or file checks"}
-    E -- Yes --> F
-    E -- No --> D
+%%{init: {"flowchart": {"nodeSpacing": 30, "rankSpacing": 40}}}%%
+flowchart LR
+    A{"One value against<br/>many options?"}
+    A -- Yes --> B{"Words, names<br/>or wildcards?"}
+    A -- No --> I["Use if"]
+    B -- Yes --> K["Use case"]
+    B -- No: numbers<br/>or files --> I
     classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
+    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
     classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
     classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
     classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A start
-    class B,C,E dec
-    class D ok
-    class F out
+    class A,B dec
+    class K ok
+    class I out
 ```
 
 ### Can I use both together?

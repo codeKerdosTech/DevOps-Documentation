@@ -41,19 +41,20 @@ Think of a kitchen shelf with jars. Each jar has a **label** on the outside, suc
 
 A variable is simply **a name that holds a value** while your script runs.
 
+**Read it left to right:** line 1 fills the jar, line 2 opens the jar, and the shell prints what was inside.
+
 ```mermaid
+%%{init: {"flowchart": {"nodeSpacing": 30, "rankSpacing": 40}}}%%
 flowchart LR
-    A["Line 1 puts Asha in a jar labelled name"] --> B["The shell keeps the jar in memory"]
-    B --> C["Line 2 says echo Hello and dollar name"]
-    C --> D["The shell swaps dollar name for Asha"]
-    D --> E["echo prints Hello Asha"]
+    A["Write<br/>name=Asha<br/>fills the jar"] --> B["Read<br/>echo Hello $name<br/>opens the jar"] --> C["Output<br/>Hello Asha"]
     classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
     classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
+    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
     classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
     classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A,B start
-    class C,D proc
-    class E out
+    class A start
+    class B proc
+    class C out
 ```
 
 ---

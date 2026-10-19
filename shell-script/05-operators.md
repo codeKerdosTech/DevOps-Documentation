@@ -48,25 +48,24 @@ There is also a second thing to know. The shell has three kinds of brackets for 
 | `(( ... ))` | Ask a **yes/no question** about numbers | Number maths and comparisons: `(( a > b ))` |
 | `[[ ... ]]` | Ask a **yes/no question** about text, files and numbers | Words like `-eq`, `==`, `-f` |
 
+**How to read it:** start at the yellow question on the left and follow the arrow to the family that matches your job. The numbers are the drawers explained below.
+
 ```mermaid
-flowchart TD
-    A["I want to work with a value"] --> B{"What do I want to do"}
-    B -- Calculate a number --> C["Drawer 1: arithmetic inside dollar double round brackets"]
-    B -- Compare numbers --> D["Drawer 2: double round brackets or -gt style words"]
-    B -- Compare text --> E["Drawer 3: double square brackets with == and !="]
-    B -- Ask about a file --> F["Drawer 4: double square brackets with -e -f -d"]
-    B -- Combine answers --> G["Drawer 5: and or not"]
+%%{init: {"flowchart": {"nodeSpacing": 30, "rankSpacing": 40}}}%%
+flowchart LR
+    Q{"What do I<br/>want to do?"}
+    Q --> A["Calculate a number<br/>1 Arithmetic"]
+    Q --> B["Compare numbers<br/>2 Number comparison"]
+    Q --> C["Compare text<br/>3 Text comparison"]
+    Q --> D["Ask about a file<br/>4 File tests"]
+    Q --> E["Combine answers<br/>5 Logical operators"]
     classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
+    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
     classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
     classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
     classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A start
-    class B dec
-    class C ok
-    class D,E proc
-    class F out
-    class G dec
+    class Q dec
+    class A,B,C,D,E ok
 ```
 
 Now let us open the drawers one by one.

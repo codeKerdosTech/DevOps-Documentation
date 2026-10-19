@@ -40,20 +40,22 @@ You do not count how many minutes. You **keep checking one condition**, and the 
 
 They are mirror images of each other. And here is the neat connection: the condition is **exactly the same kind of condition you wrote for `if`** in pages 05 and 06. Anything that works after `if` works after `while` or `until`.
 
+**Follow the arrows:** the check comes first. "Keep going" runs the commands and returns to the check. "Stop" leaves the loop.
+
 ```mermaid
-flowchart TD
-    A["Check the condition"] --> B{"Is it true for while or false for until"}
-    B -- Keep going --> C["Run the commands between do and done"]
-    C --> A
-    B -- Stop --> D["Leave the loop and carry on after done"]
+%%{init: {"flowchart": {"nodeSpacing": 30, "rankSpacing": 40, "wrappingWidth": 150, "padding": 8}}}%%
+flowchart LR
+    A{"Check the condition"} -- Keep going --> B["Run the commands between do and done"]
+    B --> A
+    A -- Stop --> C["Leave the loop"]
     classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
     classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
     classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
+    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
     classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A start
-    class B dec
-    class C proc
-    class D out
+    class A dec
+    class B proc
+    class C out
 ```
 
 Notice that the check happens **first**, before each round, not after.
@@ -810,23 +812,26 @@ You now know three kinds of loop. Use this as your guide:
 | I need to read a **file line by line** | `while read -r line; do ... done < file` |
 | I want something to run **forever** (a monitor) | `while true` with `sleep` |
 
+**Start at the left** and answer each yellow question until you reach a green box.
+
 ```mermaid
-flowchart TD
-    A["I need to repeat something"] --> B{"Do I have a list of items"}
-    B -- Yes --> C["Use for in list"]
-    B -- No --> D{"Do I know how many times"}
-    D -- Yes --> E["Use the counting for loop"]
-    D -- No --> F{"Am I reading a file line by line"}
-    F -- Yes --> G["Use while read with done from the file"]
-    F -- No --> H{"Do I stop when something becomes true"}
-    H -- Yes --> I["Use until"]
-    H -- No --> J["Use while"]
+%%{init: {"flowchart": {"nodeSpacing": 20, "rankSpacing": 28}}}%%
+flowchart LR
+    A{"List of<br/>items?"} -- Yes --> R1["for item in list"]
+    A -- No --> B{"Known<br/>count?"}
+    B -- Yes --> R2["for with<br/>a counter"]
+    B -- No --> C{"Reading<br/>file lines?"}
+    C -- Yes --> R3["while read -r"]
+    C -- No --> D{"Stop when<br/>it is true?"}
+    D -- Yes --> R4["until"]
+    D -- No --> R5["while"]
     classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
+    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
     classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
     classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    class A start
-    class B,D,F,H dec
-    class C,E,G,I,J ok
+    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
+    class A,B,C,D dec
+    class R1,R2,R3,R4,R5 ok
 ```
 
 ---

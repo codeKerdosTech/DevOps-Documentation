@@ -36,23 +36,23 @@ A decision always has the same three parts:
 
 In the shell, the word for this is **`if`**.
 
+**Read it from the left:** the diamond asks the question. Yes takes the umbrella path, No skips it, and both paths meet again at the last line. This is the `umbrella.sh` you will write next.
+
 ```mermaid
-flowchart TD
-    A["Script reaches the if line"] --> B{"Is the condition true"}
-    B -- Yes --> C["Run the commands after then"]
-    B -- No --> D["Skip them"]
-    C --> E["Carry on with the rest of the script"]
-    D --> E
+%%{init: {"flowchart": {"nodeSpacing": 30, "rankSpacing": 40, "wrappingWidth": 150, "padding": 8}}}%%
+flowchart LR
+    A{"rain is yes?"}
+    A -- Yes --> B["Print: Take an umbrella"]
+    B --> C["Print: Have a nice day"]
+    A -- No --> C
     classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
     classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
     classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
     classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
     classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A start
-    class B dec
-    class C ok
-    class D out
-    class E proc
+    class A dec
+    class B ok
+    class C proc
 ```
 
 ---
@@ -278,23 +278,25 @@ fi
 
 The shell works **down the ladder, one rung at a time**, and stops at the **first** condition that is true. The `else` at the bottom catches everything that did not match.
 
+**Read it from the left, one diamond at a time.** The first Yes wins, and the later questions are never asked. This is the `grade.sh` below.
+
 ```mermaid
-flowchart TD
-    A["Marks come in"] --> B{"90 or more"}
-    B -- Yes --> C["Grade A"]
-    B -- No --> D{"75 or more"}
-    D -- Yes --> E["Grade B"]
-    D -- No --> F{"50 or more"}
-    F -- Yes --> G["Grade C"]
-    F -- No --> H["Fail"]
+%%{init: {"flowchart": {"nodeSpacing": 30, "rankSpacing": 40, "wrappingWidth": 150, "padding": 8}}}%%
+flowchart LR
+    A{"marks 90 or more?"} -- Yes --> R1["Grade A"]
+    A -- No --> B{"75 or more?"}
+    B -- Yes --> R2["Grade B"]
+    B -- No --> C{"50 or more?"}
+    C -- Yes --> R3["Grade C"]
+    C -- No --> R4["Fail"]
     classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
+    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
     classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
     classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
     classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A start
-    class B,D,F dec
-    class C,E,G ok
-    class H out
+    class A,B,C dec
+    class R1,R2,R3 ok
+    class R4 out
 ```
 
 Let's say we have this file `grade.sh`:

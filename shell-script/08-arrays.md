@@ -44,13 +44,19 @@ An array is a carton for values:
 
 **The most surprising rule:** the numbering starts at **0**, not 1. The first hole is hole `0`, the second is hole `1`, and so on. (Programmers count from zero. You get used to it quickly.)
 
+**Read it left to right:** one array name, and three numbered slots that each hold one value.
+
 ```mermaid
+%%{init: {"flowchart": {"nodeSpacing": 30, "rankSpacing": 40, "wrappingWidth": 150, "padding": 8}}}%%
 flowchart LR
-    A["servers - one array"] --> B["index 0 holds web1"]
+    A["servers: one array"] --> B["index 0 holds web1"]
     A --> C["index 1 holds web2"]
     A --> D["index 2 holds db1"]
     classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
+    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
+    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
     classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
+    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
     class A start
     class B,C,D ok
 ```

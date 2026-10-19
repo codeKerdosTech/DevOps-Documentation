@@ -80,23 +80,25 @@ exit code: 2
 
 `ls` on a real file gave `0`. `ls` on a missing path gave a non-zero number. The exact number (here `2`) depends on the command, so **never rely on the specific number unless the command's manual says so**. The only rule that always holds is `0` versus not `0`.
 
+**Follow the arrows:** every command ends by leaving a number behind. The yellow diamond is the only question that matters: is the number zero?
+
 ```mermaid
-flowchart TD
-    A["A command runs"] --> B["It finishes and leaves a number behind"]
-    B --> C{"Is the number zero"}
+%%{init: {"flowchart": {"nodeSpacing": 30, "rankSpacing": 40}}}%%
+flowchart LR
+    A["Command<br/>finishes"] --> B["Leaves a number<br/>saved in $?"]
+    B --> C{"Number<br/>is 0?"}
     C -- Yes --> D["Success"]
     C -- No --> E["Failure"]
-    B --> F["The shell stores the number in dollar question mark"]
     classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
     classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
     classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
     classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
     classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A,B start
+    class A start
+    class B proc
     class C dec
     class D ok
     class E out
-    class F proc
 ```
 
 ### `$?` only remembers the LAST command

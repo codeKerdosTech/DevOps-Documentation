@@ -52,20 +52,20 @@ That is all. Two things worth noticing:
 1. **There is nothing new to learn to start.** Every command you already know (`ls`, `cd`, `cp`, `grep`) can go inside a script. If you can type it, you can script it.
 2. **A script is just text.** You can open it in any editor. There is no compiler and no special software. You write it, and you run it.
 
+**Read it left to right:** you write the steps once (the recipe card), the shell follows them in order (the cook), and you get the result (the dish).
+
 ```mermaid
+%%{init: {"flowchart": {"nodeSpacing": 30, "rankSpacing": 40}}}%%
 flowchart LR
-    A["You write commands in a file"] --> B["You save it as morning.sh"]
-    B --> C["The shell reads the file top to bottom"]
-    C --> D["Each command runs in order"]
-    D --> E["You get the results"]
+    A["Script file<br/>the recipe card"] --> B["Shell<br/>the cook follows the<br/>lines top to bottom"] --> C["Output<br/>the finished dish"]
     classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
     classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
+    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
     classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
     classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A,B start
-    class C proc
-    class D ok
-    class E out
+    class A start
+    class B proc
+    class C out
 ```
 
 ---
@@ -239,14 +239,15 @@ Disk   :
 
 It worked, and you ran your script like a proper command. This is the full picture of what just happened:
 
+**Follow the arrows from the left.** The yellow diamond is the one place it can stop early: no execute permission.
+
 ```mermaid
-flowchart TD
-    A["You type ./morning.sh"] --> B{"Does the file have execute permission"}
-    B -- No --> C["Permission denied"]
-    B -- Yes --> D["Linux reads line 1: the shebang"]
-    D --> E["Linux starts bash and gives it the file"]
-    E --> F["bash runs the lines one by one, top to bottom"]
-    F --> G["The script ends and reports success or failure"]
+%%{init: {"flowchart": {"nodeSpacing": 30, "rankSpacing": 40}}}%%
+flowchart LR
+    A["You type<br/>./morning.sh"] --> B{"Has x<br/>permission?"}
+    B -- No --> C["Permission<br/>denied"]
+    B -- Yes --> D["Kernel reads line 1<br/>#!/bin/bash and<br/>starts bash"]
+    D --> E["bash runs the lines<br/>top to bottom, then<br/>returns an exit code"]
     classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
     classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
     classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
@@ -255,8 +256,8 @@ flowchart TD
     class A start
     class B dec
     class C out
-    class D,E proc
-    class F,G ok
+    class D proc
+    class E ok
 ```
 
 ### Why do we write `./` in front of the name?
