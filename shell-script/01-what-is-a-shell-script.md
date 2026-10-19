@@ -273,7 +273,7 @@ morning.sh
 bash: morning.sh: command not found
 ```
 
-`./` says: *"Do not search. The file is right here, in the current folder."* The list of folders the shell searches is called `PATH`, and you will learn it in [page 08](08-environment-variables-and-path.md). For now, remember: **`./name.sh` to run a script from the current folder.**
+`./` says: *"Do not search. The file is right here, in the current folder."* The list of folders the shell searches is called `PATH`, and you will learn it in [page 13](13-environment-variables-and-path.md). For now, remember: **`./name.sh` to run a script from the current folder.**
 
 ### The three ways to run a script, side by side
 
@@ -317,7 +317,7 @@ Look closely at three things:
 2. Step 3 **still ran** anyway.
 3. `$?` shows the "result" of the last command in the script. `0` means success. So the script reported **success** even though a step in the middle failed. (Because the last line, `echo`, worked fine.)
 
-Why does this matter? Imagine a deploy script where step 2 is "copy the new version" and step 3 is "delete the old version". If the copy fails and the script carries on, you have deleted your only working copy. In later pages you will learn to make scripts stop at the first error ([page 07, exit codes](07-exit-codes.md) and [page 10, safe scripts](10-debugging-and-safe-scripts.md)). For now, just remember: **a script is only a list of commands, and it is as careful as you make it.**
+Why does this matter? Imagine a deploy script where step 2 is "copy the new version" and step 3 is "delete the old version". If the copy fails and the script carries on, you have deleted your only working copy. In later pages you will learn to make scripts stop at the first error ([page 04, exit codes](04-exit-codes.md) and [page 14, safe scripts](14-safe-and-debuggable-scripts.md)). For now, just remember: **a script is only a list of commands, and it is as careful as you make it.**
 
 ---
 
@@ -351,11 +351,19 @@ Here is the road ahead:
 
 | You will learn | So that your script can... | Page |
 |----------------|---------------------------|------|
-| Variables | Remember values (a name, a path, a number) | [02](02-variables-and-strings.md) |
-| Conditionals (`if`) | Make decisions: "if the disk is full, send an alert" | [03](03-conditionals.md) |
-| Loops (`for`, `while`) | Repeat work for many servers or files | [04](04-loops.md) |
-| Functions | Reuse a block of steps under one name | [05](05-functions.md) |
-| Arguments | Accept input, like `./deploy.sh production` | [06](06-arguments-and-input.md) |
+| Variables | Remember values (a name, a path, a number) | [02](02-variables.md) |
+| Arguments and `read` | Accept input, like `./deploy.sh production` | [03](03-arguments-and-input.md) |
+| Exit codes | Know whether a command worked, and report back | [04](04-exit-codes.md) |
+| Operators | Calculate, and compare numbers, text and files | [05](05-operators.md) |
+| Decisions (`if`, `case`) | Choose: "if the disk is full, send an alert" | [06](06-if-conditions.md), [07](07-case-statements.md) |
+| Arrays | Keep a whole list in one variable | [08](08-arrays.md) |
+| Loops (`for`, `while`, `until`) | Repeat work for many servers or files | [09](09-for-loops.md), [10](10-while-until-loops.md), [11](11-loop-control-and-patterns.md) |
+| Functions | Reuse a block of steps under one name | [12](12-functions.md) |
+| Environment and `PATH` | Work the same in cron, CI and for other users | [13](13-environment-variables-and-path.md) |
+| Safe and debuggable scripts | Stop at the first problem, and see what went wrong | [14](14-safe-and-debuggable-scripts.md) |
+| Signals and `trap` | Clean up when someone interrupts you | [15](15-signals-and-trap.md) |
+| Scheduling with cron | Run by themselves, at the right time | [16](16-scheduling-with-cron.md) |
+| Three real projects | A backup tool, a health checker, safe user onboarding | [17](17-project-backup-script.md), [18](18-project-health-checker.md), [19](19-project-user-onboarding.md) |
 
 ---
 
@@ -477,4 +485,4 @@ Remember `chmod +x diskcheck.sh` before running `./diskcheck.sh`.
 - By default a script **keeps going after an error**, so you must make it careful.
 - `source script.sh` runs the file inside your own shell, so its changes stay.
 
-**Next page:** [02 Variables and strings](02-variables-and-strings.md), where your script learns to remember things.
+**Next page:** [02 Variables](02-variables.md), where your script learns to remember things.
