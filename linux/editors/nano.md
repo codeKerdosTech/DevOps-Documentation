@@ -382,3 +382,7 @@ nano -v v.txt
 - [`visudo`](../user-management/visudo.md) - the only safe way to edit `sudoers`
 - [`crontab`](../scheduling/crontab.md) - uses your `EDITOR` for `crontab -e`
 - [`export`](../shell-basics/export.md) - set `EDITOR`
+
+---
+<!-- nav -->
+[← Previous: `rsync`](../file-management/rsync.md) | [Learning path](../README.md) | [Next: `vim` →](vim.md)

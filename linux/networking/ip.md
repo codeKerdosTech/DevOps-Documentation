@@ -367,3 +367,7 @@ UP
 - [`ping`](ping.md) - test reachability
 - [`traceroute`](traceroute.md) - show the path to a host
 - `nmcli` - manage connections with NetworkManager
+
+---
+<!-- nav -->
+[← Previous: `ping`](ping.md) | [Learning path](../README.md) | [Next: `ss` →](ss.md)

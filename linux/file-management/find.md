@@ -1,5 +1,21 @@
 # find
 
+<!-- start-here -->
+> **Start here.** On your first read, learn only these. The rest of the page is reference you can come back to.
+>
+> | Learn this first | What it does |
+> |---|---|
+> | `find . -name "*.log"` | files whose name ends in .log, here and below |
+> | `find . -type f` | only files (`-type d` for only folders) |
+> | `find . -mtime -1` | changed in the last day |
+> | `find . -size +10M` | bigger than 10 megabytes |
+> | `-delete` or `-exec` | act on the results. Run the find without it first to see what matches |
+<!-- /start-here -->
+
+<!-- safety -->
+> **Practise safely.** `-delete` and `-exec rm` remove files without asking. Run the same `find` without them first and read the list.
+<!-- /safety -->
+
 ## What is it?
 `find` walks a directory tree and prints the files and directories that match conditions you give it: name, type, size, age, owner, permissions and more. It can also run a command on every match or delete them. It searches the live filesystem, so results are always current. `find` is the main tool for cleanup jobs, audits and bulk changes.
 
@@ -1084,6 +1100,59 @@ find . -type f -name "*.*" | sed 's/.*\.//' | sort | uniq -c
 ```
 The `.env` file counts as extension `env`, and the symlink `link.py` is skipped because of `-type f`.
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Let's say we set up this small site:
+```bash
+mkdir -p site/css
+touch site/index.html site/css/main.css site/css/old.css
+```
+Find every file ending in `.css`.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+find site -name "*.css"
+```
+Output (order can vary):
+```
+site/css/main.css
+site/css/old.css
+```
+
+</details>
+
+**Task 2.** Find only the folders.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+find site -type d
+```
+Output:
+```
+site
+site/css
+```
+
+</details>
+
+**Task 3.** Find the file named `old.css` anywhere below `site`.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+find site -name "old.css"
+```
+Output: `site/css/old.css`.
+
+</details>
+
 ## Related Commands
 - [`ls`](ls.md) - list a single directory
 - [`locate`](locate.md) - fast search using a prebuilt database
@@ -1093,3 +1162,7 @@ The `.env` file counts as extension `env`, and the symlink `link.py` is skipped 
 - `xargs` - build command lines from the results
 - `grep` - search the content of the files you found
 - `chmod` / `chown` - change permissions and owners in bulk with `-exec`
+
+---
+<!-- nav -->
+[← Previous: `file`](file.md) | [Learning path](../README.md) | [Next: `locate` →](locate.md)

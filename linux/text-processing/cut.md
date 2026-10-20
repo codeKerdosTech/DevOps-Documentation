@@ -475,3 +475,7 @@ carol|eng|6500
 - [`sed`](sed.md) - rewrite lines
 - `paste` - join columns side by side (the opposite of `cut`)
 - `column` - align columns for display
+
+---
+<!-- nav -->
+[← Previous: `grep`](grep.md) | [Learning path](../README.md) | [Next: `sort` →](sort.md)

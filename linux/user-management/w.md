@@ -418,3 +418,7 @@ Users with `mesg n` do not get the message (except from `root`).
 - `loginctl list-sessions` - the `systemd` view of the sessions
 - `wall` / `write` - send messages to logged in users
 - `tmux` / `screen` - sessions that stay after the user logs out
+
+---
+<!-- nav -->
+[← Previous: `last`](last.md) | [Learning path](../README.md) | [Next: `ps` →](../process-management/ps.md)

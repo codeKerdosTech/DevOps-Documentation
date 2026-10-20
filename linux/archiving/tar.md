@@ -1,5 +1,16 @@
 # tar
 
+<!-- start-here -->
+> **Start here.** On your first read, learn only these. The rest of the page is reference you can come back to.
+>
+> | Learn this first | What it does |
+> |---|---|
+> | `tar -czf x.tar.gz folder` | create a compressed archive of a folder |
+> | `tar -tf x.tar.gz` | list what is inside without extracting |
+> | `tar -xzf x.tar.gz` | extract it here |
+> | `tar -xzf x.tar.gz -C /tmp` | extract it into another folder |
+<!-- /start-here -->
+
 ## What is it?
 `tar` (tape archive) bundles many files and directories into one archive file, and can also unpack, list and update archives. On its own `tar` does not compress, but it can pass the archive through `gzip`, `bzip2`, `xz` or `zstd` to produce `.tar.gz`, `.tar.bz2`, `.tar.xz` and `.tar.zst` files (called tarballs).
 
@@ -690,9 +701,68 @@ archive OK
 paths OK
 ```
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Let's say we set up this folder:
+```bash
+mkdir data
+echo one > data/a.txt
+echo two > data/b.txt
+```
+Create a compressed archive `data.tar.gz`.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+tar -czf data.tar.gz data
+```
+
+</details>
+
+**Task 2.** List its contents without extracting.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+tar -tf data.tar.gz
+```
+Output:
+```
+data/
+data/a.txt
+data/b.txt
+```
+
+</details>
+
+**Task 3.** Extract it into a new folder `restore`.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+mkdir restore
+tar -xzf data.tar.gz -C restore
+ls restore/data
+```
+Output:
+```
+a.txt  b.txt
+```
+
+</details>
+
 ## Related Commands
 - [zip-unzip](zip-unzip.md) - the zip format, common on Windows
 - [apt](../package-management/apt.md) / [dnf](../package-management/dnf.md) / [apk](../package-management/apk.md) - package managers, whose packages are tar based archives
 - [rpm](../package-management/rpm.md) - `rpm2cpio` extracts RPM payloads
 - [wget](../networking/wget.md) / [curl](../networking/curl.md) - download tarballs
 - [scp](../networking/scp.md) / [ssh](../networking/ssh.md) - move archives between servers
+
+---
+<!-- nav -->
+[← Previous: `vmstat`](../system-info/vmstat.md) | [Learning path](../README.md) | [Next: zip and unzip →](zip-unzip.md)

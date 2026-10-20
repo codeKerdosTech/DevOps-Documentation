@@ -503,3 +503,7 @@ text/x-shellscript
 - `stat` - show size, permissions and times
 - `xxd` / `hexdump` - see the raw bytes of a file
 - `ldd` - show the libraries of a dynamic binary
+
+---
+<!-- nav -->
+[← Previous: `tail`](tail.md) | [Learning path](../README.md) | [Next: `find` →](find.md)

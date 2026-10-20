@@ -519,3 +519,7 @@ OK: www-data
 - [`awk`](../text-processing/awk.md) - filter users and groups by field
 - `/etc/nsswitch.conf` - the order of the sources
 - `sssd` / `sss_cache` - the directory client and its cache
+
+---
+<!-- nav -->
+[← Previous: `deluser`](deluser.md) | [Learning path](../README.md) | [Next: `gpasswd` →](gpasswd.md)

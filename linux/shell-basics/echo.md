@@ -533,3 +533,7 @@ health: OK
 - [`sleep`](sleep.md) - wait between messages
 - [`awk`](../text-processing/awk.md) / [`sed`](../text-processing/sed.md) - process the text
 - `od` - show the real bytes of the output (`echo ... | od -c`)
+
+---
+<!-- nav -->
+[← Previous: Regular Expressions](../fundamentals/12-regular-expressions.md) | [Learning path](../README.md) | [Next: `man` →](man.md)

@@ -363,3 +363,7 @@ kernel=6.18.54.1-microsoft-standard-WSL2 modules=39 tainted=0
 - [`dmesg`](../system-info/dmesg.md) - kernel messages when a driver loads
 - [`uname`](../system-info/uname.md) - kernel version
 - [`lsblk`](../system-info/lsblk.md) - block devices that drivers expose
+
+---
+<!-- nav -->
+[← Previous: Threads: Software and Hardware](05-threads.md) | [Learning path](../README.md)

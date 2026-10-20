@@ -493,3 +493,7 @@ npm: /usr/local/bin/npm (10.2.4)
 - `whereis` - binary, source and manual of a program
 - `readlink -f` - the real file behind links
 - `hash` - the shell's memory of the paths
+
+---
+<!-- nav -->
+[← Previous: `type`](type.md) | [Learning path](../README.md) | [Next: `history` →](history.md)

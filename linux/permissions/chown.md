@@ -1,5 +1,9 @@
 # chown
 
+<!-- safety -->
+> **Practise safely.** `chown -R` on a wrong path can lock you out of your own system. Practise in a virtual machine or WSL, and check the path with `ls -ld` before you run it.
+<!-- /safety -->
+
 ## What is it?
 `chown` (change owner) changes the **owner** and, optionally, the **group** of files and directories. Every file belongs to one user and one group. The permissions (`chmod`) say what the owner, the group and others may do. `chown` says who the owner and the group are. It is one of the first commands to run when a service reports `Permission denied`: a web server that runs as `www-data` can only write to files that belong to it, or to its group. Only `root` can change the owner of a file.
 
@@ -560,3 +564,7 @@ owner of /var/www/site fixed
 - `id` - show the user, the group and the other groups of a user
 - `stat` - show the owner and the group in detail (`stat -c '%U:%G %n'`)
 - `install` - copy a file and set the owner and the mode at once
+
+---
+<!-- nav -->
+[← Previous: `chmod`](chmod.md) | [Learning path](../README.md) | [Next: `chgrp` →](chgrp.md)

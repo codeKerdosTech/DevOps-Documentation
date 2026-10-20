@@ -657,3 +657,7 @@ Setting up nginx (1.18.0-6ubuntu14) ...
 - [dnf](dnf.md) / [yum](yum.md) - the Red Hat family equivalents
 - [apk](apk.md) - the Alpine equivalent
 - [wget](../networking/wget.md) / [curl](../networking/curl.md) - download keys and packages
+
+---
+<!-- nav -->
+[← Previous: Package management overview](README.md) | [Learning path](../README.md) | [Next: `dnf` →](dnf.md)

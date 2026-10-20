@@ -357,3 +357,7 @@ TCP:   1622 (estab 1204, closed 380, orphaned 3, timewait 376)
 - [`nc`](nc.md) - test a port from the outside
 - [`tcpdump`](tcpdump.md) - capture packets
 - `lsof -i` - list open network files per process
+
+---
+<!-- nav -->
+[← Previous: `ip`](ip.md) | [Learning path](../README.md) | [Next: `curl` →](curl.md)

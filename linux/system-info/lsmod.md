@@ -120,3 +120,7 @@ kernel=6.18.54.1-microsoft-standard-WSL2 modules=39 tainted=0
 - [`modprobe`](modprobe.md) - load and unload modules
 - [`dmesg`](dmesg.md) - kernel messages when modules load
 - [Kernel support and modules](../os-internals/06-kernel-support-and-modules.md) - the concept page
+
+---
+<!-- nav -->
+[← Previous: `lsblk`](lsblk.md) | [Learning path](../README.md) | [Next: `modinfo` →](modinfo.md)

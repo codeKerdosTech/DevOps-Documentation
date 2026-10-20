@@ -509,3 +509,7 @@ With `chrony`, use `sudo chronyc makestep`.
 - `hwclock` - read or write the hardware clock directly
 - `chronyc` - the client of the `chrony` NTP service
 - `ntpdate` / `ntpq` - the classic NTP tools
+
+---
+<!-- nav -->
+[← Previous: `nproc`](nproc.md) | [Learning path](../README.md) | [Next: `vmstat` →](vmstat.md)

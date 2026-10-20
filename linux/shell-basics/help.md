@@ -502,3 +502,7 @@ SYNOPSIS
 - `compgen -b` - list the names of the built-ins
 - `enable` - turn built-ins on and off (`enable -a` shows the state)
 - `info bash` / `man bash` - the full reference of the shell
+
+---
+<!-- nav -->
+[← Previous: `man`](man.md) | [Learning path](../README.md) | [Next: `type` →](type.md)

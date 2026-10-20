@@ -154,8 +154,54 @@ ls -l new.txt
 - Build tools such as `make` use timestamps, so touching a file can trigger a rebuild.
 - `touch` needs write permission on the file, or on the directory when creating a file.
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Create an empty file `a.txt` and check its size.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+touch a.txt
+ls -l a.txt
+```
+The size column is `0`.
+
+</details>
+
+**Task 2.** Create three files with one command.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+touch a.txt b.txt c.txt
+ls
+```
+
+</details>
+
+**Task 3.** Touch `a.txt` again. What changes?
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+touch a.txt
+ls -l a.txt
+```
+Only the modified time changes to now. The content and size stay the same.
+
+</details>
+
 ## Related Commands
 - [`mkdir`](mkdir.md) - create directories
 - [`cat`](cat.md) - create or view file content
 - [`ls`](ls.md) - view timestamps
 - `stat` - show detailed file timestamps
+
+---
+<!-- nav -->
+[← Previous: `mkdir`](mkdir.md) | [Learning path](../README.md) | [Next: `cp` →](cp.md)

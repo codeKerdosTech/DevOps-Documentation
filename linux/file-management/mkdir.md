@@ -117,8 +117,53 @@ mkdir: cannot create directory 'x/y/z': No such file or directory
 - Quote names with spaces: `mkdir "my folder"`.
 - Use brace expansion for many folders: `mkdir -p project/{src,test,docs}`.
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Create a folder named `project`.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+mkdir project
+ls
+```
+
+</details>
+
+**Task 2.** Create `project/src/utils` in one command, even though `src` does not exist yet.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+mkdir -p project/src/utils
+```
+Without `-p` this fails because the parent `src` is missing.
+
+</details>
+
+**Task 3.** Run `mkdir project` again. What happens? How do you make it harmless?
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+mkdir project
+```
+Output: `mkdir: cannot create directory 'project': File exists`.
+With `mkdir -p project` there is no error.
+
+</details>
+
 ## Related Commands
 - [`rmdir`](rmdir.md) - remove empty directories
 - [`rm`](rm.md) - remove files and directories
 - [`touch`](touch.md) - create files
 - [`ls`](ls.md) - list directories
+
+---
+<!-- nav -->
+[← Previous: `tree`](tree.md) | [Learning path](../README.md) | [Next: `touch` →](touch.md)

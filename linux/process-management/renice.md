@@ -395,3 +395,7 @@ Renice PID 3120 to value 10
 - `chrt` - change the real-time scheduling policy
 - `taskset` - pin a process to some CPU cores
 - `systemctl set-property` - set CPU weights for services
+
+---
+<!-- nav -->
+[← Previous: `pkill`](pkill.md) | [Learning path](../README.md) | [Next: `strace` →](strace.md)

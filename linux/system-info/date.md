@@ -663,3 +663,7 @@ A difference of a second is fine. A difference of minutes is a problem. See `tim
 - `cal` - show a calendar of a month
 - `hwclock` - read or set the hardware clock
 - `chronyc` / `ntpq` - the NTP clients
+
+---
+<!-- nav -->
+[← Previous: `lscpu`](lscpu.md) | [Learning path](../README.md) | [Next: `blkid` →](blkid.md)

@@ -353,3 +353,7 @@ web1 | CHANGED => {
 - [apt-cache](apt-cache.md) - query versions and dependencies
 - [dpkg](dpkg.md) - `dpkg --get-selections` shows the same hold state
 - [yum](yum.md) / [dnf](dnf.md) - `versionlock` plugin is the equivalent on the Red Hat family
+
+---
+<!-- nav -->
+[← Previous: `apt-cache`](apt-cache.md) | [Learning path](../README.md) | [Next: `dpkg` →](dpkg.md)

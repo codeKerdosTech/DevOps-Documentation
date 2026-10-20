@@ -673,3 +673,7 @@ systemctl stop agent.service
 - [dpkg](dpkg.md) - the Debian family equivalent
 - [tar](../archiving/tar.md) - `rpm2cpio` output is a cpio archive, tar handles similar jobs
 - [systemctl](../services-logging/systemctl.md) - manage services installed by packages
+
+---
+<!-- nav -->
+[← Previous: `dpkg`](dpkg.md) | [Learning path](../README.md) | [Next: `yum` →](yum.md)

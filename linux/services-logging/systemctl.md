@@ -1,5 +1,18 @@
 # systemctl
 
+<!-- start-here -->
+> **Start here.** On your first read, learn only these. The rest of the page is reference you can come back to.
+>
+> | Learn this first | What it does |
+> |---|---|
+> | `systemctl status nginx` | is it running? shows the last log lines |
+> | `sudo systemctl start nginx` | start it now |
+> | `sudo systemctl stop nginx` | stop it now |
+> | `sudo systemctl restart nginx` | stop and start again |
+> | `sudo systemctl enable nginx` | start it automatically at every boot |
+> | `systemctl is-active nginx` | prints just active or inactive, good for scripts |
+<!-- /start-here -->
+
 ## What is it?
 `systemctl` is the command used to control **systemd**, the init system and service manager of almost every modern Linux distribution (Ubuntu, Debian, RHEL, CentOS, Rocky, Fedora, Amazon Linux, SUSE). It starts, stops, restarts, enables and inspects **units**. A unit is anything systemd manages: a service (`.service`), a timer (`.timer`), a socket (`.socket`), a mount (`.mount`), a target (`.target`, a group of units like "multi-user") and so on.
 
@@ -721,8 +734,51 @@ web1 | SUCCESS => {
 }
 ```
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Check whether the `cron` service is running (on Red Hat systems the name is `crond`).
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+systemctl is-active cron
+```
+Output: `active` or `inactive`.
+
+</details>
+
+**Task 2.** Show its full status and last log lines.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+systemctl status cron
+```
+Press `q` to leave.
+
+</details>
+
+**Task 3.** Write the one command that starts `nginx` now and also at every boot.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+sudo systemctl enable --now nginx
+```
+
+</details>
+
 ## Related Commands
 - [journalctl](journalctl.md) - read the logs of services managed by systemd
 - [apt](../package-management/apt.md) / [dnf](../package-management/dnf.md) / [yum](../package-management/yum.md) - install the packages that provide services
 - [ss](../networking/ss.md) / [netstat](../networking/netstat.md) - check the ports a service listens on
 - [curl](../networking/curl.md) - test a service after starting it
+
+---
+<!-- nav -->
+[← Previous: `yum`](../package-management/yum.md) | [Learning path](../README.md) | [Next: `journalctl` →](journalctl.md)

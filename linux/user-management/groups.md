@@ -310,3 +310,7 @@ www-data
 - [`chgrp`](../permissions/chgrp.md) - change the group of a file
 - [`ls`](../file-management/ls.md) - see the group of a file
 - `newgrp` - start a shell that uses another group
+
+---
+<!-- nav -->
+[← Previous: `groupmod`](groupmod.md) | [Learning path](../README.md) | [Next: `last` →](last.md)

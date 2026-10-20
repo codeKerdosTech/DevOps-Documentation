@@ -716,3 +716,7 @@ logs-2026-10-05  logs-2026-10-06  logs-2026-10-07
 - [apt](../package-management/apt.md) / [dnf](../package-management/dnf.md) / [apk](../package-management/apk.md) - install `zip` and `unzip`
 - [wget](../networking/wget.md) / [curl](../networking/curl.md) - download ZIP files
 - [scp](../networking/scp.md) - copy archives to other servers
+
+---
+<!-- nav -->
+[← Previous: `tar`](tar.md) | [Learning path](../README.md) | [Next: Package management overview →](../package-management/README.md)

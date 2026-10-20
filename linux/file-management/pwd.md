@@ -79,7 +79,53 @@ pwd -P
 - `/bin/pwd` (external program) defaults to physical behavior on some systems, while the shell built-in defaults to logical.
 - The `$PWD` variable holds the same value as `pwd -L`.
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Print the folder you are in.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+pwd
+```
+Example output: `/home/ravi`.
+
+</details>
+
+**Task 2.** Move to `/tmp` and confirm.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+cd /tmp
+pwd
+```
+Output: `/tmp`.
+
+</details>
+
+**Task 3.** Go back home and confirm.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+cd
+pwd
+```
+Output: your home folder, for example `/home/ravi`.
+
+</details>
+
 ## Related Commands
 - [`cd`](cd.md) - change directory
 - [`ls`](ls.md) - list directory contents
 - `readlink -f` - resolve any path to its real location
+
+---
+<!-- nav -->
+[← Previous: `exit`](../shell-basics/exit.md) | [Learning path](../README.md) | [Next: `ls` →](ls.md)

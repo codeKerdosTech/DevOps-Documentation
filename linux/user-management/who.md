@@ -137,3 +137,7 @@ devops   pts/0        2026-10-06 09:12 (192.168.1.10)
 - `w` - who is logged in and what they are doing
 - `last` - history of past logins
 - `id` - user and group IDs
+
+---
+<!-- nav -->
+[← Previous: `id`](id.md) | [Learning path](../README.md) | [Next: `sudo` →](sudo.md)

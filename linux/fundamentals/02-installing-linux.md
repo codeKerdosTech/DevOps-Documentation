@@ -116,8 +116,51 @@ ID=ubuntu
 - Keep files you care about inside the Linux home directory (`~`) when using WSL. Access through `/mnt/c` is slower and permissions behave differently.
 - A Docker container is good for quick tests, but it is not a full operating system, so commands like `systemctl` may not work in it.
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Prove that your Linux terminal works by printing a word.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+echo hello
+```
+Output: `hello`.
+
+</details>
+
+**Task 2.** Windows only: in PowerShell, list your WSL distributions and which WSL version each uses.
+
+<details>
+<summary>Show the answer</summary>
+
+```powershell
+wsl -l -v
+```
+
+</details>
+
+**Task 3.** On Ubuntu or Debian, refresh the list of available packages.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+sudo apt update
+```
+It downloads the package lists and does not install anything.
+
+</details>
+
 ## Related Commands
 - [What is Linux](01-what-is-linux.md) - the previous page
 - [`uname`](../system-info/uname.md) - confirm the kernel name
 - [`ssh`](../networking/ssh.md) - connect to a cloud instance
 - [Terminal, shell and bash](03-terminal-shell-bash.md) - the next page
+
+---
+<!-- nav -->
+[← Previous: What is Linux](01-what-is-linux.md) | [Learning path](../README.md) | [Next: Terminal, Shell and Bash →](03-terminal-shell-bash.md)

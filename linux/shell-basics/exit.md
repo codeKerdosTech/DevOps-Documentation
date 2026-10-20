@@ -578,3 +578,7 @@ nginx active: 3
 - `return` - leave a function or a sourced file
 - `trap` - run commands on `EXIT`, `ERR`, and signals
 - `wait` - wait for background jobs and get their status
+
+---
+<!-- nav -->
+[← Previous: `sleep`](sleep.md) | [Learning path](../README.md) | [Next: `pwd` →](../file-management/pwd.md)

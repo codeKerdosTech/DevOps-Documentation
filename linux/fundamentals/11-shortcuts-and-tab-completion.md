@@ -248,6 +248,40 @@ history | grep docker
 ```
 Press `Ctrl+R` and type `docker` for the same search interactively. The numbers are history positions and differ per session.
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Type `echo one two three` but do not press Enter. Jump to the start of the line, then to the end, then delete the last word.
+
+<details>
+<summary>Show the answer</summary>
+
+`Ctrl A` jumps to the start, `Ctrl E` to the end, `Ctrl W` deletes the word before the cursor (`three`).
+
+</details>
+
+**Task 2.** You typed `ls /root` and got *Permission denied*. Re-run the same command with `sudo` without retyping it.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+sudo !!
+```
+bash expands `!!` to the previous command and runs `sudo ls /root`.
+
+</details>
+
+**Task 3.** Find an old command that contained the word `tar` without scrolling.
+
+<details>
+<summary>Show the answer</summary>
+
+Press `Ctrl R`, type `tar`, then `Enter` to run it or the right arrow to edit it first.
+
+</details>
+
 ## Related Commands
 - [The permission model](10-permission-model.md) - the previous topic
 - [`history`](../shell-basics/history.md) - list and search earlier commands
@@ -255,3 +289,7 @@ Press `Ctrl+R` and type `docker` for the same search interactively. The numbers 
 - [`alias`](../shell-basics/alias.md) - give a long command a short name
 - [`jobs`](../process-management/jobs.md) / [`bg`](../process-management/bg.md) / [`fg`](../process-management/fg.md) - what `Ctrl+Z` creates
 - [`man`](../shell-basics/man.md) - read the manual
+
+---
+<!-- nav -->
+[← Previous: The Permission Model](10-permission-model.md) | [Learning path](../README.md) | [Next: Regular Expressions →](12-regular-expressions.md)

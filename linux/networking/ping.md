@@ -399,3 +399,7 @@ ping -c 3 192.168.1.1 | while read line; do echo "$(date +%T) $line"; done
 - [`nslookup`](nslookup.md) - check DNS resolution
 - [`dig`](dig.md) - detailed DNS queries
 - `mtr` - live ping and traceroute combined
+
+---
+<!-- nav -->
+[← Previous: `crontab`](../scheduling/crontab.md) | [Learning path](../README.md) | [Next: `ip` →](ip.md)

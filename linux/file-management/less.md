@@ -530,3 +530,7 @@ zcat app.log.1.gz | less
 - `man` - uses `less` to show manual pages
 - `journalctl` - systemd logs, pages with `less`
 - `vim` / `nano` - edit files
+
+---
+<!-- nav -->
+[← Previous: `cat`](cat.md) | [Learning path](../README.md) | [Next: `more` →](more.md)

@@ -527,3 +527,7 @@ Put this in the first step of a pipeline. In an incident, it shows quickly which
 - `hash` - the table of remembered paths (`hash -r` clears it)
 - `declare -f NAME` - print the code of a function
 - `whereis` - find the binary, the source and the manual page of a program
+
+---
+<!-- nav -->
+[← Previous: `help`](help.md) | [Learning path](../README.md) | [Next: `which` →](which.md)

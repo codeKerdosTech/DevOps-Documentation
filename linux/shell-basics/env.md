@@ -480,3 +480,7 @@ Without it, an inherited ignored `SIGPIPE` makes `yes` print `write error: Broke
 - [`systemctl`](../services-logging/systemctl.md) - `systemctl show-environment` and `Environment=`
 - `printenv` - print one or all variables (exit code 1 for missing ones)
 - `declare -p` - list all variables with their attributes in Bash
+
+---
+<!-- nav -->
+[← Previous: `alias`](alias.md) | [Learning path](../README.md) | [Next: `export` →](export.md)

@@ -324,9 +324,68 @@ cat -A deploy.sh
 echo "deploying"^M$
 ```
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Let's say we have these two files. Create them:
+```bash
+printf 'one\ntwo\n' > a1.txt
+printf 'three\n' > b1.txt
+```
+Print both files one after the other.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+cat a1.txt b1.txt
+```
+Output:
+```
+one
+two
+three
+```
+
+</details>
+
+**Task 2.** Print `a1.txt` with line numbers.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+cat -n a1.txt
+```
+Output:
+```
+     1	one
+     2	two
+```
+
+</details>
+
+**Task 3.** Write a new file `joined.txt` that contains both files.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+cat a1.txt b1.txt > joined.txt
+cat joined.txt
+```
+Output: `one`, `two`, `three`.
+
+</details>
+
 ## Related Commands
 - [`touch`](touch.md) - create an empty file
 - [`cp`](cp.md) - copy files
 - `less` - page through a long file
 - `head` / `tail` - show the start or end of a file
 - `grep` - search text
+
+---
+<!-- nav -->
+[← Previous: `rmdir`](rmdir.md) | [Learning path](../README.md) | [Next: `less` →](less.md)

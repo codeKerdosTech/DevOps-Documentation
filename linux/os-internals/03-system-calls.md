@@ -292,3 +292,7 @@ execve("/usr/bin/date"
 - [`lsof`](../process-management/lsof.md) - list the file descriptors a process holds
 - [`kill`](../process-management/kill.md) - the `kill` system call from the shell
 - [`dmesg`](../system-info/dmesg.md) - kernel side messages
+
+---
+<!-- nav -->
+[← Previous: User Mode and Kernel Mode](02-user-mode-and-kernel-mode.md) | [Learning path](../README.md) | [Next: Processes →](04-processes.md)

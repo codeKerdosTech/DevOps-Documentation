@@ -598,3 +598,7 @@ The 190 second gap before `sdb` was mounted points to a slow disk check or a net
 - `fsck` - repair a file system after errors
 - `sysctl kernel.dmesg_restrict` - allow or forbid normal users to read the buffer
 - `systemd-analyze` - boot time analysis
+
+---
+<!-- nav -->
+[← Previous: `blkid`](blkid.md) | [Learning path](../README.md) | [Next: `hostname` →](hostname.md)

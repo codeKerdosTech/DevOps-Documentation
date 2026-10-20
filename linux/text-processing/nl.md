@@ -463,3 +463,7 @@ nl -b a -n ln -w 2 -s ' | ' Dockerfile
 - [`tac`](tac.md) - reverse the order of lines
 - `grep -n` - search and show line numbers
 - `sed -n 'Np'` - print line number N
+
+---
+<!-- nav -->
+[← Previous: `tac`](tac.md) | [Learning path](../README.md) | [Next: `chmod` →](../permissions/chmod.md)

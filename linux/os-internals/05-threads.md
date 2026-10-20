@@ -327,3 +327,7 @@ Thread(s) per core:                      2
 - [`top`](../process-management/top.md) - `-H` shows threads
 - [`mpstat`](../system-info/mpstat.md) - load per CPU
 - [`ulimit`](../process-management/ulimit.md) - limits on processes and threads
+
+---
+<!-- nav -->
+[← Previous: Processes](04-processes.md) | [Learning path](../README.md) | [Next: Kernel Support, Drivers and Modules →](06-kernel-support-and-modules.md)

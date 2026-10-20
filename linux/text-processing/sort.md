@@ -829,6 +829,68 @@ LC_ALL=C sort -S 2G --parallel=4 -T /data/tmp -o sorted.txt export.txt
 ```
 There is no output. The sorted data is in `sorted.txt`.
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Let's say we have this file `n2.txt`:
+```
+10
+9
+100
+```
+Create it with `printf '10\n9\n100\n' > n2.txt`. Sort it with plain `sort`. Is the result what you expect?
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+sort n2.txt
+```
+Output:
+```
+10
+100
+9
+```
+It sorts as text, so `100` comes before `9`.
+
+</details>
+
+**Task 2.** Sort it as numbers.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+sort -n n2.txt
+```
+Output:
+```
+9
+10
+100
+```
+
+</details>
+
+**Task 3.** Sort numbers from biggest to smallest.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+sort -nr n2.txt
+```
+Output:
+```
+100
+10
+9
+```
+
+</details>
+
 ## Related Commands
 - [`uniq`](uniq.md) - remove or count repeated lines (needs sorted input)
 - [`cut`](cut.md) - take columns out of a line
@@ -838,3 +900,7 @@ There is no output. The sorted data is in `sorted.txt`.
 - [`head`](../file-management/head.md) / [`tail`](../file-management/tail.md) - take the top or bottom of the sorted list
 - `comm` / `join` - compare or join two sorted files
 - `shuf` - another way to shuffle lines
+
+---
+<!-- nav -->
+[← Previous: `cut`](cut.md) | [Learning path](../README.md) | [Next: `uniq` →](uniq.md)

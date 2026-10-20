@@ -271,3 +271,7 @@ Oct  6 10:03:10 web01 sudo:   devops : TTY=pts/0 ; PWD=/home/devops ; USER=root 
 - `visudo` - safely edit the sudoers file
 - `chmod` / `chown` - change permissions and ownership
 - `id` - show user and group IDs
+
+---
+<!-- nav -->
+[← Previous: `who`](who.md) | [Learning path](../README.md) | [Next: `su` →](su.md)

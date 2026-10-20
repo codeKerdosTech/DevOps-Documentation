@@ -746,3 +746,7 @@ Put `export EDITOR=vim` (or `nano`) in `~/.bashrc` to choose. `visudo` ignores `
 - [`visudo`](../user-management/visudo.md) - safe editing of `sudoers`
 - [Regular expressions](../fundamentals/12-regular-expressions.md) - the patterns used by `/`, `:s` and `:g`
 - `vimtutor` - a 30 minute interactive lesson that comes with Vim
+
+---
+<!-- nav -->
+[← Previous: `nano`](nano.md) | [Learning path](../README.md) | [Next: `wc` →](../text-processing/wc.md)

@@ -1,5 +1,9 @@
 # rm
 
+<!-- safety -->
+> **Practise safely.** `rm` has no recycle bin. A deleted file is gone for good, and `rm -rf` on the wrong path can wipe a whole system. Practise in a throwaway folder or a virtual machine, and run `ls` on the path first.
+<!-- /safety -->
+
 ## What is it?
 `rm` (remove) deletes files and, with `-r`, directories. There is no recycle bin: deleted data is gone.
 
@@ -261,9 +265,56 @@ ls
 data.txt
 ```
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Create and delete a file.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+touch x.txt
+rm x.txt
+ls x.txt
+```
+The last command prints `No such file or directory`.
+
+</details>
+
+**Task 2.** Try to delete a folder `folder` with plain `rm`.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+mkdir folder
+rm folder
+```
+Output: `rm: cannot remove 'folder': Is a directory`.
+
+</details>
+
+**Task 3.** Delete the folder the right way.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+rm -r folder
+```
+Or, for an empty folder, `rmdir folder`.
+
+</details>
+
 ## Related Commands
 - [`rmdir`](rmdir.md) - remove empty directories
 - [`mv`](mv.md) - move files (use instead of deleting when unsure)
 - `find` - select files to delete by age, name or size
 - `shred` - overwrite a file before deleting it
 - `trash-cli` - move files to the trash instead of deleting
+
+---
+<!-- nav -->
+[← Previous: `mv`](mv.md) | [Learning path](../README.md) | [Next: `rmdir` →](rmdir.md)

@@ -463,3 +463,7 @@ Output will be written to 'wget-log'.
 - [`ping`](ping.md) - test reachability
 - `rsync` - synchronize files
 - `tar` - unpack downloaded archives
+
+---
+<!-- nav -->
+[← Previous: `curl`](curl.md) | [Learning path](../README.md) | [Next: `ssh` →](ssh.md)

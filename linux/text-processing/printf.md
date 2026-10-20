@@ -691,3 +691,7 @@ ssh web01 cat my\ report\ \(final\).txt
 - [`cat`](../file-management/cat.md) - `cat -A` and `cat -v` show hidden characters
 - `date` - print the date and time
 - `od` / `xxd` - see the bytes of the output
+
+---
+<!-- nav -->
+[← Previous: `xargs`](xargs.md) | [Learning path](../README.md) | [Next: `tac` →](tac.md)

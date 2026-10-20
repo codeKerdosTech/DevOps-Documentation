@@ -493,3 +493,7 @@ Parent directories that `mkdir -p` creates on the way still use the `umask`.
 - `setfacl -d` - default ACLs, which override the `umask`
 - `ulimit` - another per-process setting of the shell
 - `systemd` `UMask=` - the mask for a service
+
+---
+<!-- nav -->
+[← Previous: `chgrp`](chgrp.md) | [Learning path](../README.md) | [Next: `whoami` →](../user-management/whoami.md)

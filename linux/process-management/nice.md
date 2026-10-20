@@ -366,3 +366,7 @@ nohup nice -n 19 ./backup.sh > backup.log 2>&1 < /dev/null &
 - `chrt` - set a real-time scheduling policy
 - `taskset` - pin a process to some CPU cores
 - `systemd-run --property=CPUWeight=` - priorities for control groups
+
+---
+<!-- nav -->
+[← Previous: `lsof`](lsof.md) | [Learning path](../README.md) | [Next: `pgrep` →](pgrep.md)

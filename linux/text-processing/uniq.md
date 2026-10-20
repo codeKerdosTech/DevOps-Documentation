@@ -525,3 +525,7 @@ uniq -c noisy.log
 - [`tr`](tr.md) - `tr -s` squeezes repeated characters (not lines)
 - [`wc`](wc.md) - count lines
 - `comm` - compare two sorted files
+
+---
+<!-- nav -->
+[← Previous: `sort`](sort.md) | [Learning path](../README.md) | [Next: `tr` →](tr.md)

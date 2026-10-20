@@ -591,3 +591,7 @@ The first connection takes 0.84 s (key exchange, login). With `ControlMaster`, t
 - `hyperfine` - a benchmark tool with warm-up and many runs
 - `strace -c` / `perf stat` - show system calls and CPU counters
 - `SECONDS` - a Bash variable that counts the seconds, an easy timer
+
+---
+<!-- nav -->
+[← Previous: `test`](test.md) | [Learning path](../README.md) | [Next: `sleep` →](sleep.md)

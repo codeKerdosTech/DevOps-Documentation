@@ -388,3 +388,7 @@ job stopped
 - `setsid` - start a program in a new session
 - `tmux` / `screen` - terminal sessions that you can detach and attach again
 - `systemd` - run programs as real services
+
+---
+<!-- nav -->
+[← Previous: `fg`](fg.md) | [Learning path](../README.md) | [Next: `killall` →](killall.md)

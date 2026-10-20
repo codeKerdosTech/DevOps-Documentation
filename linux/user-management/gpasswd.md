@@ -450,3 +450,7 @@ devs:x:1005:deploy,alice
 - [`getent`](getent.md) - read `group` and `gshadow` (also from LDAP)
 - `newgrp` - open a shell with another group as the primary group
 - `vigr` - edit `/etc/group` safely by hand
+
+---
+<!-- nav -->
+[← Previous: `getent`](getent.md) | [Learning path](../README.md) | [Next: `groupdel` →](groupdel.md)

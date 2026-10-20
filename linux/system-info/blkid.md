@@ -582,3 +582,7 @@ ls /mnt/rescue/etc/fstab
 - `mkfs.*` - create a file system (this creates the UUID)
 - `wipefs` - list and remove the signatures of a device
 - `udevadm info` - the data of `udev` for a device
+
+---
+<!-- nav -->
+[← Previous: `date`](date.md) | [Learning path](../README.md) | [Next: `dmesg` →](dmesg.md)

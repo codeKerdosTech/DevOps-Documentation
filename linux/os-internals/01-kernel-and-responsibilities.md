@@ -226,3 +226,7 @@ grep -w -c nosuchfs /proc/filesystems
 - [`lscpu`](../system-info/lscpu.md) / [`nproc`](../system-info/nproc.md) - CPU details
 - [`mount`](../system-info/mount.md) - attach file systems
 - [`ps`](../process-management/ps.md) - processes the kernel manages
+
+---
+<!-- nav -->
+[← Previous: `nslookup`](../networking/nslookup.md) | [Learning path](../README.md) | [Next: User Mode and Kernel Mode →](02-user-mode-and-kernel-mode.md)

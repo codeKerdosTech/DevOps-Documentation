@@ -429,3 +429,7 @@ port=8080
 - [`head`](head.md) / [`tail`](tail.md) - show the start or end of a file
 - `man` - manual pages, shown with a pager
 - `most` - another pager
+
+---
+<!-- nav -->
+[← Previous: `less`](less.md) | [Learning path](../README.md) | [Next: `head` →](head.md)

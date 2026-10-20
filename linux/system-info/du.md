@@ -617,3 +617,7 @@ Add the first line to `cron` (`0 1 * * *`).
 - [`rm`](../file-management/rm.md) / [`tar`](../archiving/tar.md) - delete or compress what you found
 - `ncdu` - an interactive version of `du`
 - `ionice` / `nice` - run `du` with a low priority on busy servers
+
+---
+<!-- nav -->
+[← Previous: `df`](df.md) | [Learning path](../README.md) | [Next: `lscpu` →](lscpu.md)

@@ -404,3 +404,7 @@ Without `set -o pipefail` the result would be `0`.
 - [`tail`](../file-management/tail.md) - follow the file that `tee` writes
 - `script` - record a whole terminal session
 - `logger` - send a line to the system log
+
+---
+<!-- nav -->
+[← Previous: `tr`](tr.md) | [Learning path](../README.md) | [Next: `diff` →](diff.md)

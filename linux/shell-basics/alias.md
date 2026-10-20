@@ -571,3 +571,7 @@ logs is aliased to `journalctl -f -n 50'
 - `unalias` - remove aliases (described above)
 - `declare -f` / functions - the replacement for aliases that need arguments
 - `shopt expand_aliases` - alias expansion in scripts
+
+---
+<!-- nav -->
+[← Previous: `clear`](clear.md) | [Learning path](../README.md) | [Next: `env` →](env.md)

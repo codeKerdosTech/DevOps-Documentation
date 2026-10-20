@@ -534,3 +534,7 @@ su: Permission denied
 - `login` - start a new login session as a user
 - `newgrp` - start a shell with another primary group
 - `machinectl shell` / `systemd-run` - a full systemd session as another user
+
+---
+<!-- nav -->
+[← Previous: `sudo`](sudo.md) | [Learning path](../README.md) | [Next: `useradd` →](useradd.md)

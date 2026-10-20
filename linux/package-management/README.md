@@ -252,3 +252,7 @@ This README is an overview. Separate pages for each tool will be added in this f
 - `snap`, `flatpak`
 - `tar`, `zip`, `unzip`, `gzip` (archives and source installs, see [archiving](../archiving/))
 - `wget`, `curl` (downloading packages, see [networking](../networking/))
+
+---
+<!-- nav -->
+[← Previous: zip and unzip](../archiving/zip-unzip.md) | [Learning path](../README.md) | [Next: `apt` →](apt.md)

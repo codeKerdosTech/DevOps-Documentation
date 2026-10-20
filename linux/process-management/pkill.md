@@ -1,5 +1,9 @@
 # pkill
 
+<!-- safety -->
+> **Practise safely.** `pkill` matches by pattern, so a short pattern can hit more processes than you expect. Check with `pgrep -l pattern` first.
+<!-- /safety -->
+
 ## What is it?
 `pkill` sends a **signal** to every process that matches a pattern: a name, a user, a terminal or a command line. It works like `pgrep` (it uses the same matching options) but it does not print the PIDs. It acts on them. The default signal is `SIGTERM` (15), which asks the processes to stop in a clean way. `pkill` saves you the steps "find the PID, then `kill` the PID".
 
@@ -561,3 +565,7 @@ python3 killed (pid 3125)
 - [`timeout`](timeout.md) - stop a command after a time limit
 - `systemctl` - stop and restart services in a managed way
 - `lsof` - find the process by the port or the file it uses
+
+---
+<!-- nav -->
+[← Previous: `pgrep`](pgrep.md) | [Learning path](../README.md) | [Next: `renice` →](renice.md)

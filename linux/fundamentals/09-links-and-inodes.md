@@ -225,6 +225,48 @@ find . -xtype l
 ./soft.txt
 ```
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Create `hello.txt`, a hard link `hard.txt` and a symbolic link `soft.txt`. Show the inode numbers.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+echo hi > hello.txt
+ln hello.txt hard.txt
+ln -s hello.txt soft.txt
+ls -li
+```
+`hello.txt` and `hard.txt` show the **same** inode number. `soft.txt` has its own number and is shown as `soft.txt -> hello.txt`.
+
+</details>
+
+**Task 2.** Delete `hello.txt`. Can you still read `hard.txt` and `soft.txt`?
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+rm hello.txt
+cat hard.txt
+cat soft.txt
+```
+`hard.txt` prints `hi`. `soft.txt` fails with `No such file or directory`.
+
+</details>
+
+**Task 3.** In one sentence: why did one link survive and the other break?
+
+<details>
+<summary>Show the answer</summary>
+
+The hard link is another name for the same data, so the data stays while any name is left. The symbolic link only stores the path `hello.txt`, and that path no longer exists.
+
+</details>
+
 ## Related Commands
 - [Redirection and pipes](08-redirection-and-pipes.md) - the previous topic
 - [The permission model](10-permission-model.md) - the next topic
@@ -234,3 +276,7 @@ find . -xtype l
 - [`find`](../file-management/find.md) - `-type l`, `-xtype l`, `-inum`
 - [`df`](../system-info/df.md) - `-i` shows inode use
 - [`rsync`](../file-management/rsync.md) - keep links when copying
+
+---
+<!-- nav -->
+[← Previous: Redirection and Pipes](08-redirection-and-pipes.md) | [Learning path](../README.md) | [Next: The Permission Model →](10-permission-model.md)

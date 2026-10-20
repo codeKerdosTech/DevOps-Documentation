@@ -1,5 +1,9 @@
 # kill
 
+<!-- safety -->
+> **Practise safely.** Killing the wrong PID can stop a service or log you out. Check the PID with `ps` first, and prefer plain `kill` over `kill -9`.
+<!-- /safety -->
+
 ## What is it?
 `kill` sends a **signal** to a process. Most of the time the signal asks the process to stop, so the name is `kill`. But a signal can also ask a process to reload its configuration (`SIGHUP`), to pause (`SIGSTOP`) or to continue (`SIGCONT`). You give the process by its ID (PID), as found with `ps` or `pgrep`. Without a signal name, `kill` sends `SIGTERM` (15), which asks the process to stop in a clean way.
 
@@ -548,6 +552,47 @@ pkill -TERM -P 812
 ```
 There is no output. With `kill` you would first list the children (`pgrep -P 812`) and pass the PIDs.
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Start a background process.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+sleep 300 &
+```
+Note the PID printed, for example `4121`.
+
+</details>
+
+**Task 2.** Stop it politely.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+kill 4121
+jobs
+```
+`jobs` shows `Terminated`. Use your own PID.
+
+</details>
+
+**Task 3.** List all signal names and find the number of `SIGKILL`.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+kill -l
+```
+`SIGKILL` is number `9`. It is the last resort because the process cannot clean up.
+
+</details>
+
 ## Related Commands
 - [`pkill`](pkill.md) - send a signal to processes found by name
 - [`killall`](killall.md) - send a signal to all processes with a given name
@@ -560,3 +605,7 @@ There is no output. With `kill` you would first list the children (`pgrep -P 812
 - [`lsof`](lsof.md) - find the process that uses a port or a file
 - `trap` - catch signals in a shell script
 - `systemctl` - stop and reload services in a clean way
+
+---
+<!-- nav -->
+[← Previous: `top`](top.md) | [Learning path](../README.md) | [Next: `jobs` →](jobs.md)

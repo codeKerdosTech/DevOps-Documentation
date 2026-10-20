@@ -1,5 +1,17 @@
 # ps
 
+<!-- start-here -->
+> **Start here.** On your first read, learn only these. The rest of the page is reference you can come back to.
+>
+> | Learn this first | What it does |
+> |---|---|
+> | `ps` | processes started from this terminal |
+> | `ps aux` | every process on the machine, with owner, CPU and memory |
+> | `ps aux | grep nginx` | find the process of one program |
+> | `ps -ef` | the same list in another layout, shows the parent PID |
+> | `ps -p 1234` | show one process by its PID |
+<!-- /start-here -->
+
 ## What is it?
 `ps` (process status) prints a **snapshot** of the processes that run on the system: their process ID (PID), owner, CPU and memory use, state, start time and command line. Unlike `top`, it prints once and exits, so it is the tool to use in scripts and pipelines. It is the first command to run when you ask "is my service running?" or "which process uses all the CPU?".
 
@@ -829,6 +841,46 @@ Every 2.0s: ps -p 2045 -o pid,%cpu,%mem,rss,etime,cmd       web01: Mon Oct 12 10
    2045  2.5  4.0 164000       35:00 node /srv/myapp/server.js
 ```
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Start a harmless background process and note its PID.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+sleep 300 &
+```
+bash prints something like `[1] 4121`. `4121` is the PID.
+
+</details>
+
+**Task 2.** Find that process in the full list.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+ps aux | grep sleep
+```
+One line shows `sleep 300` with its PID. A second line is the `grep` itself.
+
+</details>
+
+**Task 3.** Show only that process by PID.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+ps -p 4121
+```
+Use your own PID from step 1.
+
+</details>
+
 ## Related Commands
 - [`top`](top.md) - live view of the processes, with the current CPU use
 - [`pgrep`](pgrep.md) - find the PIDs of processes by name
@@ -840,3 +892,7 @@ Every 2.0s: ps -p 2045 -o pid,%cpu,%mem,rss,etime,cmd       web01: Mon Oct 12 10
 - `pstree` - the process tree, drawn as a tree
 - `uptime` - the load average
 - `free` - the memory of the whole system
+
+---
+<!-- nav -->
+[← Previous: `w`](../user-management/w.md) | [Learning path](../README.md) | [Next: `top` →](top.md)

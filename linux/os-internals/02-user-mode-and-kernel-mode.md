@@ -225,3 +225,7 @@ Mostly `us`: look at the application. Mostly `sy` or `si`: look at network traff
 - [`vmstat`](../system-info/vmstat.md) - `us`, `sy`, `in`, `cs` per second
 - [`mpstat`](../system-info/mpstat.md) - the same per CPU
 - [`dmesg`](../system-info/dmesg.md) - kernel faults and crashes
+
+---
+<!-- nav -->
+[← Previous: The Kernel and Its Responsibilities](01-kernel-and-responsibilities.md) | [Learning path](../README.md) | [Next: System Calls →](03-system-calls.md)

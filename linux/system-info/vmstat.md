@@ -559,3 +559,7 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
 - `sar` - the same data, kept as a history (package `sysstat`)
 - `dstat` / `atop` - tools that show more data in one screen
 - `iotop` - the I/O of each process
+
+---
+<!-- nav -->
+[← Previous: `timedatectl`](timedatectl.md) | [Learning path](../README.md) | [Next: `tar` →](../archiving/tar.md)

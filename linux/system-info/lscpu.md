@@ -545,3 +545,7 @@ OK: 4 CPUs
 - `numactl` - control the NUMA placement
 - `lsmem` / `lshw` / `dmidecode` - more hardware data
 - `cpupower` - the frequency and the power states
+
+---
+<!-- nav -->
+[← Previous: `du`](du.md) | [Learning path](../README.md) | [Next: `date` →](date.md)

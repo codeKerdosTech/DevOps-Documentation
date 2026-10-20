@@ -304,3 +304,7 @@ echo $HISTSIZE
 - `Ctrl+R` - reverse search through history
 - `grep` - filter history output
 - `alias` - shortcut for long commands
+
+---
+<!-- nav -->
+[← Previous: `which`](which.md) | [Learning path](../README.md) | [Next: `clear` →](clear.md)

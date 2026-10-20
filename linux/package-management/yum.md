@@ -686,3 +686,7 @@ yum list installed | awk '{print $3}' | sort | uniq -c | sort -rn | head -4
 - [rpm](rpm.md) - low level tool that yum uses
 - [apt](apt.md) - the Debian family equivalent
 - [tar](../archiving/tar.md) / [zip-unzip](../archiving/zip-unzip.md) - archives and source installs
+
+---
+<!-- nav -->
+[← Previous: `rpm`](rpm.md) | [Learning path](../README.md) | [Next: `systemctl` →](../services-logging/systemctl.md)

@@ -1,5 +1,9 @@
 # visudo
 
+<!-- safety -->
+> **Practise safely.** A broken sudoers file can lock everyone out of `sudo`. That is why `visudo` checks the syntax. Never edit `/etc/sudoers` with a normal editor, and practise in a virtual machine.
+<!-- /safety -->
+
 ## What is it?
 `visudo` is the **safe editor for the `sudoers` file**. The file `/etc/sudoers` (and the files in `/etc/sudoers.d/`) defines **who may run which commands as which user** with `sudo`. A syntax error in this file can lock **all** administrators out of `sudo`, so you must never open it with a normal editor. `visudo` **locks** the file (so that two people cannot edit it at the same time), opens it in your editor, **checks the syntax** when you save, and refuses to install a file that has errors. It can also only **check** the files without editing (`visudo -c`). It is part of the `sudo` package, on every distribution.
 
@@ -537,3 +541,7 @@ Matching Defaults entries for alice on web01:
 - `sudoedit` / `sudo -e` - edit a file as another user in a safe way
 - `sudo -l` - list what the current user may run
 - `visudo -c` - the check that belongs in every deployment
+
+---
+<!-- nav -->
+[← Previous: `groupadd`](groupadd.md) | [Learning path](../README.md) | [Next: `adduser` →](adduser.md)

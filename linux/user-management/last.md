@@ -591,3 +591,7 @@ A `shutdown` record before each `reboot` means a clean stop. A `reboot` without 
 - `uptime -s` / `who -b` - the boot time
 - `ac` - total connect time of users
 - `loginctl list-sessions` - the sessions of `systemd-logind`
+
+---
+<!-- nav -->
+[← Previous: `groups`](groups.md) | [Learning path](../README.md) | [Next: `w` →](w.md)

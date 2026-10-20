@@ -453,3 +453,7 @@ appuser:x:1000:1000::/home/appuser:/bin/bash
 - `chfn` - change the full name and the phone fields of the user
 - `/etc/shells` - the list of the allowed login shells
 - `nologin` - the "shell" that refuses logins
+
+---
+<!-- nav -->
+[← Previous: `chpasswd`](chpasswd.md) | [Learning path](../README.md) | [Next: `deluser` →](deluser.md)

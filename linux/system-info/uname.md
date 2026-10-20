@@ -258,3 +258,7 @@ linux-headers-5.15.0-91-generic is already the newest version (5.15.0-91.101).
 - `lsb_release -a` - distribution information
 - `cat /etc/os-release` - distribution details
 - `arch` - machine architecture
+
+---
+<!-- nav -->
+[← Previous: `watch`](../process-management/watch.md) | [Learning path](../README.md) | [Next: `uptime` →](uptime.md)

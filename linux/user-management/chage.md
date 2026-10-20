@@ -504,3 +504,7 @@ Number of days of warning before password expires	: 14
 - [`who`](who.md) - see who is logged in now
 - `lastlog` - see when each user last logged in
 - `/etc/login.defs` - the defaults for new users (`PASS_MAX_DAYS`, `PASS_WARN_AGE`)
+
+---
+<!-- nav -->
+[← Previous: `adduser`](adduser.md) | [Learning path](../README.md) | [Next: `chpasswd` →](chpasswd.md)

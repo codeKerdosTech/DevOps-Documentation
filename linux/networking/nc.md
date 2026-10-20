@@ -395,3 +395,7 @@ Connection to 192.168.1.20 443 port [tcp/https] succeeded!
 - [`curl`](curl.md) - full HTTP client
 - [`tcpdump`](tcpdump.md) - capture the traffic nc generates
 - `nmap` - full port scanner
+
+---
+<!-- nav -->
+[← Previous: `traceroute`](traceroute.md) | [Learning path](../README.md) | [Next: `tcpdump` →](tcpdump.md)

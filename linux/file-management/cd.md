@@ -1,5 +1,17 @@
 # cd
 
+<!-- start-here -->
+> **Start here.** On your first read, learn only these. The rest of the page is reference you can come back to.
+>
+> | Learn this first | What it does |
+> |---|---|
+> | `cd folder` | go into a folder inside the current one |
+> | `cd ..` | go up one level |
+> | `cd` or `cd ~` | go to your home folder |
+> | `cd -` | go back to the folder you were in before |
+> | `cd /var/log` | go to any folder by its full path |
+<!-- /start-here -->
+
 ## What is it?
 `cd` (change directory) moves your shell into another directory. It is a shell built-in, not a separate program.
 
@@ -123,7 +135,54 @@ pwd
 - `cd -` prints the directory it moves to.
 - A failed `cd` in a script keeps running the next lines in the wrong directory. Use `cd /path || exit 1`.
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Create `lab/a/b` and go into it.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+mkdir -p lab/a/b
+cd lab/a/b
+pwd
+```
+The path ends with `/lab/a/b`.
+
+</details>
+
+**Task 2.** Go up two levels in one command.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+cd ../..
+pwd
+```
+The path ends with `/lab`.
+
+</details>
+
+**Task 3.** Jump back to the folder you were in before.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+cd -
+```
+It prints and enters the previous folder, `.../lab/a/b`.
+
+</details>
+
 ## Related Commands
 - [`pwd`](pwd.md) - print the current directory
 - [`ls`](ls.md) - list directory contents
 - `pushd` / `popd` - directory stack
+
+---
+<!-- nav -->
+[← Previous: `ls`](ls.md) | [Learning path](../README.md) | [Next: `tree` →](tree.md)

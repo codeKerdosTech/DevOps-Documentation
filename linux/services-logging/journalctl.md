@@ -655,3 +655,7 @@ ALERT: 3 critical log lines
 - [apt](../package-management/apt.md) / [dnf](../package-management/dnf.md) / [yum](../package-management/yum.md) - installs and upgrades that you may want to correlate with log entries
 - [tar](../archiving/tar.md) / [zip-unzip](../archiving/zip-unzip.md) - archive logs for tickets
 - [curl](../networking/curl.md) / [ss](../networking/ss.md) - reproduce and check the problem while following the logs
+
+---
+<!-- nav -->
+[← Previous: `systemctl`](systemctl.md) | [Learning path](../README.md) | [Next: `cron` →](../scheduling/cron.md)

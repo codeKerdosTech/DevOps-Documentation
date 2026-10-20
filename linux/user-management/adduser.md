@@ -733,3 +733,7 @@ readlink -f "$(command -v adduser)"
 - [`sudo`](sudo.md) - needed to run `adduser`
 - `/etc/adduser.conf` - the settings of `adduser`
 - `systemd-sysusers` - declare system users in a file
+
+---
+<!-- nav -->
+[← Previous: `visudo`](visudo.md) | [Learning path](../README.md) | [Next: `chage` →](chage.md)

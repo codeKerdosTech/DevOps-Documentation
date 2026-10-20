@@ -124,3 +124,7 @@ man -w ls
 - `info` - GNU info documentation
 - `help` - help for bash built-ins
 - `tldr` - community short examples
+
+---
+<!-- nav -->
+[← Previous: `echo`](echo.md) | [Learning path](../README.md) | [Next: `help` →](help.md)

@@ -181,6 +181,47 @@ find . -name '*.log' | sort
 ```
 Without the quotes, bash expands `*.log` in the current directory first and `find` sees only `app.log`.
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Set a variable: `name=Ravi`. Predict the output of `echo Hello $name`, then run it.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+name=Ravi
+echo Hello $name
+```
+Output: `Hello Ravi`.
+
+</details>
+
+**Task 2.** Predict the output of `echo "Hello $name"` with double quotes.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+echo "Hello $name"
+```
+Output: `Hello Ravi`. Double quotes still expand variables.
+
+</details>
+
+**Task 3.** Predict the output of `echo 'Hello $name'` with single quotes.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+echo 'Hello $name'
+```
+Output: `Hello $name`. Single quotes keep everything literal.
+
+</details>
+
 ## Related Commands
 - [Wildcards and globbing](06-wildcards-globbing.md) - the previous topic
 - [Redirection and pipes](08-redirection-and-pipes.md) - the next topic
@@ -188,3 +229,7 @@ Without the quotes, bash expands `*.log` in the current directory first and `fin
 - [`printf`](../text-processing/printf.md) - safer formatted output
 - [`grep`](../text-processing/grep.md) - quote your patterns
 - [`find`](../file-management/find.md) - quote `-name` patterns
+
+---
+<!-- nav -->
+[← Previous: Wildcards and Globbing](06-wildcards-globbing.md) | [Learning path](../README.md) | [Next: Redirection and Pipes →](08-redirection-and-pipes.md)

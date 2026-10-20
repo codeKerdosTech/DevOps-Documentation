@@ -445,3 +445,7 @@ status: P
 - `mkpasswd` - another tool to make hashes (package `whois` on Debian)
 - `newusers` - create many users, with passwords, from a file
 - `shred -u` - delete a file with passwords in a safe way
+
+---
+<!-- nav -->
+[← Previous: `chage`](chage.md) | [Learning path](../README.md) | [Next: `chsh` →](chsh.md)

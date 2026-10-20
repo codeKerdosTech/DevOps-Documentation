@@ -411,6 +411,55 @@ tail -f --pid=5100 backup.log
 2026-10-06 02:14:30 Backup finished
 ```
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Let's say we have `nums.txt` with the numbers 1 to 20 (`seq 1 20 > nums.txt`). Print the last 3 lines.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+tail -n 3 nums.txt
+```
+Output:
+```
+18
+19
+20
+```
+
+</details>
+
+**Task 2.** Print everything from line 19 onwards.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+tail -n +19 nums.txt
+```
+Output:
+```
+19
+20
+```
+
+</details>
+
+**Task 3.** Follow the file live. In a second terminal run `echo new >> nums.txt`. What do you see in the first one?
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+tail -f nums.txt
+```
+The line `new` appears at once. Press `Ctrl C` to stop.
+
+</details>
+
 ## Related Commands
 - [`cat`](cat.md) - print a whole file
 - [`head`](head.md) - show the start of a file
@@ -418,3 +467,7 @@ tail -f --pid=5100 backup.log
 - [`tac`](../text-processing/tac.md) - print lines in reverse order
 - `grep` - search text
 - `journalctl` - follow systemd logs with `-f`
+
+---
+<!-- nav -->
+[← Previous: `head`](head.md) | [Learning path](../README.md) | [Next: `file` →](file.md)

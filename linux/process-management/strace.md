@@ -181,3 +181,7 @@ execve("/usr/bin/date"
 - [`kill`](kill.md) - signals shown in a trace
 - `ltrace` - trace library calls instead of system calls
 - `perf` - lower overhead profiling
+
+---
+<!-- nav -->
+[← Previous: `renice`](renice.md) | [Learning path](../README.md) | [Next: `timeout` →](timeout.md)

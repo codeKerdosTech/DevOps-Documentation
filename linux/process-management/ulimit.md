@@ -673,3 +673,7 @@ NOFILE   max number of open files 65535 65535 files
 - [`type`](../shell-basics/type.md) - shows that `ulimit` is a built-in
 - `prlimit` - show or change the limits of a running process
 - `sysctl` - kernel limits (`fs.file-max`, `fs.nr_open`, `kernel.pid_max`)
+
+---
+<!-- nav -->
+[← Previous: `timeout`](timeout.md) | [Learning path](../README.md) | [Next: `watch` →](watch.md)

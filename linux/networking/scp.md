@@ -354,3 +354,7 @@ ssh deploy@192.168.1.20 "sha256sum /tmp/app.conf"
 - [`cp`](../file-management/cp.md) - copy files locally
 - `rsync` - efficient sync over SSH
 - `sftp` - interactive secure file transfer
+
+---
+<!-- nav -->
+[← Previous: `ssh`](ssh.md) | [Learning path](../README.md) | [Next: `dig` →](dig.md)

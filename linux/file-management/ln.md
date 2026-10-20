@@ -459,3 +459,7 @@ sudo ln -sfv /opt/tool-2.0/bin/tool /usr/local/bin/tool
 - [`file`](file.md) - shows `symbolic link to ...`
 - `readlink` / `realpath` - show where a link points
 - `stat` - show inode and link count
+
+---
+<!-- nav -->
+[← Previous: `locate`](locate.md) | [Learning path](../README.md) | [Next: `rsync` →](rsync.md)

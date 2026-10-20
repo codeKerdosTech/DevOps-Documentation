@@ -1,5 +1,9 @@
 # usermod
 
+<!-- safety -->
+> **Practise safely.** A wrong `usermod` can remove your own `sudo` rights. Always use `-aG` to add a group, and practise in a virtual machine or WSL.
+<!-- /safety -->
+
 ## What is it?
 `usermod` **modifies an existing user account**. You can change the login name, the UID, the home directory, the login shell, the comment, the primary and supplementary groups, the password hash, the expiry date, and you can **lock** or **unlock** the account. It edits the same files that `useradd` writes: `/etc/passwd`, `/etc/shadow` and `/etc/group`. It is part of the `shadow-utils` package, and works the same way on Debian, Ubuntu, RHEL and others. It is the tool for "add this user to a group", which is its most common use.
 
@@ -620,3 +624,7 @@ changed: [web01]
 - [`getent`](getent.md) - read the account databases
 - `newgrp` - use a new group without a new login
 - `vipw` / `vigr` - edit the account files safely
+
+---
+<!-- nav -->
+[← Previous: `passwd`](passwd.md) | [Learning path](../README.md) | [Next: `userdel` →](userdel.md)

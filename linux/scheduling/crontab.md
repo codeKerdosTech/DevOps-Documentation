@@ -1,5 +1,9 @@
 # crontab
 
+<!-- safety -->
+> **Practise safely.** `crontab -r` deletes all your scheduled jobs at once, with no question asked. Run `crontab -l > backup.cron` before you change anything.
+<!-- /safety -->
+
 ## What is it?
 `crontab` is the command that manages **your own list of scheduled jobs** for the [`cron`](cron.md) daemon. Each user has one crontab (a text file with one job per line). You edit it with `crontab -e`, show it with `crontab -l` and remove it with `crontab -r`. The word **crontab** also names the file itself and the table of schedules inside it.
 
@@ -307,7 +311,7 @@ grep -n 'backup' jobs.cron
 ```text
 6:30 2 * * * /usr/local/bin/backup.sh /srv/data /backup 7 >> /var/log/backup.log 2>&1
 ```
-Install it with `crontab jobs.cron` (this replaces your crontab, so merge it with your existing jobs first). The script itself is the one from [Example scripts](../../shell-script/11-example-scripts.md).
+Install it with `crontab jobs.cron` (this replaces your crontab, so merge it with your existing jobs first). The script itself is the one from [Project: backup script](../../shell-script/17-project-backup-script.md).
 
 ### Use Case 2: Check that a job line is complete before installing it
 **Situation:** A pipeline generates a crontab file and must fail on a broken line.
@@ -381,5 +385,9 @@ The filtered text has 14 lines, one less than the original (the job line). With 
 - [`timeout`](../process-management/timeout.md) - stop a job that runs too long
 - [`watch`](../process-management/watch.md) - repeat a command every few seconds, in front of your eyes
 - [`sleep`](../shell-basics/sleep.md) - wait inside a script
-- [Example scripts](../../shell-script/11-example-scripts.md) - a backup script for cron
-- [Exit codes](../../shell-script/07-exit-codes.md) - a job that fails returns non zero
+- [Project: backup script](../../shell-script/17-project-backup-script.md) - a backup script for cron
+- [Exit codes](../../shell-script/04-exit-codes.md) - a job that fails returns non zero
+
+---
+<!-- nav -->
+[← Previous: `cron`](cron.md) | [Learning path](../README.md) | [Next: `ping` →](../networking/ping.md)

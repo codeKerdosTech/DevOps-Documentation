@@ -349,3 +349,7 @@ Every 2.0s: netstat -tn | grep -c ESTABLISHED
 - [`ifconfig`](ifconfig.md) - legacy interface tool from the same package
 - [`tcpdump`](tcpdump.md) - capture packets
 - `lsof -i` - list network files per process
+
+---
+<!-- nav -->
+[← Previous: `ifconfig`](ifconfig.md) | [Learning path](../README.md) | [Next: `nslookup` →](nslookup.md)

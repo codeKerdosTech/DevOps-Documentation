@@ -409,3 +409,7 @@ Mem:           3.8Gi       1.4Gi       1.2Gi        23Mi       1.2Gi       2.1Gi
 - [`date`](date.md) - the current time
 - `sar -q` - the history of the load average
 - `systemd-analyze` - how long the boot took
+
+---
+<!-- nav -->
+[← Previous: `uname`](uname.md) | [Learning path](../README.md) | [Next: `free` →](free.md)

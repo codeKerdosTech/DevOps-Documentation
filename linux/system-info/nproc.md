@@ -325,3 +325,7 @@ tar -cf - /srv/data | xz -T"$(nproc --ignore=1)" > /backup/data.tar.xz
 - `taskset` - limit a process to some CPUs, and see the effect on `nproc`
 - `getconf _NPROCESSORS_ONLN` - the portable way to get the number
 - `parallel` - GNU parallel uses `nproc` as the default
+
+---
+<!-- nav -->
+[← Previous: `mpstat`](mpstat.md) | [Learning path](../README.md) | [Next: `timedatectl` →](timedatectl.md)

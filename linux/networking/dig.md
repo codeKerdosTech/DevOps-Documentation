@@ -382,3 +382,7 @@ DNS OK
 - [`curl`](curl.md) - test the service after resolving it
 - [`traceroute`](traceroute.md) - show the path to the resolved IP
 - `host` - short DNS lookups
+
+---
+<!-- nav -->
+[← Previous: `scp`](scp.md) | [Learning path](../README.md) | [Next: `traceroute` →](traceroute.md)

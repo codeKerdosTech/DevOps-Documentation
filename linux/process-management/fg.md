@@ -384,3 +384,7 @@ When a background job prints `Done`, it ended with the exit code `0`. `Exit 1` w
 - `disown` - remove a job from the job table
 - `wait` - wait for background jobs to finish
 - `tmux` / `screen` - sessions that you can leave and enter again
+
+---
+<!-- nav -->
+[← Previous: `bg`](bg.md) | [Learning path](../README.md) | [Next: `nohup` →](nohup.md)

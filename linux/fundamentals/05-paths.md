@@ -569,6 +569,51 @@ home/.ssh 700
 ```
 `700` is correct. Fix a wrong value with `chmod 700 ~/.ssh` and `chmod 600 ~/.ssh/id_rsa`.
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Show where you are, then go to `/var/log` using the absolute path.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+pwd
+cd /var/log
+pwd
+```
+The last line prints `/var/log`.
+
+</details>
+
+**Task 2.** From `/var/log`, go up one level using a relative path.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+cd ..
+pwd
+```
+Output: `/var`.
+
+</details>
+
+**Task 3.** Return to your home folder in three different ways.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+cd
+cd ~
+cd $HOME
+```
+After each one `pwd` prints your home, for example `/home/ravi`.
+
+</details>
+
 ## Related Commands
 - [Filesystem hierarchy](04-filesystem-hierarchy.md) - the previous page
 - [`pwd`](../file-management/pwd.md) - print the current directory
@@ -580,3 +625,7 @@ home/.ssh 700
 - [Wildcards and globbing](06-wildcards-globbing.md) - why `*` skips hidden names
 - `realpath` - turn a relative path into an absolute one
 - `basename` / `dirname` - split a path into the file name and the directory
+
+---
+<!-- nav -->
+[← Previous: Filesystem Hierarchy](04-filesystem-hierarchy.md) | [Learning path](../README.md) | [Next: Wildcards and Globbing →](06-wildcards-globbing.md)

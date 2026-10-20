@@ -395,3 +395,7 @@ example.org	text = "cloud-verify=abc123def456"
 - [`curl`](curl.md) - call the service after resolving it
 - [`traceroute`](traceroute.md) - see the path to the IP
 - `host` - short DNS lookups
+
+---
+<!-- nav -->
+[← Previous: `netstat`](netstat.md) | [Learning path](../README.md) | [Next: The Kernel and Its Responsibilities →](../os-internals/01-kernel-and-responsibilities.md)

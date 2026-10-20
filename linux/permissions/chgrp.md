@@ -486,3 +486,7 @@ These are the files that are meant to be readable for a special group. Any other
 - `usermod -aG` / `gpasswd` - add a user to a group
 - `groupadd` - create a group
 - `stat` - show the group in detail (`stat -c '%G'`)
+
+---
+<!-- nav -->
+[← Previous: `chown`](chown.md) | [Learning path](../README.md) | [Next: `umask` →](umask.md)

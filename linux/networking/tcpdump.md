@@ -448,3 +448,7 @@ listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
 - [`curl`](curl.md) - generate HTTP traffic to capture
 - [`traceroute`](traceroute.md) - generate path probes
 - `wireshark` / `tshark` - graphical and command line packet analysis
+
+---
+<!-- nav -->
+[← Previous: `nc`](nc.md) | [Learning path](../README.md) | [Next: `ifconfig` →](ifconfig.md)

@@ -407,3 +407,7 @@ You still have 3 background job(s). Use nohup or tmux.
 - `disown` - remove a job from the table, so that it survives the shell
 - `wait` - wait for background jobs to finish
 - `tmux` / `screen` - sessions that continue after a disconnect
+
+---
+<!-- nav -->
+[← Previous: `kill`](kill.md) | [Learning path](../README.md) | [Next: `bg` →](bg.md)

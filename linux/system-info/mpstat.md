@@ -572,3 +572,7 @@ Linux 5.15.0-122-generic (web01) 	10/12/2026 	_x86_64_	(4 CPU)
 - `sar` - the history of all these reports
 - `taskset` / `numactl` - pin processes to CPUs and nodes
 - `irqbalance` - the service that spreads the interrupts
+
+---
+<!-- nav -->
+[← Previous: `mount`](mount.md) | [Learning path](../README.md) | [Next: `nproc` →](nproc.md)

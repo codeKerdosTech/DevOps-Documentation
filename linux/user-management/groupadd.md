@@ -483,3 +483,7 @@ The user group `nogroup` (`65534`) is the top. Choose a number in a range that y
 - [`chgrp`](../permissions/chgrp.md) - set the group of a file
 - [`chmod`](../permissions/chmod.md) - give the group its rights on files
 - `newgrp` - use a group without a new login
+
+---
+<!-- nav -->
+[← Previous: `userdel`](userdel.md) | [Learning path](../README.md) | [Next: `visudo` →](visudo.md)

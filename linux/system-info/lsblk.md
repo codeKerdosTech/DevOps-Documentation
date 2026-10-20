@@ -682,3 +682,7 @@ sdb is visible after 3 s
 - `mkfs` / `resize2fs` / `xfs_growfs` - make and grow file systems
 - `pvs` / `vgs` / `lvs` - the LVM view
 - `smartctl` - the health of a disk
+
+---
+<!-- nav -->
+[← Previous: `iostat`](iostat.md) | [Learning path](../README.md) | [Next: `lsmod` →](lsmod.md)

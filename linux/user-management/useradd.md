@@ -695,3 +695,7 @@ The `!` in the shadow file means: no valid password, the account is locked for p
 - [`chsh`](chsh.md) - change the login shell later
 - `newusers` - create many users from a file
 - `/etc/default/useradd`, `/etc/login.defs`, `/etc/skel` - the defaults and the template
+
+---
+<!-- nav -->
+[← Previous: `su`](su.md) | [Learning path](../README.md) | [Next: `passwd` →](passwd.md)

@@ -1,5 +1,9 @@
 # mv
 
+<!-- safety -->
+> **Practise safely.** `mv` silently replaces a file that already has the destination name. Use `mv -i` while you are learning.
+<!-- /safety -->
+
 ## What is it?
 `mv` (move) moves files and directories to a new location, or renames them. Within the same filesystem it is instant because only the directory entry changes.
 
@@ -278,8 +282,57 @@ myapp
 myapp~
 ```
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Rename `a.txt` to `b.txt`.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+touch a.txt
+mv a.txt b.txt
+ls
+```
+Output: `b.txt`.
+
+</details>
+
+**Task 2.** Move `b.txt` into a new folder `archive`.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+mkdir archive
+mv b.txt archive/
+ls archive
+```
+Output: `b.txt`.
+
+</details>
+
+**Task 3.** After a move, does the original file still exist?
+
+<details>
+<summary>Show the answer</summary>
+
+No. `mv` removes it from the old place:
+```bash
+ls b.txt
+```
+Output: `ls: cannot access 'b.txt': No such file or directory`.
+
+</details>
+
 ## Related Commands
 - [`cp`](cp.md) - copy files
 - [`rm`](rm.md) - delete files
 - `rename` - bulk rename with patterns
 - `ln` - create links
+
+---
+<!-- nav -->
+[← Previous: `cp`](cp.md) | [Learning path](../README.md) | [Next: `rm` →](rm.md)

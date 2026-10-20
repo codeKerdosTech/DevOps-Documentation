@@ -194,8 +194,53 @@ echo "runner: $(uname -s) $(uname -m)"
 runner: Linux x86_64
 ```
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Which kernel is running on your machine, and which release of it?
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+uname -s
+uname -r
+```
+The first prints `Linux`. The second prints a version number such as `5.15.0-91-generic`.
+
+</details>
+
+**Task 2.** Find the name of your distribution without leaving the terminal.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+cat /etc/os-release
+```
+Look at the `PRETTY_NAME=` line, for example `Ubuntu 22.04.3 LTS`.
+
+</details>
+
+**Task 3.** How many CPUs does your machine give you?
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+nproc
+```
+It prints one number, for example `4`.
+
+</details>
+
 ## Related Commands
 - [`uname`](../system-info/uname.md) - kernel and system information
 - [`hostnamectl`](../system-info/hostnamectl.md) - OS and host details on systemd machines
 - [`apt`](../package-management/apt.md) / [`dnf`](../package-management/dnf.md) / [`apk`](../package-management/apk.md) - the package manager of each distro family
 - [Installing Linux](02-installing-linux.md) - the next page
+
+---
+<!-- nav -->
+[Learning path](../README.md) | [Next: Installing Linux →](02-installing-linux.md)

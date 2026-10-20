@@ -604,3 +604,7 @@ There is no output. `xargs -r` avoids `kill` without arguments when `pgrep` find
 - `pidof` - find the PID by exact program name
 - `pstree` - show the process tree
 - `flock` - a safe lock for scripts
+
+---
+<!-- nav -->
+[← Previous: `nice`](nice.md) | [Learning path](../README.md) | [Next: `pkill` →](pkill.md)

@@ -118,3 +118,7 @@ nosuchmod not available
 - [`dmesg`](dmesg.md) - kernel messages after loading
 - [`sudo`](../user-management/sudo.md) - needed to load modules
 - [Kernel support and modules](../os-internals/06-kernel-support-and-modules.md) - the concept page
+
+---
+<!-- nav -->
+[← Previous: `modinfo`](modinfo.md) | [Learning path](../README.md) | [Next: `mount` →](mount.md)

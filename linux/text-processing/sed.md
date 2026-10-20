@@ -1266,3 +1266,7 @@ b$
 - [`cat`](../file-management/cat.md) - print files, `cat -A` shows hidden characters
 - [`tac`](tac.md) - reverse the lines of a file
 - `perl -pe` - a more powerful stream editor
+
+---
+<!-- nav -->
+[← Previous: `diff`](diff.md) | [Learning path](../README.md) | [Next: `awk` →](awk.md)

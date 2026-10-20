@@ -567,6 +567,65 @@ grep -oE 'user=[a-z]+' app.log | sort | uniq -c | sort -rn | head -2
 ```
 Users with equal counts (bob, carol and dave have one each) are listed in reverse name order by `sort -rn`, so `dave` comes first.
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Let's say we have this file `app.log`:
+```
+ERROR disk full
+INFO started
+WARN slow response
+ERROR timeout
+```
+Create it with `printf 'ERROR disk full\nINFO started\nWARN slow response\nERROR timeout\n' > app.log`. Print only the lines that start with `ERROR`.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+grep '^ERROR' app.log
+```
+Output:
+```
+ERROR disk full
+ERROR timeout
+```
+
+</details>
+
+**Task 2.** With the same file, print the line that ends with `timeout`.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+grep 'timeout$' app.log
+```
+Output:
+```
+ERROR timeout
+```
+
+</details>
+
+**Task 3.** With the same file, print the lines that contain `ERROR` or `WARN`.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+grep -E 'ERROR|WARN' app.log
+```
+Output:
+```
+ERROR disk full
+WARN slow response
+ERROR timeout
+```
+
+</details>
+
 ## Related Commands
 - [Shortcuts and tab completion](11-shortcuts-and-tab-completion.md) - the previous topic
 - [Wildcards and globbing](06-wildcards-globbing.md) - the file name patterns that regexes are often confused with
@@ -576,3 +635,7 @@ Users with equal counts (bob, carol and dave have one each) are listed in revers
 - [`awk`](../text-processing/awk.md) - regexes on whole lines or fields
 - [`sort`](../text-processing/sort.md) / [`uniq`](../text-processing/uniq.md) - count what a regex extracts
 - [`find`](../file-management/find.md) - `-regex` matches whole paths
+
+---
+<!-- nav -->
+[← Previous: Shortcuts and Tab Completion](11-shortcuts-and-tab-completion.md) | [Learning path](../README.md) | [Next: `echo` →](../shell-basics/echo.md)

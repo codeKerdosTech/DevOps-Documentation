@@ -339,9 +339,58 @@ web02 up
 web03 down
 ```
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Let's say we have `nums.txt` with the numbers 1 to 20, one per line. Create it with `seq 1 20 > nums.txt`. Print its first 3 lines.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+head -n 3 nums.txt
+```
+Output:
+```
+1
+2
+3
+```
+
+</details>
+
+**Task 2.** Print the default number of lines.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+head nums.txt
+```
+The default is 10 lines, `1` to `10`.
+
+</details>
+
+**Task 3.** Print only the 3rd line using `head` and `tail`.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+head -n 3 nums.txt | tail -n 1
+```
+Output: `3`.
+
+</details>
+
 ## Related Commands
 - [`cat`](cat.md) - print a whole file
 - [`tail`](tail.md) - show the end of a file
 - [`less`](less.md) - page through a long file
 - [`wc`](../text-processing/wc.md) - count lines, words and bytes
 - `sort` - sort lines
+
+---
+<!-- nav -->
+[← Previous: `more`](more.md) | [Learning path](../README.md) | [Next: `tail` →](tail.md)

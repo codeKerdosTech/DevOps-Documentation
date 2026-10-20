@@ -89,3 +89,7 @@ whoami (GNU coreutils) 8.32
 - [`sudo`](sudo.md) - run a command as another user
 - `id` - show user and group IDs
 - `logname` - show the login name
+
+---
+<!-- nav -->
+[← Previous: `umask`](../permissions/umask.md) | [Learning path](../README.md) | [Next: `id` →](id.md)

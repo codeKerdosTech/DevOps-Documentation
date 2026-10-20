@@ -649,3 +649,7 @@ git ls-files -z | xargs -0 wc -l
 - [`wc`](wc.md) - count lines of many files
 - `parallel` - a more powerful tool for parallel jobs (GNU parallel)
 - `ssh` - run a command on remote hosts
+
+---
+<!-- nav -->
+[← Previous: `awk`](awk.md) | [Learning path](../README.md) | [Next: `printf` →](printf.md)

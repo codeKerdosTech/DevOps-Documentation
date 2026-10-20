@@ -611,3 +611,48 @@ cat /etc/cron.d/healthcheck
 */10 * * * * root /usr/local/bin/check.sh > /dev/null 2>&1 || echo "healthcheck failed" >> /var/log/healthcheck.log
 ```
 This one line uses five directories: the job lives in `/etc/cron.d`, the script in `/usr/local/bin`, normal output goes to `/dev/null`, and failures are appended to a file in `/var/log`.
+
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** List the folders directly under `/`.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+ls /
+```
+You will see `etc`, `var`, `usr`, `home`, `tmp`, `proc` and others.
+
+</details>
+
+**Task 2.** A service will not start. Which top-level folder holds its configuration, and which holds its logs?
+
+<details>
+<summary>Show the answer</summary>
+
+Configuration is in `/etc`, logs are in `/var/log`.
+```bash
+ls /etc | head
+ls /var/log
+```
+
+</details>
+
+**Task 3.** Read the model name of your CPU without installing any tool.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+grep "model name" /proc/cpuinfo | head -n 1
+```
+`/proc` is a live view of the kernel, not real files on disk.
+
+</details>
+
+---
+<!-- nav -->
+[← Previous: Terminal, Shell and Bash](03-terminal-shell-bash.md) | [Learning path](../README.md) | [Next: Paths →](05-paths.md)

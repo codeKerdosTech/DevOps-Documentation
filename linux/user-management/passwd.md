@@ -560,3 +560,7 @@ With `PasswordAuthentication no` in `sshd_config`, the password is not used for 
 - `/etc/login.defs` - the default aging values for new users
 - `/etc/security/pwquality.conf` - the password quality rules
 - `faillock` / `pam_tally2` - lock an account after failed logins
+
+---
+<!-- nav -->
+[← Previous: `useradd`](useradd.md) | [Learning path](../README.md) | [Next: `usermod` →](usermod.md)

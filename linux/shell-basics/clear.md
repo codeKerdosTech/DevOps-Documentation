@@ -92,3 +92,7 @@ Press `Ctrl+L` in bash for the same effect without typing the command.
 - `reset` - fully reinitialize the terminal
 - `tput` - control terminal features
 - `Ctrl+L` - shell shortcut for clearing the screen
+
+---
+<!-- nav -->
+[← Previous: `history`](history.md) | [Learning path](../README.md) | [Next: `alias` →](alias.md)

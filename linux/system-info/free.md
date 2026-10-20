@@ -497,3 +497,7 @@ The lowest `kbmemfree`/`available` of the day is about 1.6 GiB. The server has e
 - `sar -r` - the history of the memory use
 - `smem` - memory per process, with shared memory counted in a fair way
 - `/proc/meminfo` - the source of all the numbers
+
+---
+<!-- nav -->
+[← Previous: `uptime`](uptime.md) | [Learning path](../README.md) | [Next: `df` →](df.md)

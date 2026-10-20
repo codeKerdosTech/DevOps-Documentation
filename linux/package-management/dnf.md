@@ -783,3 +783,7 @@ openssl-1:3.0.7-28.el9_4.*
 - [rpm](rpm.md) - low level tool underneath dnf
 - [apt](apt.md) - Debian family equivalent
 - [systemctl](../services-logging/systemctl.md) - control `dnf-automatic.timer` and services
+
+---
+<!-- nav -->
+[← Previous: `apt`](apt.md) | [Learning path](../README.md) | [Next: `apk` →](apk.md)

@@ -400,3 +400,7 @@ apt-cache madison python3 | awk -F'|' '{print $2, $3}'
 - [apt-mark](apt-mark.md) - hold packages and manage manual or auto flags
 - [dpkg](dpkg.md) - inspect what is actually installed
 - [dnf](dnf.md) - `dnf repoquery` and `dnf info` give similar answers on the Red Hat family
+
+---
+<!-- nav -->
+[← Previous: `apk`](apk.md) | [Learning path](../README.md) | [Next: `apt-mark` →](apt-mark.md)

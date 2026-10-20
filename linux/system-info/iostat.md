@@ -611,3 +611,7 @@ sde 21.00 tps 840.00 kB/s read
 - `ionice` - lower the I/O priority of a heavy job
 - `fio` - a disk benchmark
 - `smartctl` - the health of a disk
+
+---
+<!-- nav -->
+[← Previous: `hostnamectl`](hostnamectl.md) | [Learning path](../README.md) | [Next: `lsblk` →](lsblk.md)

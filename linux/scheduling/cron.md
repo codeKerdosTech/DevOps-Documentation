@@ -264,7 +264,7 @@ tool found
 PATH=/usr/bin:/bin
 tool NOT found
 ```
-`env -i ... PATH=/usr/bin:/bin` runs the script like cron does. This is the number one cause of "works in my terminal, fails in cron". See [Environment variables and PATH](../../shell-script/08-environment-variables-and-path.md).
+`env -i ... PATH=/usr/bin:/bin` runs the script like cron does. This is the number one cause of "works in my terminal, fails in cron". See [Environment variables and PATH](../../shell-script/13-environment-variables-and-path.md).
 
 ### Example 12: Which cron program is installed
 **Command:**
@@ -389,5 +389,9 @@ Neither file exists, so all users can use `crontab`. Restrict it with `echo root
 - [`sleep`](../shell-basics/sleep.md) / [`watch`](../process-management/watch.md) - simple repeating without cron
 - [`timeout`](../process-management/timeout.md) - stop a job that runs too long
 - [`nohup`](../process-management/nohup.md) - keep a command running after you log out
-- [Environment variables and PATH](../../shell-script/08-environment-variables-and-path.md) - why cron has a different `PATH`
-- [Signals and trap](../../shell-script/09-signals-and-trap.md) - lock files and clean up in scheduled scripts
+- [Environment variables and PATH](../../shell-script/13-environment-variables-and-path.md) - why cron has a different `PATH`
+- [Signals and trap](../../shell-script/15-signals-and-trap.md) - lock files and clean up in scheduled scripts
+
+---
+<!-- nav -->
+[← Previous: `journalctl`](../services-logging/journalctl.md) | [Learning path](../README.md) | [Next: `crontab` →](crontab.md)

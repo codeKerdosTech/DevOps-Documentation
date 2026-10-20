@@ -369,3 +369,7 @@ Run the same command inside a container and it shows your application (or `tini`
 - [`nohup`](../process-management/nohup.md) - keep a process after logout
 - [`nice`](../process-management/nice.md) / [`renice`](../process-management/renice.md) - change priority
 - [`strace`](../process-management/strace.md) - see the system calls of a process
+
+---
+<!-- nav -->
+[← Previous: System Calls](03-system-calls.md) | [Learning path](../README.md) | [Next: Threads: Software and Hardware →](05-threads.md)

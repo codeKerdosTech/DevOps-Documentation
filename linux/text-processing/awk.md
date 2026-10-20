@@ -1244,3 +1244,7 @@ awk -F'load average: ' '{print $2}' uptime.txt
 - [`wc`](wc.md) - count lines, words and bytes
 - `column` - align the output in columns
 - `perl` / `python` - for bigger text processing jobs
+
+---
+<!-- nav -->
+[← Previous: `sed`](sed.md) | [Learning path](../README.md) | [Next: `xargs` →](xargs.md)

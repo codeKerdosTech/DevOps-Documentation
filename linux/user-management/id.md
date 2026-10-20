@@ -447,3 +447,7 @@ db01: 1005
 - `logname` - the name that was used at the login
 - `newgrp` - start a shell with another primary group
 - `stat` - show the numeric owner of a file (`stat -c '%u %g'`)
+
+---
+<!-- nav -->
+[← Previous: `whoami`](whoami.md) | [Learning path](../README.md) | [Next: `who` →](who.md)

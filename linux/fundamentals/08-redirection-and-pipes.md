@@ -573,6 +573,53 @@ limit: 10240
 ```
 Replace `$P` with the PID of the failing service. If the count is close to the limit, raise `LimitNOFILE` in the systemd unit or find the code that leaks fds.
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Write the word `first` into `out.txt`, then add `second` below it without erasing `first`.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+echo first > out.txt
+echo second >> out.txt
+cat out.txt
+```
+Output:
+```
+first
+second
+```
+
+</details>
+
+**Task 2.** Send the error message of a failing command into `err.txt` instead of the screen.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+ls nosuchfile 2> err.txt
+cat err.txt
+```
+Output: `ls: cannot access 'nosuchfile': No such file or directory`.
+
+</details>
+
+**Task 3.** Count the lines of `out.txt` using a pipe.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+cat out.txt | wc -l
+```
+Output: `2`.
+
+</details>
+
 ## Related Commands
 - [Quoting](07-quoting.md) - the previous topic
 - [Links and inodes](09-links-and-inodes.md) - the next topic
@@ -585,3 +632,7 @@ Replace `$P` with the PID of the failing service. If the count is close to the l
 - [`lsof`](../process-management/lsof.md) - list the file descriptors a process holds
 - [`ulimit`](../process-management/ulimit.md) - limit open files per process
 - [System calls](../os-internals/03-system-calls.md) - `open`, `read`, `write` and `close` use these numbers
+
+---
+<!-- nav -->
+[← Previous: Quoting](07-quoting.md) | [Learning path](../README.md) | [Next: Links and Inodes →](09-links-and-inodes.md)

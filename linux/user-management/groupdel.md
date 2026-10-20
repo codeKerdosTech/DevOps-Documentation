@@ -1,5 +1,9 @@
 # groupdel
 
+<!-- safety -->
+> **Practise safely.** Files owned by a deleted group keep a bare number as owner. Practise in a virtual machine or WSL, not on a shared server.
+<!-- /safety -->
+
 ## What is it?
 `groupdel` **deletes a group**. It removes the line of the group from `/etc/group` and `/etc/gshadow`. It does **not** remove the users who are members, and it does **not** change the files that belong to the group: those files keep the group **number** (GID), which then has no name. `groupdel` refuses to remove a group that is the **primary group** of a user. It is a low level program of the `shadow-utils` package, the same on all distributions, and not interactive, so it is the right command for scripts.
 
@@ -368,3 +372,7 @@ getent group | grep -c '^team'
 - [`chgrp`](../permissions/chgrp.md) - give the files to another group
 - [`find`](../file-management/find.md) - find the files of the group (`-group`, `-gid`, `-nogroup`)
 - `vigr` - edit `/etc/group` safely by hand
+
+---
+<!-- nav -->
+[← Previous: `gpasswd`](gpasswd.md) | [Learning path](../README.md) | [Next: `groupmod` →](groupmod.md)

@@ -1,5 +1,17 @@
 # ls
 
+<!-- start-here -->
+> **Start here.** On your first read, learn only these. The rest of the page is reference you can come back to.
+>
+> | Learn this first | What it does |
+> |---|---|
+> | `ls` | list the names in this folder |
+> | `ls -l` | long list: permissions, owner, size, date |
+> | `ls -a` | also show hidden files (names that start with a dot) |
+> | `ls -lh` | long list with sizes like 4K or 2M instead of bytes |
+> | `ls -lt` | newest files first |
+<!-- /start-here -->
+
 ## What is it?
 `ls` lists the files and directories inside a directory. It is the first command you use to see what is in a folder, check permissions, sizes and modification times.
 
@@ -180,9 +192,66 @@ readme.md
 - Do not parse `ls` output in scripts, because file names with spaces or newlines break it. Use globs or `find` instead.
 - Many distros alias `ls` to `ls --color=auto`. Colors disappear when output is piped.
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Let's say we set up this practice folder:
+```bash
+mkdir ls-lab && cd ls-lab
+touch a.txt .hidden
+echo hello > b.txt
+```
+List it normally.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+ls
+```
+Output:
+```
+a.txt  b.txt
+```
+The hidden file is not shown.
+
+</details>
+
+**Task 2.** Show the hidden file too.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+ls -a
+```
+Output:
+```
+.  ..  .hidden  a.txt  b.txt
+```
+
+</details>
+
+**Task 3.** What size in bytes does `ls -l` show for `b.txt`?
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+ls -l b.txt
+```
+The size column is `6`: the word `hello` is 5 characters plus the new line.
+
+</details>
+
 ## Related Commands
 - [`cd`](cd.md) - change directory
 - [`pwd`](pwd.md) - print the current directory
 - [`mkdir`](mkdir.md) - create directories
 - `find` - search files with conditions
 - `tree` - show a directory as a tree
+
+---
+<!-- nav -->
+[← Previous: `pwd`](pwd.md) | [Learning path](../README.md) | [Next: `cd` →](cd.md)

@@ -1,5 +1,21 @@
 # chmod
 
+<!-- start-here -->
+> **Start here.** On your first read, learn only these. The rest of the page is reference you can come back to.
+>
+> | Learn this first | What it does |
+> |---|---|
+> | `chmod +x script.sh` | make a script runnable |
+> | `chmod 644 file` | owner can read and write, everybody else can only read |
+> | `chmod 755 script.sh` | owner can do everything, others can read and run |
+> | `chmod 600 key.pem` | only the owner can read and write (needed for SSH keys) |
+> | `chmod -R` | apply to a folder and everything inside it. Use with care |
+<!-- /start-here -->
+
+<!-- safety -->
+> **Practise safely.** `chmod -R 777` on a system folder can break the machine or open it to everyone. Practise on files in your practice folder, never on `/etc`, `/` or `/usr`.
+<!-- /safety -->
+
 ## What is it?
 `chmod` (change mode) changes the **permissions** of files and directories: who may **read**, **write** and **execute** them. Every file has three groups of permissions: for the **owner** (user), for the **group** and for **others** (everybody else). You can write the new permissions as a number (`chmod 755 file`) or in symbolic form (`chmod u+x file`). Only the owner of a file, or `root`, can change its permissions.
 
@@ -742,6 +758,49 @@ drwxr-xr-x deploy/deploy     0 2026-10-12 10:00 build/bin/
 -rwxr-xr-x deploy/deploy  8421 2026-10-12 10:00 build/bin/app
 ```
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Create `run.sh` and look at its permissions.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+touch run.sh
+ls -l run.sh
+```
+Typically `-rw-r--r--`.
+
+</details>
+
+**Task 2.** Make it runnable for everyone and check.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+chmod +x run.sh
+ls -l run.sh
+```
+Typically `-rwxr-xr-x`.
+
+</details>
+
+**Task 3.** Make it private: only you can read and write.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+chmod 600 run.sh
+ls -l run.sh
+```
+Output starts with `-rw-------`.
+
+</details>
+
 ## Related Commands
 - [`chown`](chown.md) - change the owner and the group of a file
 - [`chgrp`](chgrp.md) - change the group of a file
@@ -755,3 +814,7 @@ drwxr-xr-x deploy/deploy     0 2026-10-12 10:00 build/bin/
 - `getfacl` / `setfacl` - access control lists, for more exact rights
 - `chattr` / `lsattr` - file attributes like the immutable flag
 - `namei -l` - show the permissions of each directory on a path
+
+---
+<!-- nav -->
+[← Previous: `nl`](../text-processing/nl.md) | [Learning path](../README.md) | [Next: `chown` →](chown.md)

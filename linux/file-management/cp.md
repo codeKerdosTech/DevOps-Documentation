@@ -1,5 +1,17 @@
 # cp
 
+<!-- start-here -->
+> **Start here.** On your first read, learn only these. The rest of the page is reference you can come back to.
+>
+> | Learn this first | What it does |
+> |---|---|
+> | `cp a.txt b.txt` | copy a file under a new name |
+> | `cp a.txt folder/` | copy a file into a folder |
+> | `cp -r dir dir2` | copy a whole folder with everything inside |
+> | `cp -i a.txt b.txt` | ask before overwriting an existing file |
+> | `cp -v a.txt b.txt` | print what was copied |
+<!-- /start-here -->
+
 ## What is it?
 `cp` (copy) copies files and directories from one place to another, leaving the original untouched.
 
@@ -302,9 +314,60 @@ myapp
 myapp~
 ```
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Let's say we have this file `notes.txt` that contains `hello`. Create it with `echo hello > notes.txt`. Copy it to `backup.txt`.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+cp notes.txt backup.txt
+ls
+```
+Output:
+```
+backup.txt  notes.txt
+```
+
+</details>
+
+**Task 2.** Copy `notes.txt` into a new folder `keep`.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+mkdir keep
+cp notes.txt keep/
+ls keep
+```
+Output: `notes.txt`.
+
+</details>
+
+**Task 3.** Copy the whole folder `keep` to `keep2`.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+cp -r keep keep2
+ls keep2
+```
+Output: `notes.txt`. Without `-r`, cp refuses to copy a folder.
+
+</details>
+
 ## Related Commands
 - [`mv`](mv.md) - move or rename files
 - [`rm`](rm.md) - delete files
 - `rsync` - efficient copy and sync, local or remote
 - `scp` - copy files over SSH
 - `dd` - low-level block copy
+
+---
+<!-- nav -->
+[← Previous: `touch`](touch.md) | [Learning path](../README.md) | [Next: `mv` →](mv.md)

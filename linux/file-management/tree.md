@@ -804,3 +804,7 @@ mychart
 - [`cd`](cd.md) - change directory
 - `du` - disk usage of directories
 - `jq` - process the JSON output of `tree -J`
+
+---
+<!-- nav -->
+[← Previous: `cd`](cd.md) | [Learning path](../README.md) | [Next: `mkdir` →](mkdir.md)

@@ -570,3 +570,7 @@ Setting up linux-image-5.15.0-119-generic (5.15.0-119.129) ...
 - [apt-mark](apt-mark.md) - hold packages
 - [rpm](rpm.md) - the Red Hat family equivalent
 - [tar](../archiving/tar.md) - a `.deb` is an `ar` archive containing tar files
+
+---
+<!-- nav -->
+[← Previous: `apt-mark`](apt-mark.md) | [Learning path](../README.md) | [Next: `rpm` →](rpm.md)

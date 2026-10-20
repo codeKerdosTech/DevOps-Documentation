@@ -314,3 +314,7 @@ kubectl get events --sort-by=.lastTimestamp | tac | head -n 3
 - [`nl`](nl.md) - number lines
 - `rev` - reverse characters inside each line
 - `sort -r` - sort in reverse order
+
+---
+<!-- nav -->
+[← Previous: `printf`](printf.md) | [Learning path](../README.md) | [Next: `nl` →](nl.md)

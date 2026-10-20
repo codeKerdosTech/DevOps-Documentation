@@ -743,3 +743,7 @@ docker version --format '{{.Server.Version}}'
 - [`chmod`](../permissions/chmod.md) / [`chown`](../permissions/chown.md) - fix what a test finds wrong
 - `[[ ]]` / `(( ))` - Bash keywords for strings (with patterns, regex) and for arithmetic
 - `/usr/bin/test` - the external program, with `--help` and `--version`
+
+---
+<!-- nav -->
+[← Previous: `read`](read.md) | [Learning path](../README.md) | [Next: `time` →](time.md)

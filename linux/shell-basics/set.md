@@ -643,3 +643,7 @@ Without `-E` the `ERR` trap would not run inside the function `f`.
 - `shopt` - the Bash specific shell options (`nullglob`, `globstar`, `extglob`, `lastpipe`)
 - `trap` - run commands on signals, `ERR` and `EXIT`
 - `shellcheck` - a linter for shell scripts
+
+---
+<!-- nav -->
+[← Previous: `export`](export.md) | [Learning path](../README.md) | [Next: `source` →](source.md)

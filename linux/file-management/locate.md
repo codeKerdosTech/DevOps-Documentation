@@ -467,3 +467,7 @@ sudo updatedb && locate -l 1 -b '\python3'
 - [`file`](file.md) - find out the type of a file
 - `which` / `whereis` - find the location of a command
 - `xargs` - use the results as arguments
+
+---
+<!-- nav -->
+[← Previous: `find`](find.md) | [Learning path](../README.md) | [Next: `ln` →](ln.md)

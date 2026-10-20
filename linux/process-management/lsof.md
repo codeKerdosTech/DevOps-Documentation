@@ -784,3 +784,7 @@ docker   3401 deploy    3u  unix 0xffff8a3b4c2d5000      0t0 20990 type=STREAM
 - `kill` / `pkill` - stop a process by PID or by name
 - `fuser` - find the processes that use a file or a port (`fuser 3000/tcp`)
 - `df` / `du` - disk usage, compare with `lsof +L1`
+
+---
+<!-- nav -->
+[← Previous: `killall`](killall.md) | [Learning path](../README.md) | [Next: `nice` →](nice.md)

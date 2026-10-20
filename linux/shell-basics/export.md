@@ -516,3 +516,7 @@ LANG=C.UTF-8
 - [`systemctl`](../services-logging/systemctl.md) - `Environment=` for services
 - `unset` - delete a variable or a function
 - `declare` / `readonly` / `local` - other ways to create variables with attributes
+
+---
+<!-- nav -->
+[← Previous: `env`](env.md) | [Learning path](../README.md) | [Next: `set` →](set.md)

@@ -309,3 +309,7 @@ eth1: flags=4098<BROADCAST,MULTICAST>  mtu 1500
 - [`ping`](ping.md) - test an address you just configured
 - [`tcpdump`](tcpdump.md) - capture packets on an interface
 - `nmcli` - manage NetworkManager connections
+
+---
+<!-- nav -->
+[← Previous: `tcpdump`](tcpdump.md) | [Learning path](../README.md) | [Next: `netstat` →](netstat.md)

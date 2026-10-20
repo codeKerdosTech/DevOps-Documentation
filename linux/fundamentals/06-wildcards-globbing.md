@@ -271,6 +271,59 @@ processing app.log
 processing error.log
 ```
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Let's say we have these four files in your practice folder. Create them:
+```bash
+touch a.log b.log c.txt notes.md
+```
+List only the files that end in `.log`.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+ls *.log
+```
+Output:
+```
+a.log  b.log
+```
+
+</details>
+
+**Task 2.** With the same files, list the files with a one-letter name and the extension `.txt`.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+ls ?.txt
+```
+Output:
+```
+c.txt
+```
+
+</details>
+
+**Task 3.** With the same files, list `a.log` and `b.log` using a character set.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+ls [ab].log
+```
+Output:
+```
+a.log  b.log
+```
+
+</details>
+
 ## Related Commands
 - [Quoting](07-quoting.md) - stop the shell from expanding a pattern
 - [Paths](05-paths.md) - the previous topic
@@ -279,3 +332,7 @@ processing error.log
 - [`rm`](../file-management/rm.md) - always preview a pattern before using it here
 - [`xargs`](../text-processing/xargs.md) - handle very long file lists
 - [`echo`](../shell-basics/echo.md) - preview what a pattern expands to
+
+---
+<!-- nav -->
+[← Previous: Paths](05-paths.md) | [Learning path](../README.md) | [Next: Quoting →](07-quoting.md)

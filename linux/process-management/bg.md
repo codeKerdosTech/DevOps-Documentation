@@ -384,3 +384,7 @@ ps -o pid,stat,cmd -p 4402
 - `disown` - remove a job from the job table of the shell
 - `wait` - wait for the background jobs
 - `tmux` / `screen` - sessions that stay alive when you disconnect
+
+---
+<!-- nav -->
+[← Previous: `jobs`](jobs.md) | [Learning path](../README.md) | [Next: `fg` →](fg.md)

@@ -565,3 +565,7 @@ tail -n 1 /var/log/monitor.log
 - [`dig`](dig.md) - check DNS
 - [`ssh`](ssh.md) - remote login
 - `jq` - parse JSON output
+
+---
+<!-- nav -->
+[← Previous: `ss`](ss.md) | [Learning path](../README.md) | [Next: `wget` →](wget.md)

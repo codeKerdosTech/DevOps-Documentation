@@ -479,3 +479,7 @@ The Ansible module `ansible.builtin.hostname` does the same, and it uses `hostna
 - [`ssh`](../networking/ssh.md) - run `hostnamectl -H` on remote hosts
 - `systemd-detect-virt` - detect the virtualization
 - `jq` - parse the JSON output
+
+---
+<!-- nav -->
+[← Previous: `hostname`](hostname.md) | [Learning path](../README.md) | [Next: `iostat` →](iostat.md)

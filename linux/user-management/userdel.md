@@ -1,5 +1,9 @@
 # userdel
 
+<!-- safety -->
+> **Practise safely.** Deleting a user is not easily undone, especially with `-r`, which also removes the home folder. Practise in a virtual machine or WSL, not on a shared server.
+<!-- /safety -->
+
 ## What is it?
 `userdel` **deletes a user account**. It removes the user from `/etc/passwd`, `/etc/shadow`, `/etc/group` and `/etc/gshadow`. With `-r` it also deletes the **home directory** and the **mail spool**. By default, it removes the private group of the user too, if no other user is a member. It is the low level program of the `shadow-utils` package, the same on all distributions, and not interactive, so it is the right command for scripts. It does **not** delete files that the user owns **outside** of the home directory, and it does **not** delete the cron jobs.
 
@@ -434,3 +438,7 @@ exit code: 2
 - [`pkill`](../process-management/pkill.md) - end the processes of the user (`pkill -u`)
 - `crontab -r -u` - remove the cron jobs of the user
 - `lastlog` / `last` - see when the user last logged in, before you delete
+
+---
+<!-- nav -->
+[← Previous: `usermod`](usermod.md) | [Learning path](../README.md) | [Next: `groupadd` →](groupadd.md)

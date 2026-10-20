@@ -1,5 +1,9 @@
 # killall
 
+<!-- safety -->
+> **Practise safely.** `killall` stops every process with that name. On a shared server that can be other people's work. Check with `pgrep -l name` first.
+<!-- /safety -->
+
 ## What is it?
 `killall` sends a signal to **all the processes that run a given program name**. You do not need the PID: `killall nginx` stops every process called `nginx`. The default signal is `SIGTERM` (15). It is part of the `psmisc` package, which also has `pstree` and `fuser`. It is simple and quick, but it matches the **name** exactly, unlike `pkill`, which matches a pattern.
 
@@ -469,3 +473,7 @@ Kill nginx(814) ? (y/N) n
 - `pstree` - the other tool of the `psmisc` package
 - `fuser` - find and kill the processes that use a file or a port (`fuser -k 3000/tcp`)
 - `systemctl` - stop and restart services in a managed way
+
+---
+<!-- nav -->
+[← Previous: `nohup`](nohup.md) | [Learning path](../README.md) | [Next: `lsof` →](lsof.md)

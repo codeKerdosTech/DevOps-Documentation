@@ -617,3 +617,7 @@ This shows all files that the login shell sources in order. Time them with `PS4=
 - `eval` - run a string as shell code (`eval "$(ssh-agent -s)"`)
 - `declare -F` - list the functions that were loaded
 - `bash -x` - trace what a script and the files that it sources do
+
+---
+<!-- nav -->
+[← Previous: `set`](set.md) | [Learning path](../README.md) | [Next: `read` →](read.md)

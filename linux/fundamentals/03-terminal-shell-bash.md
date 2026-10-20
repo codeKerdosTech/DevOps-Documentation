@@ -219,6 +219,48 @@ exit code: 1
 ```
 The pipeline sees exit code `1` and marks the job as failed.
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Which shell are you using?
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+echo $SHELL
+```
+Typically `/bin/bash`.
+
+</details>
+
+**Task 2.** Is `cd` a program on disk, or built into bash? What about `ls`?
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+type cd
+type ls
+```
+`cd` is a shell builtin. `ls` is a program (or an alias for one), so `type` shows its path.
+
+</details>
+
+**Task 3.** Run a command that does not exist, then read its exit status.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+nosuchcommand
+echo $?
+```
+bash prints `command not found`, and the status is `127`.
+
+</details>
+
 ## Related Commands
 - [Installing Linux](02-installing-linux.md) - the previous page
 - [`echo`](../shell-basics/echo.md) - print text and variables
@@ -226,3 +268,7 @@ The pipeline sees exit code `1` and marks the job as failed.
 - [`history`](../shell-basics/history.md) - repeat earlier commands
 - [`man`](../shell-basics/man.md) - read the manual of any command
 - [Filesystem hierarchy](04-filesystem-hierarchy.md) - the next page
+
+---
+<!-- nav -->
+[← Previous: Installing Linux](02-installing-linux.md) | [Learning path](../README.md) | [Next: Filesystem Hierarchy →](04-filesystem-hierarchy.md)

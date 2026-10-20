@@ -457,3 +457,7 @@ With `-d`, the change of the address is highlighted. When it shows the new addre
 - [`lsof`](lsof.md) - open files and ports
 - `df` / `du` / `free` / `uptime` - system numbers to watch
 - `kubectl get -w` / `docker stats` - tools with their own live mode
+
+---
+<!-- nav -->
+[← Previous: `ulimit`](ulimit.md) | [Learning path](../README.md) | [Next: `uname` →](../system-info/uname.md)

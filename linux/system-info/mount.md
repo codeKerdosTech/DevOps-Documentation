@@ -758,3 +758,7 @@ findmnt -rno TARGET,OPTIONS /tmp /var/tmp /dev/shm /home /data | awk '{
 - `mountpoint` - test if a directory is a mount point
 - `fsck` / `mkfs` - check or create a file system
 - `losetup` - loop devices for image files
+
+---
+<!-- nav -->
+[← Previous: `modprobe`](modprobe.md) | [Learning path](../README.md) | [Next: `mpstat` →](mpstat.md)

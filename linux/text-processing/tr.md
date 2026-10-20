@@ -530,3 +530,7 @@ q3_sales_report
 - [`cat`](../file-management/cat.md) - `cat -A` shows hidden characters
 - `dos2unix` - converts Windows line endings
 - `rev` - reverses the characters of each line
+
+---
+<!-- nav -->
+[← Previous: `uniq`](uniq.md) | [Learning path](../README.md) | [Next: `tee` →](tee.md)

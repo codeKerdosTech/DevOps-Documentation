@@ -1014,3 +1014,7 @@ The first command reports a difference, which only comes from the line ending. T
 - `comm` - compare two sorted files
 - `git diff` - diff with version control
 - `vimdiff` - an editor to see and merge differences
+
+---
+<!-- nav -->
+[← Previous: `tee`](tee.md) | [Learning path](../README.md) | [Next: `sed` →](sed.md)

@@ -273,6 +273,41 @@ drwxr-xr-x 2 devops devops 4096 Oct 14 01:32 sub
 ```
 The capital `X` gives execute only to directories, so `f1` stays `644`.
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Read this line from `ls -l`:
+```
+-rwxr-x---  1 ravi dev  520 Jan 5 10:00 app.sh
+```
+What can the owner `ravi` do with `app.sh`?
+
+<details>
+<summary>Show the answer</summary>
+
+The owner part is `rwx`: read, write and run.
+
+</details>
+
+**Task 2.** What can `amit`, who is in the group `dev`, do?
+
+<details>
+<summary>Show the answer</summary>
+
+The group part is `r-x`: read and run, but not change the file.
+
+</details>
+
+**Task 3.** What can a user who is not `ravi` and not in `dev` do?
+
+<details>
+<summary>Show the answer</summary>
+
+The others part is `---`: nothing. Only root can still open it.
+
+</details>
+
 ## Related Commands
 - [Links and inodes](09-links-and-inodes.md) - the previous topic
 - [Shortcuts and tab completion](11-shortcuts-and-tab-completion.md) - the next topic
@@ -282,3 +317,7 @@ The capital `X` gives execute only to directories, so `f1` stays `644`.
 - [`id`](../user-management/id.md) / [`groups`](../user-management/groups.md) - who you are
 - [`sudo`](../user-management/sudo.md) - run a command as root
 - [`ls`](../file-management/ls.md) - show permissions with `-l`
+
+---
+<!-- nav -->
+[← Previous: Links and Inodes](09-links-and-inodes.md) | [Learning path](../README.md) | [Next: Shortcuts and Tab Completion →](11-shortcuts-and-tab-completion.md)

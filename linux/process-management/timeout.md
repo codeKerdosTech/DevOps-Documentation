@@ -502,3 +502,7 @@ job was stopped by the timeout (SIGTERM)
 - `sleep` - wait for a fixed time
 - `curl --max-time` / `wget -T` - built in timeouts of network tools
 - `flock -w` - wait for a lock, with a limit
+
+---
+<!-- nav -->
+[← Previous: `strace`](strace.md) | [Learning path](../README.md) | [Next: `ulimit` →](ulimit.md)

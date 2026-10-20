@@ -114,3 +114,7 @@ exit code: 0
 - [`mkdir`](mkdir.md) - create directories
 - [`rm`](rm.md) - remove files and non-empty directories
 - [`ls`](ls.md) - check directory contents
+
+---
+<!-- nav -->
+[← Previous: `rm`](rm.md) | [Learning path](../README.md) | [Next: `cat` →](cat.md)

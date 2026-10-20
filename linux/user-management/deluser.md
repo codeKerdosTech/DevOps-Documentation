@@ -1,5 +1,9 @@
 # deluser
 
+<!-- safety -->
+> **Practise safely.** Removing a user, and with `--remove-home` their files, cannot be undone. Practise in a virtual machine or WSL, not on a shared server.
+<!-- /safety -->
+
 ## What is it?
 `deluser` removes a **user account** (or a group, or a user from a group) in a friendly way. It exists only on **Debian, Ubuntu and their derivatives** (Linux Mint, Raspberry Pi OS ...), where it is a **Perl script** from the package `adduser`. It is the partner of `adduser`. It calls `userdel` underneath, and adds some features: a **backup** of the files before they are removed, the removal of **all the files** of the user on the system, the removal of a user from **one group** and the removal of an **empty group**. On **RHEL, CentOS, Rocky Linux, AlmaLinux and Fedora, `deluser` does not exist** (`deluser: command not found`). There you use `userdel`.
 
@@ -523,3 +527,7 @@ The list shows the files outside of `/home/alice`. Decide for each one.
 - [`find`](../file-management/find.md) - list the files of the user before you remove them
 - [`pkill`](../process-management/pkill.md) - end the processes of the user
 - `/etc/deluser.conf` - the settings of `deluser`
+
+---
+<!-- nav -->
+[← Previous: `chsh`](chsh.md) | [Learning path](../README.md) | [Next: `getent` →](getent.md)

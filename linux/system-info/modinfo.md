@@ -123,3 +123,7 @@ xor,raid6_pq
 - [`modprobe`](modprobe.md) - load a module with its dependencies
 - [`uname`](uname.md) - the kernel version whose modules are searched
 - [Kernel support and modules](../os-internals/06-kernel-support-and-modules.md) - the concept page
+
+---
+<!-- nav -->
+[← Previous: `lsmod`](lsmod.md) | [Learning path](../README.md) | [Next: `modprobe` →](modprobe.md)

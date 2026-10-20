@@ -614,3 +614,7 @@ The process disappears from the list. If it is still there after a few seconds, 
 - `free` - the memory of the whole system
 - `vmstat` / `iostat` - find CPU, memory and disk problems
 - `atop` / `btop` - top-like tools with history or more graphics
+
+---
+<!-- nav -->
+[← Previous: `ps`](ps.md) | [Learning path](../README.md) | [Next: `kill` →](kill.md)

@@ -413,3 +413,7 @@ In Kubernetes, `hostname` in a pod is the pod name (`web-6d8f7c9b5-abcde`), and 
 - [`ssh`](../networking/ssh.md) - connect to a host by its name
 - `/etc/hostname`, `/etc/hosts` - the files that define the name
 - `domainname` / `dnsdomainname` - show the domain names
+
+---
+<!-- nav -->
+[← Previous: `dmesg`](dmesg.md) | [Learning path](../README.md) | [Next: `hostnamectl` →](hostnamectl.md)

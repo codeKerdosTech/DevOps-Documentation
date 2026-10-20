@@ -494,3 +494,7 @@ For ports use `until nc -z host 5432; do sleep 1; done` (with a limit), or the t
 - [`curl`](../networking/curl.md) / [`ping`](../networking/ping.md) - checks that are often repeated with `sleep`
 - `cron` / `systemd` timers - the right tools for real schedules
 - `usleep` / `nanosleep` - sleep with a finer unit (rare)
+
+---
+<!-- nav -->
+[← Previous: `time`](time.md) | [Learning path](../README.md) | [Next: `exit` →](exit.md)

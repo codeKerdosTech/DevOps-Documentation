@@ -1,5 +1,18 @@
 # grep
 
+<!-- start-here -->
+> **Start here.** On your first read, learn only these. The rest of the page is reference you can come back to.
+>
+> | Learn this first | What it does |
+> |---|---|
+> | `grep word file` | print the lines that contain the word |
+> | `grep -i word file` | ignore upper and lower case |
+> | `grep -n word file` | show the line numbers |
+> | `grep -v word file` | print the lines that do NOT contain it |
+> | `grep -c word file` | only count the matching lines |
+> | `grep -r word folder` | search every file inside a folder |
+<!-- /start-here -->
+
 ## What is it?
 `grep` (global regular expression print) searches text for lines that match a pattern and prints those lines. It reads files or standard input, so it works at the end of any pipeline. It is the most used tool for searching logs, configuration files and source code.
 
@@ -821,6 +834,61 @@ proj/src/main.py:3:# TODO fix
 proj/src/util.py:2:# TODO later
 ```
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Let's say we have this file `access.log`:
+```
+GET /home 200
+GET /pay 500
+GET /about 200
+GET /cart 500
+```
+Create it with `printf 'GET /home 200\nGET /pay 500\nGET /about 200\nGET /cart 500\n' > access.log`. Print the lines that contain `500`.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+grep 500 access.log
+```
+Output:
+```
+GET /pay 500
+GET /cart 500
+```
+
+</details>
+
+**Task 2.** Only count them.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+grep -c 500 access.log
+```
+Output: `2`.
+
+</details>
+
+**Task 3.** Print the lines that do not contain `500`.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+grep -v 500 access.log
+```
+Output:
+```
+GET /home 200
+GET /about 200
+```
+
+</details>
+
 ## Related Commands
 - [`sed`](sed.md) - edit the lines that `grep` finds
 - [`awk`](awk.md) - process columns of the matching lines
@@ -831,3 +899,7 @@ proj/src/util.py:2:# TODO later
 - [`tail`](../file-management/tail.md) - follow a growing log
 - `egrep` / `fgrep` - old names of `grep -E` and `grep -F`
 - `pgrep` - search processes by name
+
+---
+<!-- nav -->
+[← Previous: `wc`](wc.md) | [Learning path](../README.md) | [Next: `cut` →](cut.md)

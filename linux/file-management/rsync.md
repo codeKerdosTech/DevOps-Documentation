@@ -1,5 +1,9 @@
 # rsync
 
+<!-- safety -->
+> **Practise safely.** With `--delete`, rsync removes files from the destination. Always run the command with `--dry-run` first and read what it would do.
+<!-- /safety -->
+
 ## What is it?
 `rsync` (remote sync) copies and synchronizes files and directories, locally or between machines over SSH. Its main strength is that it only transfers the **differences**: files that are already identical on both sides are skipped, and for changed files only the changed blocks are sent. It can preserve permissions, owners and timestamps, delete files that disappeared from the source, resume broken transfers and exclude files by pattern. This makes it the standard tool for deployments, backups and mirroring.
 
@@ -1119,3 +1123,7 @@ total size is 20  speedup is 0.10
 - `ssh` - the transport used for remote transfers
 - `tar` - archive a directory into a single file
 - `cron` - schedule backups and syncs
+
+---
+<!-- nav -->
+[← Previous: `ln`](ln.md) | [Learning path](../README.md) | [Next: `nano` →](../editors/nano.md)

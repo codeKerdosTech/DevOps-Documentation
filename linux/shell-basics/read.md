@@ -648,3 +648,7 @@ An associative array (`declare -A`) holds the settings. Unlike `source app.conf`
 - [`find`](../file-management/find.md) - `-print0` together with `read -d ''`
 - `select` - a menu from a list of words
 - `mapfile` / `readarray` - read all lines of a file into an array in one step
+
+---
+<!-- nav -->
+[← Previous: `source`](source.md) | [Learning path](../README.md) | [Next: `test` →](test.md)

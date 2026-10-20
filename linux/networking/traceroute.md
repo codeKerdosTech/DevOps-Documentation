@@ -326,3 +326,7 @@ traceroute -n -m 2 203.0.113.10 | grep -c "10.0.0.5"
 - [`tcpdump`](tcpdump.md) - capture the probe and reply packets
 - [`dig`](dig.md) - check DNS before tracing
 - `mtr` - live traceroute with loss statistics
+
+---
+<!-- nav -->
+[← Previous: `dig`](dig.md) | [Learning path](../README.md) | [Next: `nc` →](nc.md)

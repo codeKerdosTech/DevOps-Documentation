@@ -1,5 +1,17 @@
 # ssh
 
+<!-- start-here -->
+> **Start here.** On your first read, learn only these. The rest of the page is reference you can come back to.
+>
+> | Learn this first | What it does |
+> |---|---|
+> | `ssh user@host` | log in to another machine |
+> | `ssh -p 2222 user@host` | use a different port |
+> | `ssh -i key.pem user@host` | log in with a key file |
+> | `ssh user@host uptime` | run one command and come back |
+> | `exit` | leave the remote shell |
+<!-- /start-here -->
+
 ## What is it?
 `ssh` (Secure Shell) opens an encrypted connection to a remote machine so you can run commands, forward ports and tunnel traffic. It is the standard way to administer Linux servers.
 
@@ -462,3 +474,7 @@ curl -sk -o /dev/null -w "%{http_code}\n" https://localhost:8443
 - [`nc`](nc.md) - test that port 22 is reachable
 - `ssh-keygen` - create and manage SSH keys
 - `rsync` - sync files over SSH
+
+---
+<!-- nav -->
+[← Previous: `wget`](wget.md) | [Learning path](../README.md) | [Next: `scp` →](scp.md)

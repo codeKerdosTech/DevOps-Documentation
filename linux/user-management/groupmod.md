@@ -400,3 +400,7 @@ Ansible does not fix the files for you. Add a `find ... chgrp` task.
 - [`getent`](getent.md) - read the group database
 - [`visudo`](visudo.md) - fix `sudoers` rules that use the group name
 - `vigr` - edit `/etc/group` safely by hand
+
+---
+<!-- nav -->
+[← Previous: `groupdel`](groupdel.md) | [Learning path](../README.md) | [Next: `groups` →](groups.md)

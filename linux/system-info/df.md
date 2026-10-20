@@ -588,3 +588,7 @@ full in 24 hours
 - [`timeout`](../process-management/timeout.md) - protect a script from a hung NFS mount
 - `tune2fs -m` - change the space that is reserved for `root`
 - `ncdu` - an interactive tool to find what takes the space
+
+---
+<!-- nav -->
+[← Previous: `free`](free.md) | [Learning path](../README.md) | [Next: `du` →](du.md)

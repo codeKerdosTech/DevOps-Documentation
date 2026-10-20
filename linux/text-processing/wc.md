@@ -403,6 +403,51 @@ wc -c < payload.json
 28
 ```
 
+## Try it yourself
+
+Work in a practice folder so nothing real can be damaged: `mkdir -p ~/practice && cd ~/practice`. Try each task first, then open the answer.
+
+**Task 1.** Let's say we have this file `msg.txt`:
+```
+hello world
+bye
+```
+Create it with `printf 'hello world\nbye\n' > msg.txt`. Count its lines.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+wc -l msg.txt
+```
+Output: `2 msg.txt`.
+
+</details>
+
+**Task 2.** Count the words.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+wc -w msg.txt
+```
+Output: `3 msg.txt`.
+
+</details>
+
+**Task 3.** Count the bytes.
+
+<details>
+<summary>Show the answer</summary>
+
+```bash
+wc -c msg.txt
+```
+Output: `16 msg.txt`.
+
+</details>
+
 ## Related Commands
 - [`cat`](../file-management/cat.md) - print a file
 - [`head`](../file-management/head.md) / [`tail`](../file-management/tail.md) - show part of a file
@@ -411,3 +456,7 @@ wc -c < payload.json
 - `grep -c` - count matching lines
 - `sort` / `uniq -c` - count unique values
 - `du` - disk usage of files
+
+---
+<!-- nav -->
+[← Previous: `vim`](../editors/vim.md) | [Learning path](../README.md) | [Next: `grep` →](grep.md)
