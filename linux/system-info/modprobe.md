@@ -9,20 +9,23 @@ modprobe [OPTIONS] MODULE [PARAMETER=VALUE]
 ```
 
 ## Visual Overview
-> `modprobe` reads the dependency list built by `depmod`, loads each dependency first, then the module.
+> `modprobe` loads a module and, unlike `insmod`, loads everything it depends on first.
 
 ```mermaid
-flowchart LR
-    A[modprobe NAME] --> B[Read modules.dep]
-    B --> C[Load dependencies first]
-    C --> D[Load the module]
-    D --> E[Module active in kernel]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    class A start
-    class B,C,D proc
-    class E ok
+flowchart TD
+    c1[modprobe name] --> i1[Read modules.dep<br/>to find the dependencies]
+    i1 --> c2[Load the dependencies first]
+    c2 --> o1[Load the module<br/>it is now active]
+    c3[modprobe -r name] --> x1[Unload the module]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1,c2,c3 cmd
+    class i1 inp
+    class o1 out
+    class x1 bad
 ```
 
 ## Options/Flags

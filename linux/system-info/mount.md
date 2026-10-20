@@ -31,34 +31,20 @@ nas01:/export/backup                        /mnt/backup nfs   _netdev,nofail   0
 | PASS | Order of `fsck` at the boot: `1` for `/`, `2` for others, `0` no check |
 
 ## Visual Overview
-> `mount` finds the device, finds the file system type, and asks the kernel to attach it to the mount point.
+> Mounting attaches a disk to a folder. After that, the folder shows the files that are on the disk.
 
 ```mermaid
 flowchart TD
-    A[mount command] --> B{Arguments given}
-    B -->|None| C[Read proc self mountinfo and list mounts]
-    B -->|a option| D[Read etc fstab]
-    B -->|Device and directory| E[Check device and mount point]
-    D --> E
-    E --> F{File system type known}
-    F -->|Yes| G[Call the kernel mount]
-    F -->|No| H[Probe with blkid]
-    H --> G
-    G --> I{Success}
-    I -->|Yes| J[Files visible under mount point]
-    I -->|No| K[Print error message]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class C,D,E,G,H proc
-    class B,F,I dec
-    class J ok
-    class K err
+    i1[Disk /dev/sdb1<br/>holds files] -->|mount /dev/sdb1 /mnt/data| o1[Folder /mnt/data now shows<br/>the files on the disk]
+    o1 -->|umount /mnt/data| n1[Folder is empty again]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class o1 out
+    class n1 note
 ```
 
 ## Options/Flags

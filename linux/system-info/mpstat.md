@@ -27,33 +27,24 @@ mpstat [OPTIONS] [INTERVAL [COUNT]]
 The values of a line add up to 100%.
 
 ## Visual Overview
-> `mpstat` reads the CPU counters of `/proc/stat` for every CPU, waits for `INTERVAL` seconds, reads them again, and prints the percent of time spent in each state.
+> `mpstat -P ALL` shows the load of each CPU core separately. One core at 100 while the others are idle means a single-threaded bottleneck.
 
 ```mermaid
-flowchart LR
-    A[proc stat and proc interrupts] --> B[mpstat]
-    B --> C[Read counters of every CPU]
-    C --> D[Wait interval seconds]
-    D --> E[Read counters again]
-    E --> F{Selection option P or I}
-    F -->|P ALL| G[One line for each CPU and all]
-    F -->|I| H[Interrupts for each CPU]
-    F -->|None| I[One line for all CPUs]
-    G --> J[Print percent values]
-    H --> J
-    I --> J
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,C,D,E proc
-    class F dec
-    class G,H,I alt
-    class J out
+flowchart TD
+    c1[mpstat -P ALL 2] --> o1[all<br/>12% busy]
+    c1 --> x1[CPU 0<br/>95% busy]
+    c1 --> o2[CPU 1<br/>3% busy]
+    c1 --> o3[CPU 2<br/>2% busy]
+    x1 --> n1[One busy core,<br/>the average hides it]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class o1,o2,o3 out
+    class x1 bad
+    class n1 note
 ```
 
 ## Options/Flags

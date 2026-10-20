@@ -18,31 +18,23 @@ Use `-` for standard input. With process substitution you can compare command ou
 | `2` | Trouble (for example a missing file) |
 
 ## Visual Overview
-> `diff` finds the longest sequence of lines that both files share. The lines that are not part of it are reported as added, deleted or changed.
+> `diff -u` compares two files. A line starting with `-` exists only in the first file, a line starting with `+` only in the second. Unchanged lines have no sign.
 
 ```mermaid
-flowchart LR
-    A[File 1] --> C[diff]
-    B[File 2] --> C
-    C --> D{Same content}
-    D -->|Yes| E[No output and exit code 0]
-    D -->|No| F[List the differences and exit code 1]
-    F --> G[Normal format]
-    F --> H[Unified format for patches]
-    F --> I[Side by side format]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A,B start
-    class C proc
-    class D dec
-    class E ok
-    class F err
-    class G,H,I out
+flowchart TD
+    i1[a.txt<br/>one<br/>two<br/>three] --> c1[diff -u a.txt b.txt]
+    i2[b.txt<br/>one<br/>2<br/>three] --> c1
+    c1 --> o1[one<br/>-two<br/>+2<br/>three]
+    c1 -.->|identical files| n1[no output, exit status 0]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1,i2 inp
+    class c1 cmd
+    class o1 out
+    class n1 note
 ```
 
 ## Options/Flags

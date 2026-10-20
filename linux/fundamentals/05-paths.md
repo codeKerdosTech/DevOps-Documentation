@@ -13,27 +13,20 @@ relative/path/to/file
 ```
 
 ## Visual Overview
-> The shell turns every path into one location in the tree. A relative path starts from where you are, an absolute path starts from the top.
+> Three different ways to write a path can point to the same file. Here you are in `/home/ravi/app` and the file is `/home/ravi/app/logs/a.log`.
 
 ```mermaid
-flowchart TD
-    A[Path typed] --> B{Starts with slash}
-    B --> C[Absolute path start at root]
-    B --> D{Starts with tilde}
-    D --> E[Start at home directory]
-    D --> F[Relative path start at current directory]
-    C --> G[Same file found]
-    E --> G
-    F --> G
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A start
-    class B,D dec
-    class C,E,F proc
-    class G ok
+flowchart LR
+    i1[Absolute path<br/>/home/ravi/app/logs/a.log<br/>starts at the root] --> o1[the same file]
+    i2[Relative path<br/>logs/a.log<br/>starts where you are now] --> o1
+    i3[Home path<br/>~/app/logs/a.log<br/>~ means /home/ravi] --> o1
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1,i2,i3 inp
+    class o1 out
 ```
 
 ## Options/Flags

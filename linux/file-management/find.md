@@ -10,34 +10,24 @@ find [STARTING_POINT...] [EXPRESSION]
 The expression is made of **options** (like `-maxdepth`), **tests** (like `-name`), **operators** (like `-o`) and **actions** (like `-exec`). If you give no starting point, `.` is used. If you give no action, `-print` is used.
 
 ## Visual Overview
-> `find` visits every entry below the starting points, checks it against the tests from left to right and runs the action for the entries that pass.
+> `find` walks every file under a folder and tests each one. Only files that pass every test reach the action.
 
 ```mermaid
 flowchart TD
-    A[Starting directories] --> B[Walk the directory tree]
-    B --> C[Take next entry]
-    C --> D{Passes all tests}
-    D -->|No| C
-    D -->|Yes| E{Which action}
-    E -->|print| F[Print the path]
-    E -->|exec| G[Run a command on it]
-    E -->|delete| H[Remove it]
-    F --> C
-    G --> C
-    H --> C
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,C proc
-    class D,E dec
-    class F out
-    class G alt
-    class H err
+    i1[Start folder /var/log<br/>find visits every file below it] --> c1[Test 1<br/>-name *.log]
+    c1 -->|passes| c2[Test 2<br/>-mtime +7 older than 7 days]
+    c1 -->|fails| n1[File is ignored]
+    c2 -->|fails| n1
+    c2 -->|passes| o1[Action<br/>-print   -delete   -exec cmd]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class c1,c2 cmd
+    class n1 note
+    class o1 out
 ```
 
 ## Options/Flags

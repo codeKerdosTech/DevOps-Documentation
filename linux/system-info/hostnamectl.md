@@ -21,31 +21,22 @@ Without a command, `hostnamectl` runs `status`. Changing commands need root (`su
 | `location [TEXT]` | Show or set the location (`Rack 4, Frankfurt`) |
 
 ## Visual Overview
-> `hostnamectl` asks `systemd-hostnamed` over D-Bus. The service reads `/etc/hostname`, `/etc/machine-info`, `/etc/os-release` and the kernel, and writes them on a change.
+> Unlike plain `hostname`, `hostnamectl set-hostname` is permanent. It writes `/etc/hostname` and updates the running kernel in one step.
 
 ```mermaid
-flowchart LR
-    A[hostnamectl command] --> B[D-Bus]
-    B --> C[systemd hostnamed]
-    C --> D{Read or change}
-    D -->|status| E[Read hostname os release kernel DMI data]
-    D -->|set-hostname| F[Write etc hostname and kernel name]
-    D -->|chassis deployment location| G[Write etc machine info]
-    E --> H[Print result]
-    F --> H
-    G --> H
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,C proc
-    class D dec
-    class E,F,G alt
-    class H out
+flowchart TD
+    c1[hostnamectl] --> o1[Shows hostname, OS, kernel<br/>and machine type]
+    c2[hostnamectl set-hostname web01] --> c3[systemd-hostnamed]
+    c3 --> o2[Writes /etc/hostname<br/>and updates the kernel name]
+    o2 --> n1[Still web01 after a reboot]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1,c2,c3 cmd
+    class o1,o2 out
+    class n1 note
 ```
 
 ## Options/Flags

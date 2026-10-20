@@ -14,35 +14,23 @@ A program is a list of `PATTERN { ACTION }` pairs. If the pattern is missing, th
 > This guide uses **GNU awk** (`gawk`). On Debian and Ubuntu the default `awk` can be `mawk`, which does not have the GNU extensions (`asort`, `gensub`, `strftime`, `BEGINFILE`, `FPAT`, `-i inplace`). Check with `awk --version`. Install `gawk` with `sudo apt install gawk`.
 
 ## Visual Overview
-> `awk` runs `BEGIN` once, then for every input line splits it into fields and runs each matching `PATTERN { ACTION }`, and at the end it runs `END` once.
+> `awk` cuts each line into numbered fields. `$1` is the first, `$2` the second. It runs the action only on lines where the pattern is true.
 
 ```mermaid
 flowchart TD
-    A[Start] --> B[Run BEGIN block]
-    B --> C[Read next line]
-    C --> D[Split line into fields]
-    D --> E{Pattern matches}
-    E -->|Yes| F[Run the action]
-    E -->|No| G[Skip]
-    F --> H{More lines}
-    G --> H
-    H -->|Yes| C
-    H -->|No| I[Run END block]
-    I --> J[Finish]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,I alt
-    class C,D proc
-    class E,H dec
-    class F ok
-    class G err
-    class J out
+    i1[Input line<br/>10.0.0.5 GET /home 200] --> c1[Split into fields<br/>$1 10.0.0.5<br/>$2 GET<br/>$3 /home<br/>$4 200]
+    c1 --> c2[awk $4==200 print $1<br/>is $4 equal to 200?]
+    c2 -->|yes| o1[prints 10.0.0.5]
+    c2 -->|no| n1[line skipped]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class c1,c2 cmd
+    class o1 out
+    class n1 note
 ```
 
 ## Options/Flags

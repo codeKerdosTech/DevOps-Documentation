@@ -9,29 +9,21 @@ nslookup [OPTIONS] NAME [SERVER]
 ```
 
 ## Visual Overview
-> `nslookup` sends the name to a DNS server (the default resolver or the one you give) and prints the server it used followed by the answer. A non-authoritative answer means it came from a cache.
+> `nslookup` asks a DNS server for the IP address of a name. Add a server at the end to ask that server instead of your default one.
 
 ```mermaid
 flowchart LR
-    A[nslookup NAME] --> B{Server given}
-    B -->|Yes| C[Ask that DNS server]
-    B -->|No| D[Ask default resolver]
-    C --> E{Record found}
-    D --> E
-    E -->|Yes| F[Print server and answer]
-    E -->|No| G[Print NXDOMAIN error]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,E dec
-    class C,D proc
-    class F ok
-    class G err
+    c1[nslookup example.com] -->|your default DNS server| o1[Name: example.com<br/>Address: 93.184.216.34]
+    c2[nslookup example.com 1.1.1.1] -->|asks 1.1.1.1 directly| o1
+    c3[nslookup nosuchname.invalid] --> x1[NXDOMAIN<br/>the name does not exist]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1,c2,c3 cmd
+    class o1 out
+    class x1 bad
 ```
 
 ## Options/Flags

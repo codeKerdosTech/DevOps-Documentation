@@ -32,32 +32,22 @@ The load is compared with the **number of CPU cores** (`nproc`).
 | `8.0, 4.0, 1.5` (1, 5, 15 min) | The load **rises**: a problem has started |
 
 ## Visual Overview
-> `uptime` reads the boot time and the load numbers from `/proc`, counts the logged in users in `utmp`, and prints them in one line, or in a different form with an option.
+> `uptime` prints one line: the time, how long the machine has been on, how many users, and the load average. Load is only meaningful compared with your CPU count.
 
 ```mermaid
-flowchart LR
-    A[proc uptime] --> E[uptime]
-    B[proc loadavg] --> E
-    C[utmp user count] --> E
-    E --> D{Option}
-    D -->|None| F[One line with all the data]
-    D -->|p| G[Pretty form in days hours minutes]
-    D -->|s| H[Boot date and time]
-    F --> I[Terminal or monitoring script]
-    G --> I
-    H --> I
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A,B,C start
-    class E proc
-    class D dec
-    class F,G,H ok
-    class I out
+flowchart TD
+    c1[10:00 up 3 days, 2 users,<br/>load average: 0.5, 0.7, 0.9] --> o1[up 3 days<br/>time since boot]
+    c1 --> o2[2 users<br/>logged in now]
+    c1 --> o3[0.5  0.7  0.9<br/>load of the last<br/>1, 5, 15 minutes]
+    o3 --> n1[On 4 CPUs, a load of 4<br/>means fully busy]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class o1,o2,o3 out
+    class n1 note
 ```
 
 ## Options/Flags

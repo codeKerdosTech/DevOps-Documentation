@@ -20,34 +20,20 @@ chgrp [OPTIONS] --reference=RFILE FILE...
 To see your groups run `id` or `groups`. The group changes (new membership) apply after a new login, or in a shell started with `newgrp GROUP` or `sg GROUP -c 'command'`.
 
 ## Visual Overview
-> `chgrp` looks up the group, checks that you may use it, and writes the new group into the inode of each file. The owner and the permission bits stay as they are.
+> `chgrp` changes only the group of a file. The owner and the permission bits stay as they are.
 
 ```mermaid
 flowchart LR
-    A[chgrp GROUP FILE] --> B[Look up the group]
-    B --> C{Group exists}
-    C -->|No| D[Error invalid group]
-    C -->|Yes| E{Caller is root or owner and member}
-    E -->|No| F[Error operation not permitted]
-    E -->|Yes| G[Write the group into the inode]
-    G --> H{Recursive option R}
-    H -->|Yes| I[Repeat for every file below]
-    H -->|No| J[Done]
-    I --> J
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B proc
-    class C,E,H dec
-    class D,F err
-    class G ok
-    class I alt
-    class J out
+    i1[app.log<br/>owner ravi, group dev] -->|chgrp ops app.log| o1[app.log<br/>owner ravi, group ops]
+    n1[-R repeats it for everything inside a folder]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class o1 out
+    class n1 note
 ```
 
 ## Options/Flags

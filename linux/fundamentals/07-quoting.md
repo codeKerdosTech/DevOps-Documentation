@@ -11,30 +11,20 @@
 ```
 
 ## Visual Overview
-> The shell reads your line, removes the quotes, and decides what to expand based on the kind of quote around each part.
+> Quotes decide what bash is allowed to change before the command runs. The same text gives three different results.
 
 ```mermaid
-flowchart TD
-    A[Text typed] --> B{Which quote}
-    B --> C[No quote]
-    B --> D[Double quote]
-    B --> E[Single quote]
-    C --> F[Split on spaces and expand variables and patterns]
-    D --> G[Keep spaces and expand variables only]
-    E --> H[Keep everything literal]
-    F --> I[Final words for the command]
-    G --> I
-    H --> I
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A start
-    class B dec
-    class C,D,E proc
-    class F,G,H ok
-    class I out
+flowchart LR
+    i1[No quotes<br/>echo $USER *.txt] --> o1[ravi a.txt b.txt<br/>variable and star both expanded]
+    i2[Double quotes around<br/>$USER *.txt] --> o2[ravi *.txt<br/>variable expanded, star kept]
+    i3[Single quotes around<br/>$USER *.txt] --> o3[$USER *.txt<br/>nothing is changed]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1,i2,i3 inp
+    class o1,o2,o3 out
 ```
 
 ## Options/Flags

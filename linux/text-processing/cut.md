@@ -11,34 +11,20 @@ command | cut OPTION...
 You must give one of `-b`, `-c` or `-f`. The list of positions is a comma separated list of numbers and ranges: `1`, `1,3`, `2-4`, `-3` (from the start to 3) and `3-` (from 3 to the end).
 
 ## Visual Overview
-> `cut` reads each line, picks the requested fields or positions and writes only those, joined by the output delimiter.
+> `cut` splits each line at a delimiter and prints only the fields you ask for.
 
 ```mermaid
 flowchart LR
-    A[file or stdin] --> B[Read next line]
-    B --> C{Mode}
-    C -->|f fields| D[Split by delimiter]
-    C -->|c characters| E[Pick by position]
-    C -->|b bytes| F[Pick by byte]
-    D --> G[Print the chosen part]
-    E --> G
-    F --> G
-    G --> H[Terminal]
-    G --> I[Pipe to sort or uniq]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B proc
-    class C dec
-    class D,E,F ok
-    class G alt
-    class H out
-    class I alt
+    i1[ravi,30,dev] -->|cut -d, -f2| o1[30]
+    i2[ravi,30,dev] -->|cut -d, -f1,3| o2[ravi,dev]
+    i3[abcdef] -->|cut -c1-3| o3[abc]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1,i2,i3 inp
+    class o1,o2,o3 out
 ```
 
 ## Options/Flags

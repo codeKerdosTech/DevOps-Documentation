@@ -12,28 +12,22 @@ cd ..
 ```
 
 ## Visual Overview
-> `cd` resolves the target path and updates the shell's current directory (`PWD`) and the previous directory (`OLDPWD`).
+> `cd` only moves your shell to another folder. Each form below starts from the same place: `/home/ravi/app`.
 
 ```mermaid
 flowchart LR
-    A[cd target] --> B{Which target}
-    B --> C[No argument or tilde goes to HOME]
-    B --> D[Dash goes to OLDPWD]
-    B --> E[Path is resolved]
-    C --> F[Shell PWD updated]
-    D --> F
-    E --> F
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B dec
-    class C,D,E proc
-    class F out
+    n1[You are in<br/>/home/ravi/app] -->|cd logs| o1[folder<br/>/home/ravi/app/logs]
+    n1 -->|cd /var/log| o2[folder<br/>/var/log]
+    n1 -->|cd ..| o3[parent folder<br/>/home/ravi]
+    n1 -->|cd or cd ~| o4[your home folder<br/>/home/ravi]
+    n1 -->|cd -| o5[the folder you were<br/>in before]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class n1 note
+    class o1,o2,o3,o4,o5 out
 ```
 
 ## Options/Flags

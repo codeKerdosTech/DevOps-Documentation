@@ -31,35 +31,21 @@ userdel [OPTIONS] LOGIN
 `LOGIN` is the name of an existing user. You need `root` rights. `userdel` refuses to remove a user who has a running process (`userdel: user alice is currently used by process 4210`), unless you use `-f`.
 
 ## Visual Overview
-> `userdel` locks the account files, removes the user and (if possible) the private group, and with `-r` deletes the home and the mail spool. Everything else that the user owns stays on the disk, as numbers.
+> `userdel` removes the account from the user files. Without `-r` the home folder and the files stay on disk.
 
 ```mermaid
-flowchart TD
-    A[userdel with options] --> B{User exists}
-    B -->|No| C[Error user does not exist]
-    B -->|Yes| D{User has a running process}
-    D -->|Yes and no force| E[Error user is used by process]
-    D -->|No or force| F[Remove the entries from the account files]
-    F --> G{Private group has other members}
-    G -->|No| H[Remove the private group too]
-    G -->|Yes| I[Keep the group]
-    H --> J{Option r}
-    I --> J
-    J -->|Yes| K[Delete home and mail spool]
-    J -->|No| L[Leave home and files on the disk]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,D,G,J dec
-    class C,E err
-    class F,H,I proc
-    class K alt
-    class L out
+flowchart LR
+    c1[userdel ravi] --> o1[Account removed<br/>home folder stays]
+    c2[userdel -r ravi] --> o2[Account, home folder<br/>and mail spool removed]
+    c3[userdel -f ravi] --> x1[Forced, even if ravi is logged in]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1,c2,c3 cmd
+    class o1,o2 out
+    class x1 bad
 ```
 
 ## Options/Flags

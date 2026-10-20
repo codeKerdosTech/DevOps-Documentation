@@ -9,34 +9,23 @@ curl [OPTIONS] URL
 ```
 
 ## Visual Overview
-> `curl` builds a request from the URL and options, sends it to the server, and writes the response body to the terminal or a file. Options control the method, headers, body, redirects and what extra details are printed.
+> `curl` sends one HTTP request and shows the server's answer. The options decide what you see and where the body goes.
 
 ```mermaid
-flowchart LR
-    A[curl URL] --> B[Resolve DNS]
-    B --> C[Connect TCP and TLS]
-    C --> D[Send request with method headers body]
-    D --> E[Server responds]
-    E --> F{Redirect 3xx}
-    F -->|Yes and L used| G[Follow new URL]
-    F -->|No| H{Output option}
-    G --> D
-    H -->|default| I[Print body to terminal]
-    H -->|o or O| J[Save body to file]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,C,D proc
-    class E ok
-    class F,H dec
-    class G alt
-    class I out
-    class J ok
+flowchart TD
+    c1[curl https://api.example.com/users] -->|1 request| i1[Web server or API]
+    i1 -->|2 response with status and body| c2[curl receives the answer]
+    c2 -->|default| o1[Body on screen]
+    c2 -->|-o users.json| o2[Body saved to file]
+    c2 -->|-i| o3[Headers shown too]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1,c2 cmd
+    class i1 inp
+    class o1,o2,o3 out
 ```
 
 ## Options/Flags

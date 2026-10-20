@@ -13,27 +13,20 @@ ls {app,error}.log
 ```
 
 ## Visual Overview
-> You type a pattern. Bash looks in the directory, replaces the pattern with every matching name, and only then starts the command.
+> The shell, not the command, expands wildcards. `ls` never sees the star. It only receives the list of names bash already found.
 
 ```mermaid
-flowchart LR
-    A[You type ls star dot log] --> B[Bash reads the pattern]
-    B --> C[Bash lists matching names]
-    C --> D{Any match}
-    D --> E[Replace pattern with the names]
-    D --> F[Keep the pattern as typed]
-    E --> G[Run ls app.log error.log]
-    F --> G
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A start
-    class B,C proc
-    class D dec
-    class E,F ok
-    class G out
+flowchart TD
+    i1[You type<br/>ls *.log] --> c1[Bash looks in the folder<br/>app.log  error.log  notes.txt]
+    c1 -->|names matching *.log| o1[ls app.log error.log<br/>what the command really receives]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class c1 cmd
+    class o1 out
 ```
 
 ## Options/Flags

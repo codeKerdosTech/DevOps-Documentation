@@ -18,26 +18,23 @@ uname -r                    # the running kernel version
 ```
 
 ## Visual Overview
-> When hardware appears or a feature is needed, the kernel (or `udev`) loads the matching module from `/lib/modules`. The module registers itself with the kernel and then serves that device or feature.
+> Not every driver is built into the kernel. Optional drivers are separate module files that are loaded only when needed.
 
 ```mermaid
 flowchart TD
-    A[Hardware found or feature needed] --> B{Support built into the kernel}
-    B --> C[Works at once]
-    B --> D[Look in lib modules for the kernel version]
-    D --> E[modprobe loads module and dependencies]
-    E --> F[Module registers with the kernel]
-    F --> G[Device or file system is usable]
-    C --> G
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A start
-    class B dec
-    class C,D,E,F proc
-    class G ok
+    i1[New hardware or feature<br/>needs a driver] --> c1[modprobe name<br/>finds the module in /lib/modules]
+    c1 --> c2[Loads the dependencies first<br/>then the module]
+    c2 --> o1[Module is active in the kernel<br/>lsmod lists it]
+    n1[Already built in? it just works<br/>no module needed]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class c1,c2 cmd
+    class o1 out
+    class n1 note
 ```
 
 ## Options/Flags

@@ -24,32 +24,21 @@ Reading `ls -l` output:
 ```
 
 ## Visual Overview
-> When a process opens a file the kernel compares its user ID and group IDs with the file's owner and group, and picks one set of bits.
+> Linux checks only one group of three letters: owner if you own the file, otherwise group if you are in it, otherwise others. Root skips the check.
 
 ```mermaid
-flowchart TD
-    A[Process opens a file] --> B{Is the user root}
-    B --> C[Allowed]
-    B --> D{Is the user the owner}
-    D --> E[Check user bits]
-    D --> F{Is the user in the group}
-    F --> G[Check group bits]
-    F --> H[Check other bits]
-    E --> I{Bit set for the action}
-    G --> I
-    H --> I
-    I --> C
-    I --> J[Permission denied]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    class A start
-    class B,D,F,I dec
-    class E,G,H proc
-    class C ok
-    class J err
+flowchart LR
+    c1[-rwxr-x--- ravi dev app.sh] --> o1[Owner ravi<br/>rwx<br/>read write run]
+    c1 --> o2[Group dev<br/>r-x<br/>read and run]
+    c1 --> x1[Everyone else<br/>---<br/>no access]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class o1,o2 out
+    class x1 bad
 ```
 
 ## Options/Flags

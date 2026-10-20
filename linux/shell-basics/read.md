@@ -12,30 +12,21 @@ read [-ers] [-a ARRAY] [-d DELIM] [-i TEXT] [-n NCHARS] [-N NCHARS] [-p PROMPT] 
 - No `NAME`: the line goes to `REPLY` and nothing is split.
 
 ## Visual Overview
-> `read` takes a line from the input, removes the new line, splits it with `IFS` into words, and puts the words in the variables. The exit status tells whether it worked.
+> `read` pauses a script, waits for a line of input and stores it in a variable. That is how scripts ask questions.
 
 ```mermaid
-flowchart LR
-    A[read NAME] --> B[Take input from stdin or file descriptor]
-    B --> C{Input ends with delimiter in time}
-    C -->|Timeout| D[Status above 128]
-    C -->|End of file| E[Status 1 with partial data kept]
-    C -->|Yes| F[Remove delimiter and handle backslashes]
-    F --> G[Split into words with IFS]
-    G --> H[Assign words to variables]
-    H --> I[Status 0]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,F,G,H proc
-    class C dec
-    class D,E err
-    class I ok
+flowchart TD
+    c1[read -p Name: name] --> i1[Script waits for you]
+    i1 -->|you type ravi and press Enter| o1[Variable name holds ravi]
+    o1 --> o2[echo $name prints ravi]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class i1 inp
+    class o1,o2 out
 ```
 
 ## Options/Flags

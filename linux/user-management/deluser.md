@@ -35,34 +35,20 @@ deluser USER GROUP                      # remove a user from a group
 You need `root` rights. `deluser` reads its settings from `/etc/deluser.conf`.
 
 ## Visual Overview
-> `deluser` reads the configuration, optionally makes a backup and removes the files, calls `userdel` for the account, and warns about groups that become empty.
+> `deluser` removes an account on Debian and Ubuntu. By default the home folder stays. Add a flag to delete it, or to back it up first.
 
 ```mermaid
-flowchart TD
-    A[deluser USER] --> B{Which family}
-    B -->|RHEL and others| C[Command not found, use userdel]
-    B -->|Debian or Ubuntu| D[Read etc deluser conf]
-    D --> E{Backup or remove files options}
-    E -->|Yes| F[Find the files and make the tar archive]
-    E -->|No| G[Skip the files]
-    F --> H[Remove the files]
-    G --> I[Remove the account with userdel]
-    H --> I
-    I --> J[Warn about empty groups]
-    J --> K[Done]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,E dec
-    class C err
-    class D,F,G,H,I proc
-    class J alt
-    class K ok
+flowchart LR
+    c1[deluser ravi] --> o1[Account removed<br/>home folder stays]
+    c2[deluser --remove-home ravi] --> o2[Account and home folder removed]
+    c3[deluser --backup --remove-home ravi] --> o3[Home saved as a tar file first<br/>then removed]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1,c2,c3 cmd
+    class o1,o2,o3 out
 ```
 
 ## Options/Flags

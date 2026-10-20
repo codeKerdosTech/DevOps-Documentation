@@ -29,31 +29,22 @@ sudo yum install [-y] PACKAGE[-VERSION]
 ```
 
 ## Visual Overview
-> `yum` reads repository definitions from `/etc/yum.repos.d/`, downloads metadata, solves dependencies, downloads the `.rpm` files, checks their signatures and hands them to `rpm` to install. Every transaction is saved in the history so it can be undone.
+> `yum` is the older RHEL and CentOS package manager. The steps are the same as `dnf`, which replaced it. It resolves dependencies, then installs.
 
 ```mermaid
 flowchart TD
-    A[yum install or update] --> B[Read repo files in /etc/yum.repos.d]
-    B --> C[Download or reuse repo metadata]
-    C --> D[Resolve dependencies]
-    D --> E[Show transaction summary]
-    E --> F{Confirm}
-    F -->|No| G[Abort]
-    F -->|Yes| H[Download rpm files]
-    H --> I{GPG signature valid}
-    I -->|No| J[Abort with error]
-    I -->|Yes| K[rpm installs packages]
-    K --> L[Save transaction in history]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    class A start
-    class B,C,D,E,H,K proc
-    class F,I dec
-    class L ok
-    class G,J err
+    c1[yum install nginx] --> i1[Read repos in /etc/yum.repos.d<br/>load the metadata]
+    i1 --> c2[Resolve dependencies<br/>show the summary, ask y or n]
+    c2 -->|y| c3[Download rpm files<br/>check the GPG signature]
+    c3 --> o1[rpm installs<br/>saved in yum history]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1,c2,c3 cmd
+    class i1 inp
+    class o1 out
 ```
 
 ## Options/Flags

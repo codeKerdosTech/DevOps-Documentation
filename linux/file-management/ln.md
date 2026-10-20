@@ -13,30 +13,22 @@ ln [OPTIONS] -t DIRECTORY TARGET...
 `TARGET` is the existing file. `LINK_NAME` is the new name. Without `-s`, `ln` makes a hard link.
 
 ## Visual Overview
-> A hard link adds a second name for the same inode. A symlink is a new file that stores the path of the target.
+> A hard link is another name for the same data. A symbolic link is a small file that stores a path, so it breaks if the target moves.
 
 ```mermaid
-flowchart LR
-    A[ln TARGET LINK] --> B{Option s used}
-    B -->|No| C[Hard link]
-    B -->|Yes| D[Symbolic link]
-    C --> E[Same inode as TARGET]
-    E --> F[Data stays if one name is deleted]
-    D --> G[New file that stores a path]
-    G --> H[Breaks if TARGET is deleted or moved]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B dec
-    class C,E ok
-    class F out
-    class D,G alt
-    class H err
+flowchart TD
+    c1[data.txt<br/>original name] --> i1[inode 42<br/>the real data on disk]
+    c2[hard.txt<br/>ln data.txt hard.txt] --> i1
+    c3[soft.txt<br/>ln -s data.txt soft.txt] -.->|stores the path| c1
+    x1[rm data.txt<br/>hard.txt still works<br/>soft.txt is now broken]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1,c2,c3 cmd
+    class i1 inp
+    class x1 bad
 ```
 
 ### Hard link or symbolic link?

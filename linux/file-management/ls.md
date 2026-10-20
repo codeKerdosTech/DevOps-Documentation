@@ -9,30 +9,23 @@ ls [OPTIONS] [FILE or DIRECTORY]...
 ```
 
 ## Visual Overview
-> `ls` reads a directory, applies the options you pass, sorts the entries and prints them.
+> Each column of `ls -l` answers one question about the file. Read the line from left to right.
 
 ```mermaid
 flowchart LR
-    A[Directory] --> B[ls reads entries]
-    B --> C{Options}
-    C --> D[Filter hidden files]
-    C --> E[Sort by name time or size]
-    C --> F[Format short or long]
-    D --> G[Terminal output]
-    E --> G
-    F --> G
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B proc
-    class C dec
-    class D,E,F alt
-    class G out
+    c1[-rwxr-xr--  2  ravi dev<br/>4096  Jan 5 10:00  app.sh] --> o1[-rwxr-xr--<br/>type and permissions]
+    c1 --> o2[2<br/>number of hard links]
+    c1 --> o3[ravi and dev<br/>owner and group]
+    c1 --> o4[4096<br/>size in bytes]
+    c1 --> o5[Jan 5 10:00<br/>last modified]
+    c1 --> o6[app.sh<br/>name]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class o1,o2,o3,o4,o5,o6 out
 ```
 
 ## Options/Flags

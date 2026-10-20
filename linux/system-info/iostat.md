@@ -40,32 +40,22 @@ iostat [OPTIONS] [DEVICE...] [INTERVAL [COUNT]]
 | `%util` | The percent of time that the device was **busy** with requests. Near 100% means saturated for a single disk. For SSDs and arrays that can do many requests in parallel, it is not a true measure of "full" |
 
 ## Visual Overview
-> `iostat` reads the disk counters, waits `INTERVAL` seconds, reads them again, and prints the difference as a rate. The first report shows the average since the boot.
+> The first `iostat` report is the average since boot, so ignore it. Each later report shows the activity of one interval.
 
 ```mermaid
-flowchart LR
-    A[proc diskstats and proc stat] --> B[iostat]
-    B --> C[First report since the boot]
-    C --> D{Interval given}
-    D -->|No| E[Stop]
-    D -->|Yes| F[Wait interval seconds]
-    F --> G[Read the counters again]
-    G --> H[Print the rates for this period]
-    H --> I{Count reached}
-    I -->|No| F
-    I -->|Yes| E
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,F,G proc
-    class C,H out
-    class D,I dec
-    class E ok
+flowchart TD
+    c1[iostat -x 2 3] --> x1[Report 1<br/>average since boot<br/>ignore it]
+    c1 --> o1[Report 2 and 3<br/>activity in each 2 second window]
+    o1 --> n1[Read these columns<br/>r/s  w/s  reads and writes per second<br/>await  wait in ms<br/>%util  near 100 means the disk is saturated]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class x1 bad
+    class o1 out
+    class n1 note
 ```
 
 ## Options/Flags

@@ -12,35 +12,20 @@ groupmod [OPTIONS] GROUP
 `GROUP` is the **current** name of an existing group. You need `root` rights.
 
 ## Visual Overview
-> `groupmod` locks the group files, finds the group, changes the name, the GID or the password, and writes the files back. It also updates the members' primary group field when the GID changes.
+> Renaming a group is safe because the GID stays the same. Changing the GID is risky because old files keep the old number.
 
 ```mermaid
-flowchart TD
-    A[groupmod with options] --> B{Group exists}
-    B -->|No| C[Error group does not exist]
-    B -->|Yes| D{Which change}
-    D -->|n new name| E[Change the name in etc group]
-    D -->|g new GID| F[Change the GID and the GID of users who use it]
-    D -->|p password| G[Change the group password]
-    E --> H[Files on disk keep their GID number]
-    F --> I[Old files keep the old GID number]
-    G --> J[Done]
-    H --> J
-    I --> K[Fix files with chgrp or find]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,D dec
-    class C err
-    class E,F,G proc
-    class H,J ok
-    class I alt
-    class K out
+flowchart LR
+    i1[Group devs<br/>GID 1005] -->|groupmod -n engineers devs| o1[Group engineers<br/>GID 1005<br/>file ownership still matches]
+    i1 -->|groupmod -g 2000 devs| x1[Group devs<br/>GID 2000<br/>old files still have 1005]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class o1 out
+    class x1 bad
 ```
 
 ## Options/Flags

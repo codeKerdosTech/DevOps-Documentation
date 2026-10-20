@@ -28,36 +28,24 @@ sudo journalctl -u UNIT [--since TIME] [-p PRIORITY] [-f]
 ```
 
 ## Visual Overview
-> Services and the kernel send messages to `systemd-journald`, which stores them with metadata in `/var/log/journal` (persistent) or `/run/log/journal` (lost at reboot). `journalctl` filters these entries by unit, time, priority and boot.
+> `journald` collects the logs of the kernel and of every service in one place. `journalctl` reads them and filters by service, time or severity.
 
 ```mermaid
 flowchart LR
-    A[Kernel messages] --> D[systemd-journald]
-    B[Service stdout and stderr] --> D
-    C[syslog and logger] --> D
-    D --> E{Storage}
-    E -->|Persistent| F[Directory var log journal]
-    E -->|Volatile| G[Directory run log journal]
-    F --> H[journalctl]
-    G --> H
-    H --> I[Filter by unit]
-    H --> J[Filter by time]
-    H --> K[Filter by priority]
-    H --> L[Filter by boot]
-    I --> M[Output text or json]
-    J --> M
-    K --> M
-    L --> M
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A,B,C start
-    class D,H proc
-    class E dec
-    class F,G ok
-    class I,J,K,L,M out
+    i1[journald<br/>stores logs of the kernel and all services] --> c2[journalctl]
+    c2 --> o1[-u nginx<br/>one service]
+    c2 --> o2[-p err<br/>errors and worse]
+    c2 --> o3[--since 1 hour ago<br/>time window]
+    c2 --> o4[-b<br/>this boot only]
+    c2 --> o5[-f<br/>follow live]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class c2 cmd
+    class o1,o2,o3,o4,o5 out
 ```
 
 ## Options/Flags

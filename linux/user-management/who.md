@@ -10,28 +10,20 @@ who am i
 ```
 
 ## Visual Overview
-> `who` reads the login records in `/var/run/utmp` and prints one line per session.
+> `who` lists the people logged in right now, from the session records in `/var/run/utmp`.
 
 ```mermaid
 flowchart LR
-    A[utmp login records] --> B[who]
-    B --> C{Options}
-    C --> D[Session list]
-    C --> E[Headings]
-    C --> F[Last boot time]
-    C --> G[User count]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B proc
-    class C dec
-    class D,E alt
-    class F,G out
+    i1[Session records<br/>/var/run/utmp] -->|who| o1[ravi  pts/0  Jan 5 10:00  10.0.0.9<br/>amit  pts/1  Jan 5 10:20  10.0.0.7]
+    i1 -->|who -b| o2[time of the last boot]
+    i1 -->|who -q| o3[names and the user count]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class o1,o2,o3 out
 ```
 
 ## Options/Flags

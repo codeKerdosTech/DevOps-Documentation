@@ -36,58 +36,40 @@ Every package manager follows the same basic shape, only the command name differ
 | List installed | `apt list --installed` | `dnf list installed` | `apk info` |
 
 ## Visual Overview
-> A package manager sits between you and the software repositories. It reads a local list of available packages, works out dependencies, downloads and verifies the files, and then hands them to a low level tool that unpacks them onto the system.
+> Whatever the distribution, an install goes through the same steps. The package manager plans and downloads. A low-level tool unpacks.
 
 ```mermaid
 flowchart TD
-    A[You run install command] --> B[High level package manager]
-    B --> C[Read local package index]
-    C --> D[Resolve dependencies]
-    D --> E[Download packages from repository]
-    E --> F{Signature and checksum valid}
-    F -->|No| G[Stop with error]
-    F -->|Yes| H[Low level tool unpacks files]
-    H --> I[Run install scripts]
-    I --> J[Update local package database]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    class A start
-    class B,C,D,E,H,I proc
-    class F dec
-    class J ok
-    class G err
+    i1[You run: install nginx] --> c1[Read the local index<br/>and work out dependencies]
+    c1 --> c2[Download from the repository<br/>and verify the signature]
+    c2 --> c3[Low-level tool unpacks the files]
+    c3 --> o1[Run install scripts<br/>update the package database]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class c1,c2,c3 cmd
+    class o1 out
 ```
 
 ### Package formats and their tools
-> Linux distributions are grouped into families. Each family uses its own package format, a low level tool that handles single files, and a high level tool that handles repositories and dependencies.
+> Each family has its own file format and its own pair of tools: a low-level tool for single files and a high-level one that handles dependencies.
 
 ```mermaid
 flowchart LR
-    A[Linux package management] --> B[Debian family]
-    A --> C[Red Hat family]
-    A --> D[Alpine]
-    A --> E[Universal formats]
-    B --> B1[Format deb]
-    B1 --> B2[Low level dpkg]
-    B2 --> B3[High level apt]
-    C --> C1[Format rpm]
-    C1 --> C2[Low level rpm]
-    C2 --> C3[High level dnf and yum]
-    D --> D1[Format apk]
-    D1 --> D2[Tool apk]
-    E --> E1[snap]
-    E --> E2[flatpak]
-    E --> E3[AppImage]
-    E --> E4[Tarball]
-    classDef root fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef fam fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef leaf fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    class A root
-    class B,C,D,E fam
-    class B1,B2,B3,C1,C2,C3,D1,D2,E1,E2,E3,E4 leaf
+    i1[Debian, Ubuntu] --> c1[.deb files<br/>dpkg] --> o1[apt]
+    i2[RHEL, Fedora, CentOS] --> c2[.rpm files<br/>rpm] --> o2[dnf or yum]
+    i3[Alpine] --> c3[.apk files] --> o3[apk]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1,i2,i3 inp
+    class c1,c2,c3 cmd
+    class o1,o2,o3 out
 ```
 
 ## Options/Flags

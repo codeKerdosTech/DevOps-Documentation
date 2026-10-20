@@ -62,32 +62,24 @@ Each digit is the sum of `r=4`, `w=2` and `x=1`. The three digits are for the ow
 In `ls -l`, setuid shows as `s` in the owner's `x` position, setgid as `s` in the group's `x` position and the sticky bit as `t` in the last position. A capital `S` or `T` means that the special bit is set but the `x` bit below it is **not**.
 
 ## Visual Overview
-> `chmod` reads the mode, combines it with the current permissions of each file and writes the new permissions into the inode of the file. The content of the file does not change.
+> Each digit in `chmod 754` is the sum of read 4, write 2 and execute 1 for one class: owner, group, others.
 
 ```mermaid
 flowchart LR
-    A[chmod MODE FILE] --> B{Mode type}
-    B -->|Octal like 755| C[Replace all permission bits]
-    B -->|Symbolic like u plus x| D[Change only the named bits]
-    C --> E[New permissions in the inode]
-    D --> E
-    E --> F{Recursive option R}
-    F -->|Yes| G[Repeat for every file below]
-    F -->|No| H[Done]
-    G --> H
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,F dec
-    class C,D proc
-    class E ok
-    class G alt
-    class H out
+    c1[chmod 754 script.sh] --> o1[7 = 4+2+1<br/>owner: rwx]
+    c1 --> o2[5 = 4+0+1<br/>group: r-x]
+    c1 --> o3[4 = 4+0+0<br/>others: r--]
+    o1 --> n1[-rwxr-xr--]
+    o2 --> n1
+    o3 --> n1
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class o1,o2,o3 out
+    class n1 note
 ```
 
 ## Options/Flags

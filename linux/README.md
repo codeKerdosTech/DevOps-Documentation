@@ -4,24 +4,20 @@ Start here. The folders are not in alphabetical order of difficulty, so follow t
 
 ## The path at a glance
 
+> Follow the steps in this order. Each step uses what the earlier ones taught.
+
 ```mermaid
 flowchart TD
-    A[Step 1 Fundamentals] --> B[Step 2 Shell basics]
-    B --> C[Step 3 File management and editors]
-    C --> D[Step 4 Text processing]
-    D --> E[Step 5 Permissions and users]
-    E --> F[Step 6 Processes and system info]
-    F --> G[Step 7 Archiving packages services and scheduling]
-    G --> H[Step 8 Networking]
-    H --> I[Step 9 OS internals]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A,B start
-    class C,D,E proc
-    class F,G,H ok
-    class I out
+    B[Beginner] --> I[Intermediate] --> A[Advanced]
+    B --- b1[1 Fundamentals<br/>2 Shell basics<br/>3 Files and editors<br/>4 Text processing<br/>5 Permissions and users]
+    I --- i1[6 Processes and system info<br/>7 Archiving, packages,<br/>services, scheduling<br/>8 Networking]
+    A --- a1[9 OS internals]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
 ```
 
 | Level | Steps | Goal |

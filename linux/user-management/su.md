@@ -24,35 +24,22 @@ Without `USER`, the target is `root`. The dash `-` is the same as `-l` or `--log
 | Use it for | A quick check, when you want to stay in the directory | A clean, "real" session as that user. This is what you almost always want |
 
 ## Visual Overview
-> `su` asks PAM to check the password of the target user, then starts the shell of that user. The dash `-` decides whether it is a clean login shell or a shell with the old environment.
+> `su` starts a shell as another user. The dash decides whether you get a clean login environment or keep your own.
 
 ```mermaid
 flowchart TD
-    A[su options and user] --> B{Caller is root}
-    B -->|Yes| C[No password needed]
-    B -->|No| D[Ask for the password of the target user]
-    D --> E{PAM accepts}
-    E -->|No| F[Error authentication failure]
-    E -->|Yes| G{Target shell allowed}
-    C --> G
-    G -->|nologin| H[Message account not available]
-    G -->|OK| I{Dash or l used}
-    I -->|Yes| J[Clean environment and home directory]
-    I -->|No| K[Keep most of the old environment]
-    J --> L[Start the shell or run command c]
-    K --> L
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,E,G,I dec
-    class C,D,J,K proc
-    class F,H err
-    class L ok
+    c1[alice runs su ravi<br/>enters ravi's password] --> o1[Shell as ravi<br/>keeps alice's folder and variables]
+    c2[alice runs su - ravi] --> o2[Full login as ravi<br/>ravi's home folder and variables]
+    o1 -->|exit| n1[Back to alice]
+    o2 -->|exit| n1
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1,c2 cmd
+    class o1,o2 out
+    class n1 note
 ```
 
 ## Options/Flags

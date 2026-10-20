@@ -9,28 +9,22 @@ file [OPTIONS] FILE...
 ```
 
 ## Visual Overview
-> `file` runs three tests in order: file system tests, magic number tests and language tests. The first test that matches decides the answer.
+> `file` looks at the first bytes inside a file, not at its name or extension, and tells you what it really is.
 
 ```mermaid
-flowchart TD
-    A[file name] --> B[Filesystem tests]
-    B -->|Directory or link or empty| F[Print the type]
-    B -->|Regular file| C[Magic number tests]
-    C -->|Known header found| F
-    C -->|No match| D[Text and language tests]
-    D -->|Text or script found| F
-    D -->|No match| E[Print data]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,C,D proc
-    class F ok
-    class E err
+flowchart LR
+    i1[notes.txt] -->|file notes.txt| o1[ASCII text]
+    i2[photo.png] -->|file photo.png| o2[PNG image data]
+    i3[the program<br/>/bin/ls] -->|file /bin/ls| o3[ELF 64-bit executable]
+    n1[A file renamed to .txt is still<br/>reported as what it really is]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1,i2,i3 inp
+    class o1,o2,o3 out
+    class n1 note
 ```
 
 ## Options/Flags

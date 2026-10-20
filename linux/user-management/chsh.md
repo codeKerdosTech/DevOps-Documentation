@@ -27,34 +27,22 @@ Without `-s`, `chsh` asks for the new shell in an interactive dialog. Without `L
 | Package | `login` | `util-linux-user` (install it if `chsh` is missing) |
 
 ## Visual Overview
-> `chsh` checks the rights of the caller, checks that the new shell is listed in `/etc/shells` (for a normal user) and that it exists, then writes the new shell into `/etc/passwd`. The next login uses it.
+> `chsh` changes the login shell of a user. The shell must be listed in `/etc/shells`.
 
 ```mermaid
 flowchart TD
-    A[chsh s shell user] --> B{Caller is root}
-    B -->|No| C[Ask for the current password]
-    B -->|Yes| D[No password needed]
-    C --> E{Shell listed in etc shells}
-    D --> F{Shell listed in etc shells}
-    E -->|No| G[Error invalid shell]
-    E -->|Yes| H[Write the shell into etc passwd]
-    F -->|No| I[Warning, but root may continue]
-    F -->|Yes| H
-    I --> H
-    H --> J[Next login uses the new shell]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,E,F dec
-    class C,D proc
-    class G err
-    class I alt
-    class H,J ok
+    c1[chsh -s /bin/zsh ravi] --> i1[Is /bin/zsh in /etc/shells?]
+    i1 -->|yes| o1[Stored in the last field of /etc/passwd<br/>used from the next login]
+    i1 -->|no| x1[Error: invalid shell]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class i1 inp
+    class o1 out
+    class x1 bad
 ```
 
 ## Options/Flags

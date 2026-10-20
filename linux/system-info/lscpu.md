@@ -20,29 +20,22 @@ Without options, `lscpu` prints a list of `Field: value` lines. With `-e` or `-p
 For example `1 socket x 2 cores x 2 threads = 4 CPUs`. Two threads of one core share the same execution units, so 4 logical CPUs do **not** give 4 times the speed of one CPU.
 
 ## Visual Overview
-> `lscpu` collects the data from `/proc/cpuinfo`, `/sys` and the CPU instructions (`cpuid`), puts it in order, and prints it as a summary, a table of CPUs, a list of caches, or JSON.
+> `lscpu` summarizes the processor. The `CPU(s)` number you usually care about is sockets times cores times threads.
 
 ```mermaid
 flowchart LR
-    A[proc cpuinfo] --> D[lscpu]
-    B[sys devices system cpu] --> D
-    C[cpuid and DMI data] --> D
-    D --> E{Output option}
-    E -->|None| F[Summary Field value lines]
-    E -->|e or p| G[One row for each logical CPU]
-    E -->|C| H[Caches table]
-    E -->|J| I[JSON document]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A,B,C start
-    class D proc
-    class E dec
-    class F,G,H,I out
+    i1[Socket<br/>1] --> c1[multiply]
+    i2[Cores per socket<br/>4] --> c1
+    i3[Threads per core<br/>2] --> c1
+    c1 --> o1[CPUs = 8<br/>what the OS can run at once]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1,i2,i3 inp
+    class c1 cmd
+    class o1 out
 ```
 
 ## Options/Flags

@@ -12,28 +12,23 @@ nano -l FILE           # show line numbers
 ```
 
 ## Visual Overview
-> Open the file, type or change the text, write it out with `Ctrl+O`, and leave with `Ctrl+X`. If there are unsaved changes, nano asks what to do.
+> `nano` shows its shortcuts at the bottom of the screen. The minimum you need is: type, save with Ctrl O, leave with Ctrl X.
 
 ```mermaid
 flowchart TD
-    A[nano file] --> B[Edit the text]
-    B --> C[Ctrl O write out]
-    C --> D[Confirm the file name with Enter]
-    D --> E[Ctrl X exit]
-    B --> F[Ctrl X exit]
-    F --> G{Unsaved changes}
-    G --> H[Answer y to save or n to discard]
-    G --> I[Leave at once]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A start
-    class B,C,D proc
-    class G dec
-    class E,H ok
-    class F,I out
+    c1[nano notes.txt] --> i1[Type your text]
+    i1 -->|Ctrl O then Enter| o1[File saved]
+    o1 -->|Ctrl X| o2[Back at the shell]
+    i1 -->|Ctrl X without saving| x1[nano asks Save changes?<br/>y saves   n discards]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class i1 inp
+    class o1,o2 out
+    class x1 bad
 ```
 
 ## Options/Flags

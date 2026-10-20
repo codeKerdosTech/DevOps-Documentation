@@ -19,32 +19,18 @@ nproc [OPTIONS]
 A "CPU" is a logical CPU (a hardware thread). A server with 2 cores and hyper-threading shows `4`.
 
 ## Visual Overview
-> `nproc` asks the kernel for the CPU affinity mask of the current process, counts the CPUs in it, applies `OMP_NUM_THREADS` and `--ignore`, and prints the number.
+> `nproc` prints the number of CPUs available to the current process. Build and CI scripts use it to choose how many parallel jobs to run.
 
 ```mermaid
 flowchart LR
-    A[nproc] --> B{Option all}
-    B -->|Yes| C[Count all installed CPUs]
-    B -->|No| D[Count CPUs in the affinity mask]
-    D --> E{OMP environment variables set}
-    E -->|Yes| F[Use the value of OMP_NUM_THREADS]
-    E -->|No| G[Keep the count]
-    C --> H[Subtract ignore value, minimum 1]
-    F --> H
-    G --> H
-    H --> I[Print the number]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,E dec
-    class C,D,F,G proc
-    class H ok
-    class I out
+    c1[nproc] --> o1[8] --> c2[make -j8<br/>one job per CPU]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1,c2 cmd
+    class o1 out
 ```
 
 ## Options/Flags

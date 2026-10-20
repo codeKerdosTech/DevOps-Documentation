@@ -18,36 +18,21 @@ watch [OPTIONS] 'COMMAND WITH | PIPES AND "QUOTES"'
 | Rest of the screen | The output of the command. It is cut to the width and the height of the terminal |
 
 ## Visual Overview
-> `watch` runs the command, clears the screen, prints the header and the output, waits for the interval and starts again, until you press `Ctrl+C`.
+> `watch` runs the same command again and again and redraws the screen. It is a quick way to see a number change over time.
 
 ```mermaid
-flowchart TD
-    A[Start watch] --> B[Run the command]
-    B --> C[Clear the screen]
-    C --> D[Print header and output]
-    D --> E{Option d used}
-    E -->|Yes| F[Highlight what changed]
-    E -->|No| G[Wait for the interval]
-    F --> G
-    G --> H{Stop condition}
-    H -->|Option e and command failed| I[Exit]
-    H -->|Option g and output changed| I
-    H -->|Ctrl C| I
-    H -->|None| B
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,C proc
-    class D out
-    class E,H dec
-    class F alt
-    class G ok
-    class I err
+flowchart LR
+    c1[watch -n 2 df -h] --> o1[Run df -h<br/>show the output]
+    o1 -->|wait 2 seconds| c1
+    n1[-d highlights what changed<br/>Ctrl C to stop]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class o1 out
+    class n1 note
 ```
 
 ## Options/Flags

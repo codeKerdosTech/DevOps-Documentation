@@ -14,24 +14,22 @@ command1 | command2   # stdout of command1 becomes stdin of command2
 ```
 
 ## Visual Overview
-> Each program has three channels. Redirection moves a channel to a file, a pipe moves the output channel into the next program.
+> Every program has three streams: input, output and errors. Redirection sends a stream to a file. A pipe sends output straight into the next program.
 
 ```mermaid
-flowchart LR
-    A[Keyboard or file] -->|stdin 0| B[Program]
-    B -->|stdout 1| C[Terminal or file or pipe]
-    B -->|stderr 2| D[Terminal or file]
-    C --> E[Next program stdin]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A start
-    class B proc
-    class C ok
-    class D dec
-    class E out
+flowchart TD
+    i1[Keyboard or a file<br/>stdin 0] --> c1[Program]
+    c1 -->|stdout 1| o1[Screen, or a file with > out.txt<br/>or the next command with a pipe]
+    c1 -->|stderr 2| x1[Screen, or a file with 2> err.txt]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class c1 cmd
+    class o1 out
+    class x1 bad
 ```
 
 ## Options/Flags

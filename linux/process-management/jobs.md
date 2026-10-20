@@ -20,35 +20,22 @@ Without arguments, `jobs` lists all the jobs of the shell.
 | `%?STRING` | The job whose command **contains** `STRING` (`%?worker`) |
 
 ## Visual Overview
-> The shell keeps a table of its jobs. `jobs` prints the table. The `+` marks the job that `fg` and `bg` use when you give no number.
+> Each shell keeps its own table of jobs. `jobs` prints that table. The number in brackets is what you give to `fg %1`, `bg %1` or `kill %1`.
 
 ```mermaid
-flowchart LR
-    A[Command with ampersand] --> C[Shell job table]
-    B[Ctrl Z suspends a command] --> C
-    C --> D[jobs prints the table]
-    D --> E{State of a job}
-    E -->|Running| F[bg or the ampersand started it]
-    E -->|Stopped| G[Ctrl Z suspended it]
-    E -->|Done| H[It finished]
-    G -->|bg| F
-    F -->|fg| I[Foreground]
-    G -->|fg| I
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A,B start
-    class C proc
-    class D out
-    class E dec
-    class F ok
-    class G alt
-    class H err
-    class I proc
+flowchart TD
+    c1[sleep 100 &<br/>started in the background] --> n1[Job table of this shell]
+    c2[vim notes.txt then Ctrl Z<br/>paused] --> n1
+    n1 -->|jobs| o1[1 Running  sleep 100 &<br/>2 Stopped  vim notes.txt]
+    o1 -->|fg %2| o2[vim is back on screen]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1,c2 cmd
+    class n1 note
+    class o1,o2 out
 ```
 
 ## Options/Flags

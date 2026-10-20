@@ -31,31 +31,23 @@ groupdel [OPTIONS] GROUP
 `GROUP` is the name of an existing group. You need `root` rights.
 
 ## Visual Overview
-> `groupdel` checks that the group exists, that no user has it as primary group, and then removes its lines from the group files.
+> `groupdel` removes the group line. Files that belonged to the group are not changed. They just show a bare number instead of a name.
 
 ```mermaid
 flowchart TD
-    A[groupdel GROUP] --> B{Group exists}
-    B -->|No| C[Error group does not exist]
-    B -->|Yes| D{Primary group of a user}
-    D -->|Yes and no force| E[Error cannot remove the primary group]
-    D -->|No or force| F[Lock the group files]
-    F --> G[Remove the line from etc group and etc gshadow]
-    G --> H[Files on disk keep the old GID number]
-    H --> I[Done]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,D dec
-    class C,E err
-    class F,G proc
-    class H alt
-    class I ok
+    i1[Files owned by group devs<br/>GID 1005] --> c1[groupdel devs]
+    c1 --> o1[Line removed from /etc/group]
+    o1 --> x1[ls -l now shows 1005<br/>instead of devs]
+    c2[groupdel on the primary group of a user] --> x2[Refused: cannot remove<br/>the primary group]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class c1,c2 cmd
+    class o1 out
+    class x1,x2 bad
 ```
 
 ## Options/Flags

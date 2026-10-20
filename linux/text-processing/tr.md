@@ -26,35 +26,20 @@ command | tr [OPTIONS] SET1 [SET2]
 | `\NNN` | The character with the octal code `NNN` (`\012` is a newline) |
 
 ## Visual Overview
-> `tr` reads the input one character at a time. Each character is replaced, deleted or squeezed according to the sets, and the result goes to the output.
+> `tr` works on single characters from its input. It translates them, deletes them or squeezes repeats.
 
 ```mermaid
 flowchart LR
-    A[stdin or pipe] --> B[Read one character]
-    B --> C{Character in SET1}
-    C -->|No| D[Copy it unchanged]
-    C -->|Yes and no d option| E[Replace with the same position in SET2]
-    C -->|Yes and d option| F[Delete it]
-    E --> G{Option s used}
-    G -->|Yes| H[Squeeze repeats into one]
-    G -->|No| I[Write the character]
-    H --> I
-    D --> I
-    I --> J[Terminal or pipe]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B proc
-    class C,G dec
-    class D,E,H ok
-    class F err
-    class I proc
-    class J out
+    i1[hello] -->|tr a-z A-Z| o1[HELLO]
+    i2[a1b2c3] -->|tr -d 0-9| o2[abc]
+    i3[a   b] -->|tr -s space| o3[a b]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1,i2,i3 inp
+    class o1,o2,o3 out
 ```
 
 ## Options/Flags

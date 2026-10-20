@@ -18,25 +18,27 @@ vmstat 1 2            # columns us, sy
 ```
 
 ## Visual Overview
-> A program runs in user mode. When it needs a service it makes a system call, the CPU switches to kernel mode, the kernel does the work, and the CPU switches back.
+> Programs run in a restricted user mode. To touch a file, memory or the network they must ask the kernel, and the CPU switches to kernel mode for that moment.
 
 ```mermaid
-flowchart LR
-    A[Program runs in user mode] --> B[Needs a service such as reading a file]
-    B --> C[System call instruction]
-    C --> D[CPU switches to kernel mode]
-    D --> E[Kernel checks the request and does the work]
-    E --> F[CPU switches back to user mode]
-    F --> A
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    class A start
-    class B,C proc
-    class D,E err
-    class F ok
+flowchart TD
+    subgraph U [User mode]
+        i1[Your program<br/>wants to read a file]
+    end
+    subgraph K [Kernel mode]
+        c1[Kernel checks permissions<br/>and talks to the disk]
+    end
+    i1 -->|1 system call| c1
+    c1 -->|2 result returned| i1
+    x1[A user program cannot touch the hardware directly]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class c1 cmd
+    class x1 bad
 ```
 
 ## Options/Flags

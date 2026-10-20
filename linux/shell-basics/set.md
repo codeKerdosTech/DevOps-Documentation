@@ -12,29 +12,21 @@ set -- [ARG ...]             # set $1 $2 ...
 ```
 
 ## Visual Overview
-> `set` changes an internal switch of the running shell, or the list of positional parameters. The effect is for the **current** shell (and the sub-shells that copy it), not for other terminals.
+> `set` switches shell options on. These four make scripts fail loudly instead of continuing after an error.
 
 ```mermaid
-flowchart TD
-    A[set command] --> B{What is given}
-    B -->|Nothing| C[List variables and functions]
-    B -->|Option with minus| D[Turn the option on]
-    B -->|Option with plus| E[Turn the option off]
-    B -->|Double dash and words| F[Replace positional parameters]
-    D --> G[Shell behaves differently from now on]
-    E --> G
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B dec
-    class C out
-    class D,E,F proc
-    class G ok
+flowchart LR
+    c1[set -euo pipefail<br/>plus -x for debugging] --> o1[-e<br/>stop at the first failing command]
+    c1 --> o2[-u<br/>error on an unset variable]
+    c1 --> o3[-o pipefail<br/>a pipe fails if any part fails]
+    c1 --> o4[-x<br/>print each command before running it]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class o1,o2,o3,o4 out
 ```
 
 ## Options/Flags

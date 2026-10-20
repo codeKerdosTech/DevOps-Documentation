@@ -10,27 +10,22 @@ strace [OPTIONS] -p PID
 ```
 
 ## Visual Overview
-> `strace` sits between the program and the kernel, records each system call, and passes it on.
+> `strace` sits next to a program and prints every system call it makes. It shows which files it opens and where it fails.
 
 ```mermaid
-flowchart LR
-    A[strace COMMAND] --> B[Program runs]
-    B --> C[System call]
-    C --> D[strace records it]
-    D --> E[Kernel does the work]
-    E --> F[Result returned]
-    F --> B
-    D --> G[Trace on screen or file]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A start
-    class B,C,E proc
-    class D dec
-    class F ok
-    class G out
+flowchart TD
+    c1[strace ls /tmp] --> i1[ls runs]
+    i1 -->|each system call| o1[strace prints<br/>name, arguments, result]
+    i1 <-->|openat  read  write| n1[Kernel]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class i1 inp
+    class o1 out
+    class n1 note
 ```
 
 ## Options/Flags

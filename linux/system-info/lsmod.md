@@ -9,19 +9,18 @@ lsmod
 ```
 
 ## Visual Overview
-> `lsmod` reads `/proc/modules` from the kernel and prints it as a table.
+> `lsmod` lists the kernel modules that are loaded right now. `Used by` shows what depends on each module.
 
 ```mermaid
 flowchart LR
-    A[Kernel loaded modules] --> B[proc modules]
-    B --> C[lsmod formats it]
-    C --> D[Module Size Used by]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A start
-    class B,C proc
-    class D out
+    i1[Kernel<br/>loaded modules] -->|lsmod| o1[Module  Size  Used by<br/>e1000  126976  0<br/>nf_tables  299008  45]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class o1 out
 ```
 
 ## Options/Flags

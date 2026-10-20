@@ -17,32 +17,26 @@ lscpu                          # sockets, cores per socket, threads per core
 ```
 
 ## Visual Overview
-> Software threads live inside processes and share memory. The kernel schedules them onto hardware threads. Two hardware threads share one physical core.
+> A process owns the memory. Its threads share that memory but each thread runs its own code, and the kernel spreads the threads over the CPU cores.
 
 ```mermaid
 flowchart TD
-    A[Process with shared memory] --> B[Thread 1]
-    A --> C[Thread 2]
-    A --> D[Thread 3]
-    B --> E[Kernel scheduler]
-    C --> E
-    D --> E
-    E --> F[Hardware thread 0]
-    E --> G[Hardware thread 1]
-    E --> H[Hardware thread 2]
-    F --> I[Core 0]
-    G --> I
-    H --> J[Core 1]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A start
-    class B,C,D proc
-    class E dec
-    class F,G,H ok
-    class I,J out
+    i1[Process<br/>shared memory and open files] --> c1[Thread 1]
+    i1 --> c2[Thread 2]
+    i1 --> c3[Thread 3]
+    c1 --> n1[Kernel scheduler<br/>gives each thread CPU time]
+    c2 --> n1
+    c3 --> n1
+    n1 --> o1[CPU cores]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class c1,c2,c3 cmd
+    class n1 note
+    class o1 out
 ```
 
 ## Options/Flags

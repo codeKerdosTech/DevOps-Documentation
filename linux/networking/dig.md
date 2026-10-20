@@ -9,31 +9,22 @@ dig [@SERVER] [NAME] [TYPE] [OPTIONS]
 ```
 
 ## Visual Overview
-> `dig` sends a DNS query to a resolver (from `/etc/resolv.conf` or the `@server` you choose) and prints the header, the question, the answer and statistics. With `+trace` it walks from the root servers down to the authoritative server.
+> `dig` asks a DNS server what a name points to and shows the full answer. Read the ANSWER line from left to right.
 
 ```mermaid
-flowchart LR
-    A[dig NAME TYPE] --> B{Server given}
-    B -->|Yes| C[Ask the chosen DNS server]
-    B -->|No| D[Ask resolver from resolv.conf]
-    C --> E[DNS response]
-    D --> E
-    E --> F{Output option}
-    F -->|default| G[Header question answer stats]
-    F -->|short| H[Only the answer values]
-    F -->|trace| I[Root then TLD then authoritative]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,F dec
-    class C,D proc
-    class E ok
-    class G,H,I out
+flowchart TD
+    c1[dig example.com A] -->|asks your DNS resolver| i1[DNS server]
+    i1 --> o1[ANSWER<br/>example.com  300  IN  A  93.184.216.34<br/>name  ttl  class  type  value]
+    o1 -->|dig +short example.com| o2[93.184.216.34<br/>only the value]
+    o1 -->|dig +trace example.com| o3[Root, then .com, then<br/>the authoritative server]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class i1 inp
+    class o1,o2,o3 out
 ```
 
 ## Options/Flags

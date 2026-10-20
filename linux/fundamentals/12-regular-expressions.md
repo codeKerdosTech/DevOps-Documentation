@@ -16,27 +16,20 @@ awk '/PATTERN/ {print}' FILE
 ```
 
 ## Visual Overview
-> A tool reads each line, tries to match the pattern anywhere in it, and then prints, counts or rewrites the part that matched.
+> A regular expression is a pattern. The tool tests every line against it and keeps the lines that match. Here `^ERROR` means a line that starts with ERROR.
 
 ```mermaid
 flowchart LR
-    A[Input line] --> B[Tool applies the pattern]
-    B --> C{Does the pattern match}
-    C --> D[Yes keep or change the line]
-    C --> E[No skip the line]
-    D --> F[Output]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A start
-    class B proc
-    class C dec
-    class D ok
-    class E err
-    class F out
+    i1[app.log<br/>ERROR disk full<br/>INFO started<br/>ERROR timeout] --> c1[grep ^ERROR app.log]
+    c1 --> o1[ERROR disk full<br/>ERROR timeout]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class c1 cmd
+    class o1 out
 ```
 
 ## Options/Flags

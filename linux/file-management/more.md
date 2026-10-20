@@ -10,35 +10,24 @@ command | more [OPTIONS]
 ```
 
 ## Visual Overview
-> `more` fills the screen, prints a `--More--` prompt with the percentage read so far and waits for a key.
+> `more` is the older, simpler pager. It moves forward only. Use `less` when you also need to scroll back.
 
 ```mermaid
 flowchart LR
-    A[file or pipe] --> B[more]
-    B --> C[Fill one screen]
-    C --> D[Show More prompt with percent]
-    D --> E{Key pressed}
-    E -->|Space| F[Next page]
-    E -->|Enter| G[Next line]
-    E -->|slash| H[Search text]
-    E -->|q| I[Quit]
-    F --> C
-    G --> C
-    H --> C
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,C proc
-    class D out
-    class E dec
-    class F,G ok
-    class H alt
-    class I err
+    c1[more big.log<br/>shows one screen] --> o1[Space<br/>next page]
+    c1 --> o2[Enter<br/>next line]
+    c1 --> o3[search with slash<br/>/word]
+    c1 --> x1[q<br/>quit]
+    n1[No going back up<br/>use less for that]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class o1,o2,o3 out
+    class x1 bad
+    class n1 note
 ```
 
 ## Options/Flags

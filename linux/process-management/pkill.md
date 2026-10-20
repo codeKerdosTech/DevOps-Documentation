@@ -19,33 +19,22 @@ The pattern is an extended regular expression matched against the process name (
 | `3` | Fatal error |
 
 ## Visual Overview
-> `pkill` finds the processes in the same way as `pgrep`, but instead of printing their PIDs it sends a signal to each of them.
+> `pkill` is `pgrep` plus `kill`. It finds processes by name or other attributes and sends them a signal in one step.
 
 ```mermaid
 flowchart LR
-    A[Pattern and selection options] --> B[pkill]
-    C[proc filesystem] --> B
-    B --> D{Process matches all options}
-    D -->|No| E[Skip it]
-    D -->|Yes| F[Send the signal]
-    F --> G{Which signal}
-    G -->|Default SIGTERM| H[Process stops cleanly]
-    G -->|SIGHUP| I[Process reloads]
-    G -->|SIGKILL| J[Process is ended at once]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A,C start
-    class B proc
-    class D,G dec
-    class E alt
-    class F ok
-    class H,I out
-    class J err
+    c1[pkill] --> o1[pkill nginx<br/>SIGTERM to every process named nginx]
+    c1 --> o2[pkill -f backup.sh<br/>match the full command line]
+    c1 --> o3[pkill -u bob<br/>every process owned by bob]
+    c1 --> x1[pkill -9 -f runaway.py<br/>force kill]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class o1,o2,o3 out
+    class x1 bad
 ```
 
 ## Options/Flags

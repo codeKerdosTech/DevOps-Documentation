@@ -28,31 +28,21 @@ unzip [OPTIONS] ARCHIVE.zip [MEMBERS...] [-x EXCLUDE...] [-d DIR]
 ```
 
 ## Visual Overview
-> `zip` compresses each file on its own and writes it into the archive, followed by a central directory (the index). `unzip` reads the index first, so it can list, test or extract any single file quickly.
+> `zip` compresses each file separately and keeps an index of the names at the end, so `unzip` can list or pick single files quickly.
 
 ```mermaid
 flowchart TD
-    A[Files and directories] --> B[zip]
-    B --> C[Compress each file separately]
-    C --> D[Write entries]
-    D --> E[Write central directory index at end]
-    E --> F[archive.zip]
-    F --> G[unzip -l reads index only]
-    F --> H[unzip -t checks CRC of each entry]
-    F --> I[unzip extracts all or selected files]
-    I --> J[Files restored]
-    F --> K[zip -d removes an entry]
-    F --> L[zip adds or updates an entry]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,C,D,E proc
-    class F out
-    class G,H,I,J ok
-    class K,L alt
+    i1[report.txt and notes.txt] -->|zip docs.zip report.txt notes.txt| o1[docs.zip<br/>each file compressed<br/>index of names at the end]
+    o1 -->|unzip -l docs.zip| o2[list the names only]
+    o1 -->|unzip -t docs.zip| o3[test for corruption]
+    o1 -->|unzip docs.zip| o4[files extracted]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class o1,o2,o3,o4 out
 ```
 
 ## Options/Flags

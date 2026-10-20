@@ -25,32 +25,25 @@ dpkg [OPTIONS] ACTION [PACKAGE | FILE.deb]
 ```
 
 ## Visual Overview
-> `dpkg` works on single package files and on its local database. When you install a `.deb`, it checks the dependencies against the database, unpacks the files, runs the package scripts and records the package as installed.
+> `dpkg` installs one `.deb` file and knows nothing about repositories. If a dependency is missing it fails, and `apt install -f` fixes that.
 
 ```mermaid
 flowchart TD
-    A[dpkg -i file.deb] --> B[Read control data from deb]
-    B --> C{Dependencies installed}
-    C -->|No| D[Fail with dependency error]
-    C -->|Yes| E[Run preinst script]
-    E --> F[Unpack files]
-    F --> G[Run postinst script and configure]
-    G --> H[Record in /var/lib/dpkg/status]
-    D --> I[apt install -f fixes it]
-    I --> A
-    J[dpkg -l or -L or -S or -s] --> K[Read /var/lib/dpkg database]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A,J start
-    class B,E,F,G,K proc
-    class C dec
-    class H ok
-    class D err
-    class I alt
+    c1[dpkg -i app.deb] --> i1[Dependencies installed?]
+    i1 -->|yes| o1[Unpack and configure<br/>recorded in /var/lib/dpkg/status]
+    i1 -->|no| x1[dependency error]
+    x1 -->|apt install -f| o1
+    c2[dpkg -l   dpkg -L nginx   dpkg -S /bin/ls] --> n1[Query the installed packages<br/>list, files of a package, owner of a file]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1,c2 cmd
+    class i1 inp
+    class o1 out
+    class x1 bad
+    class n1 note
 ```
 
 ## Options/Flags

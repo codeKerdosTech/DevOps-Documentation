@@ -13,35 +13,19 @@ command | sed [OPTIONS] 'SCRIPT'
 A script is a list of `[ADDRESS]COMMAND`. The most used command is `s/OLD/NEW/FLAGS` (substitute).
 
 ## Visual Overview
-> For each input line, `sed` copies it into the **pattern space**, runs the script on it, prints the pattern space (unless `-n` is used) and moves to the next line. The **hold space** is a second buffer you can use to keep text between lines.
+> `sed` edits the text as it flows past. Without `-i` it only prints the edited copy and the file stays unchanged.
 
 ```mermaid
-flowchart LR
-    A[file or stdin] --> B[Read next line into pattern space]
-    B --> C{Address matches}
-    C -->|No| E[Skip the command]
-    C -->|Yes| D[Run the command]
-    D --> E
-    E --> F{Option n used}
-    F -->|No| G[Print the pattern space]
-    F -->|Yes| H[Print nothing]
-    G --> I[Output or edited file]
-    H --> B
-    G --> B
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,D proc
-    class C,F dec
-    class E alt
-    class G ok
-    class H err
-    class I out
+flowchart TD
+    i1[config.txt<br/>port=80] -->|sed s/80/8080/ config.txt| o1[screen shows port=8080<br/>the file still says port=80]
+    i1 -->|sed -i s/80/8080/ config.txt| o2[the file itself now says port=8080]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class o1,o2 out
 ```
 
 ## Options/Flags

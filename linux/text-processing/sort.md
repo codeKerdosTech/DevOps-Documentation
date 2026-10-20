@@ -11,29 +11,19 @@ command | sort [OPTIONS]
 If no file is given, `sort` reads standard input. If several files are given, they are merged and sorted together.
 
 ## Visual Overview
-> `sort` reads all the lines, compares them using the chosen key and rule, and writes them in the new order. It does not change the original file unless you use `-o`.
+> By default `sort` compares text character by character, so 100 comes before 9. Add `-n` to compare real numbers.
 
 ```mermaid
 flowchart LR
-    A[file or stdin] --> B[Read all lines]
-    B --> C[Pick the sort key]
-    C --> D[Compare using the rule]
-    D --> E[Write the lines in order]
-    E --> F[Terminal]
-    E --> G[Pipe to uniq or head]
-    E --> H[Output file with option o]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,C,D proc
-    class E ok
-    class F out
-    class G,H alt
+    i1[Lines<br/>10<br/>9<br/>100] -->|sort| o1[10<br/>100<br/>9<br/>text order]
+    i1 -->|sort -n| o2[9<br/>10<br/>100<br/>number order]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class o1,o2 out
 ```
 
 ## Options/Flags

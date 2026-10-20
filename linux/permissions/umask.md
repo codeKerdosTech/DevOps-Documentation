@@ -35,31 +35,19 @@ New files **never** get the execute bit from the `umask` alone, because programs
 | `007` | `660` | `770` | A group works together, and others are excluded |
 
 ## Visual Overview
-> A program asks for a mode. The kernel takes away the bits that are set in the `umask` of the process and creates the file with the result.
+> `umask` is the list of permission bits that are taken away from every new file or folder. With `umask 022` the group and others lose write access.
 
 ```mermaid
-flowchart LR
-    A[Program creates a file] --> B[Requested mode 666 or 777]
-    C[umask of the process] --> D[Remove the masked bits]
-    B --> D
-    D --> E[Mode of the new file]
-    E --> F{Directory has default ACL}
-    F -->|Yes| G[ACL decides instead]
-    F -->|No| H[File gets the mode]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,C proc
-    class D ok
-    class E out
-    class F dec
-    class G alt
-    class H out
+flowchart TD
+    i1[New file starts at 666<br/>rw-rw-rw-] -->|minus umask 022| o1[Result 644<br/>rw-r--r--]
+    i2[New folder starts at 777<br/>rwxrwxrwx] -->|minus umask 022| o2[Result 755<br/>rwxr-xr-x]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1,i2 inp
+    class o1,o2 out
 ```
 
 ## Options/Flags

@@ -36,34 +36,23 @@ getent [OPTIONS] DATABASE [KEY]...
 | `3` | Enumeration (a list without a key) is not supported for this database |
 
 ## Visual Overview
-> `getent` asks the C library for an entry. The library reads `/etc/nsswitch.conf` to learn which sources to ask and in which order (files, then SSSD, then DNS ...), and returns the first answer.
+> `getent` asks the system's own lookup order, so it also finds users from LDAP or SSO. `cat /etc/passwd` sees only the local file.
 
 ```mermaid
 flowchart TD
-    A[getent database key] --> B[C library NSS]
-    B --> C[Read etc nsswitch conf]
-    C --> D{Source in order}
-    D -->|files| E[Local files like etc passwd]
-    D -->|sss or ldap| F[Directory service]
-    D -->|dns| G[DNS server]
-    E --> H{Found}
-    F --> H
-    G --> H
-    H -->|Yes| I[Print the entry in file format]
-    H -->|No| J[Try the next source or exit code 2]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,C proc
-    class D,H dec
-    class E,F,G alt
-    class I ok
-    class J err
+    c1[getent passwd ravi] --> i1[Read the order in /etc/nsswitch.conf]
+    i1 --> i2[1 files<br/>local /etc/passwd]
+    i2 -->|not found| i3[2 sss or ldap<br/>directory server]
+    i2 -->|found| o1[ravi:x:1001:1001::/home/ravi:/bin/bash]
+    i3 -->|found| o1
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class i1,i2,i3 inp
+    class o1 out
 ```
 
 ## Options/Flags

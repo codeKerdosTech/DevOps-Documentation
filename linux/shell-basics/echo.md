@@ -10,31 +10,20 @@ echo [OPTIONS] [STRING]...
 Each `STRING` is one argument. The shell expands variables (`$HOME`), commands (`$(date)`), and wildcards (`*`) **before** `echo` runs. Quotes decide how.
 
 ## Visual Overview
-> The shell expands the arguments, `echo` joins them with a space, adds a new line, and writes the result to the standard output (which can be redirected).
+> `echo` prints its arguments. Remember that the shell expands variables first, so `echo` only prints the result.
 
 ```mermaid
 flowchart LR
-    A[Shell reads the line] --> B[Expand variables commands wildcards]
-    B --> C[echo gets the arguments]
-    C --> D{Option n given}
-    D -->|No| E[Join with spaces and add new line]
-    D -->|Yes| F[Join with spaces and no new line]
-    C --> G{Option e given}
-    G -->|Yes| H[Convert backslash sequences]
-    E --> I[Write to standard output]
-    F --> I
-    H --> I
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,C,E,F,H proc
-    class D,G dec
-    class I out
+    c1[echo hello] --> o1[hello<br/>and a new line]
+    c2[echo $HOME] --> o2[prints /home/ravi<br/>bash expanded it first]
+    c3[echo -n hello] --> o3[hello<br/>no new line, prompt follows on the same line]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1,c2,c3 cmd
+    class o1,o2,o3 out
 ```
 
 ## Options/Flags

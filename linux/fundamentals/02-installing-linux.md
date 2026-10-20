@@ -10,30 +10,21 @@ wsl -l -v                      # list installed distros
 ```
 
 ## Visual Overview
-> Pick the option that fits your machine. All of them end at the same place, a Linux terminal where you can type commands.
+> Pick the row that matches the computer you have. All three end in the same place: a Linux terminal where you can practise.
 
 ```mermaid
-flowchart TD
-    A[Need a Linux machine] --> B{Which computer do you have}
-    B --> C[Windows 10 or 11]
-    B --> D[Mac or any PC]
-    B --> E[No spare computer or need a public server]
-    C --> F[WSL]
-    D --> G[Virtual machine]
-    E --> H[Cloud instance]
-    F --> I[Linux terminal]
-    G --> I
-    H --> I
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A start
-    class B dec
-    class C,D,E proc
-    class F,G,H ok
-    class I out
+flowchart LR
+    i1[Windows 10 or 11] --> c1[WSL<br/>wsl --install] --> o1[Linux terminal]
+    i2[Mac or any PC] --> c2[Virtual machine<br/>VirtualBox + Ubuntu ISO] --> o2[Linux terminal]
+    i3[Need a public server] --> c3[Cloud instance<br/>AWS EC2 or similar] --> o3[Linux terminal]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1,i2,i3 inp
+    class c1,c2,c3 cmd
+    class o1,o2,o3 out
 ```
 
 ## Options/Flags

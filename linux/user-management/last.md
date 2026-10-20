@@ -27,31 +27,18 @@ reboot   system boot  5.15.0-122-gener Mon Oct  5 05:45   still running
 | 6 | The duration of the session: `(hh:mm)` or `(d+hh:mm)` |
 
 ## Visual Overview
-> `last` reads the binary file `/var/log/wtmp` from the end, pairs each login record with its logout record, and prints them from the newest to the oldest, with filters.
+> `last` reads the login history stored in `/var/log/wtmp`, newest first. Each line is one login session.
 
 ```mermaid
 flowchart LR
-    A[var log wtmp binary file] --> B[last]
-    C[Filters user tty time] --> B
-    B --> D[Read records from the end]
-    D --> E[Pair login with logout]
-    E --> F{Matches filters}
-    F -->|Yes| G[Print the line]
-    F -->|No| H[Skip]
-    G --> I[Print the wtmp begins line]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A,C start
-    class B,D,E proc
-    class F dec
-    class G ok
-    class H alt
-    class I out
+    i1[Login history file<br/>/var/log/wtmp] -->|last -n 3| o1[ravi  pts/0  10.0.0.9  Mon 10:00  still logged in<br/>amit  pts/1  10.0.0.7  Mon 09:10 - 09:40<br/>reboot  system boot  Mon 08:00]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class o1 out
 ```
 
 ## Options/Flags

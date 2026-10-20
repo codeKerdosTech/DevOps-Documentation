@@ -9,31 +9,23 @@ netstat [OPTIONS]
 ```
 
 ## Visual Overview
-> `netstat` reads the kernel's network tables (sockets, routes, interfaces) and prints the part you ask for. By default it shows connected sockets. Options switch it to listening ports, the routing table or interface counters.
+> `netstat` shows network state. The most common use is listing which programs are listening on which ports. Newer systems use `ss` instead.
 
 ```mermaid
 flowchart LR
-    A[netstat with options] --> B{What to show}
-    B -->|default or a| C[Sockets]
-    B -->|r| D[Routing table]
-    B -->|i| E[Interface counters]
-    B -->|s| F[Protocol statistics]
-    C --> G{Filters t u l n p}
-    G --> H[Print table]
-    D --> H
-    E --> H
-    F --> H
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,G dec
-    class C,D,E,F alt
-    class H out
+    c1[netstat] --> o1[-tulnp<br/>listening ports and the program using each]
+    c1 --> o2[-r<br/>routing table]
+    c1 --> o3[-i<br/>interface packet counters]
+    c1 --> o4[-s<br/>statistics for each protocol]
+    n1[t tcp   u udp   l listening<br/>n numbers   p program]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class o1,o2,o3,o4 out
+    class n1 note
 ```
 
 ## Options/Flags

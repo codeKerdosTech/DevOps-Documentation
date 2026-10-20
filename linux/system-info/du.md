@@ -11,33 +11,24 @@ du [OPTIONS] --files0-from=F
 Without arguments, `du` works on the current directory (`.`). For each directory it prints the total of everything below it, and not only the files that are directly in it. The default unit is 1 KiB blocks.
 
 ## Visual Overview
-> `du` walks the tree from the given path downwards, adds the disk blocks of each file to its directory, and prints one line for each directory (and file, with `-a`), from the deepest level up.
+> `du` adds up the size of everything inside a folder. Use `-h` for readable sizes and `-s` for a single total.
 
 ```mermaid
 flowchart TD
-    A[du path] --> B[Visit a directory]
-    B --> C[Add the blocks of each file]
-    C --> D{Sub directory found}
-    D -->|Yes| E[Visit it and add its total to the parent]
-    D -->|No| F[Print the total for this directory]
-    E --> B
-    F --> G{Depth limit d or option s}
-    G -->|Within limit| H[Show the line]
-    G -->|Too deep| I[Hide the line]
-    H --> J[Final line shows the starting path]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,C,E proc
-    class D,G dec
-    class F,H ok
-    class I err
-    class J out
+    c1[du -h --max-depth=1 /var] --> i1[Folder /var<br/>3.2G in total]
+    i1 --> o1[log<br/>2.1G]
+    i1 --> o2[lib<br/>1.0G]
+    i1 --> o3[cache<br/>100M]
+    c2[du -sh /var] --> n2[one line only<br/>3.2G /var]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1,c2 cmd
+    class i1 inp
+    class o1,o2,o3 out
+    class n2 note
 ```
 
 ## Options/Flags

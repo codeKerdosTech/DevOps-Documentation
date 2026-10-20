@@ -25,28 +25,21 @@ apt-mark [OPTIONS] COMMAND [PACKAGE...]
 ```
 
 ## Visual Overview
-> Every installed package has flags in apt's state files. `hold` blocks upgrades, `manual` keeps the package safe from `autoremove`, and `auto` marks it as removable once nothing depends on it.
+> `apt-mark` sets a flag on a package that changes what `upgrade` and `autoremove` are allowed to do with it.
 
 ```mermaid
-flowchart TD
-    A[Installed package] --> B{Flag}
-    B -->|hold| C[Skipped by upgrade and full-upgrade]
-    B -->|manual| D[Kept by autoremove]
-    B -->|auto| E{Does another package need it}
-    E -->|Yes| F[Kept]
-    E -->|No| G[Removed by autoremove]
-    H[apt-mark hold] --> C
-    I[apt-mark manual] --> D
-    J[apt-mark auto] --> E
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    class A,H,I,J start
-    class B,E dec
-    class C,D,F ok
-    class G err
+flowchart LR
+    c1[apt-mark hold nginx] --> o1[upgrade never touches it<br/>version stays frozen]
+    c2[apt-mark manual nginx] --> o2[autoremove keeps it]
+    c3[apt-mark auto nginx] --> x1[autoremove deletes it<br/>once nothing needs it]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1,c2,c3 cmd
+    class o1,o2 out
+    class x1 bad
 ```
 
 ## Options/Flags

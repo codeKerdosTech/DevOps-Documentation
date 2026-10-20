@@ -10,31 +10,20 @@ exit [N]
 `N` is the exit status (taken modulo 256). Without `N`, the status of the last command is used. In a terminal, `exit` (or Ctrl+D) closes the shell or the SSH session.
 
 ## Visual Overview
-> `exit` runs the `EXIT` trap, if there is one, then ends the shell with the status. The parent process reads the status (`$?`, `wait`, CI "step failed").
+> `exit` ends the shell or script and hands a number to whoever started it. `0` means success, anything else means failure.
 
 ```mermaid
-flowchart LR
-    A[exit N] --> B{Number given}
-    B -->|Yes| C[Status is N modulo 256]
-    B -->|No| D[Status is the last command status]
-    C --> E{EXIT trap set}
-    D --> E
-    E -->|Yes| F[Run trap commands]
-    E -->|No| G[End the shell]
-    F --> G
-    G --> H[Parent reads the status in dollar question]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,E dec
-    class C,D,F proc
-    class G alt
-    class H out
+flowchart TD
+    c1[script.sh runs exit 3] --> o1[Script ends with status 3] -->|parent reads it| o2[echo $? prints 3]
+    n1[exit with no number<br/>returns the status of the last command]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class o1,o2 out
+    class n1 note
 ```
 
 ## Options/Flags

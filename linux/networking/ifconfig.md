@@ -9,33 +9,22 @@ ifconfig [INTERFACE] [OPTIONS]
 ```
 
 ## Visual Overview
-> `ifconfig` reads the state of the network interfaces from the kernel. Without arguments it prints all active interfaces. With an interface name it prints one. With an address or `up`/`down` (and root rights) it changes the interface.
+> `ifconfig` is the old way to see network interfaces. Each field in its output answers one question. Newer systems use `ip` instead.
 
 ```mermaid
-flowchart TD
-    A[ifconfig] --> B{Arguments}
-    B -->|none| C[Show active interfaces]
-    B -->|a| D[Show all interfaces]
-    B -->|interface name| E[Show one interface]
-    B -->|name plus settings| F{Root rights}
-    F -->|Yes| G[Change interface]
-    F -->|No| H[Operation not permitted]
-    C --> I[Print IP MAC MTU counters]
-    D --> I
-    E --> I
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,F dec
-    class C,D,E alt
-    class G ok
-    class H err
-    class I out
+flowchart LR
+    c1[ifconfig eth0] --> o1[inet 10.0.0.5<br/>the IP address]
+    c1 --> o2[netmask 255.255.255.0<br/>the network size]
+    c1 --> o3[ether 52:54:00:ab:cd:ef<br/>the MAC address]
+    c1 --> o4[mtu 1500<br/>largest packet size]
+    c1 --> o5[RX and TX packets<br/>traffic counters]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class o1,o2,o3,o4,o5 out
 ```
 
 ## Options/Flags

@@ -13,22 +13,20 @@ readlink LINK              # show where a symlink points
 ```
 
 ## Visual Overview
-> A name points to an inode and the inode points to the data. A hard link adds another name for the same inode. A symlink is a separate inode that holds a path.
+> A file name is only a label that points to an inode. A hard link is a second label for the same inode. A symbolic link is a tiny file that stores a path.
 
 ```mermaid
-flowchart LR
-    A[Name original.txt] --> C[Inode 94283 and data]
-    B[Name hard.txt] --> C
-    D[Name soft.txt] --> E[Inode 94284 holds path original.txt]
-    E -.->|follows the name| A
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A,B,D start
-    class C ok
-    class E proc
+flowchart TD
+    c1[original.txt] --> i1[inode 94283<br/>owner, permissions, data location]
+    c2[hard.txt] --> i1
+    c3[soft.txt<br/>own inode 94284] -.->|stores the text original.txt| c1
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1,c2,c3 cmd
+    class i1 inp
 ```
 
 ## Options/Flags

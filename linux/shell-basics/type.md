@@ -9,32 +9,28 @@ type [-afptP] NAME [NAME ...]
 ```
 
 ## Visual Overview
-> The shell looks for a name in a fixed order, and `type` shows the first match, or all the matches with `-a`.
+> `type` tells you what a name really is. Bash looks in this order and stops at the first match.
 
 ```mermaid
 flowchart TD
-    A[type NAME] --> B{Alias}
-    B -->|Yes| C[alias]
-    B -->|No| D{Keyword}
-    D -->|Yes| E[keyword]
-    D -->|No| F{Function}
-    F -->|Yes| G[function]
-    F -->|No| H{Builtin}
-    H -->|Yes| I[builtin]
-    H -->|No| J{File in PATH}
-    J -->|Yes| K[file and full path]
-    J -->|No| L[not found and status 1]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,D,F,H,J dec
-    class C,E,G,I,K ok
-    class L err
+    c1[type name] --> i1[1 alias?]
+    i1 -->|no| i2[2 function?]
+    i2 -->|no| i3[3 builtin?]
+    i3 -->|no| i4[4 file in PATH?]
+    i4 -->|no| x1[not found, status 1]
+    i1 -->|yes| o1[first match is reported<br/>and the search stops]
+    i2 -->|yes| o1
+    i3 -->|yes| o1
+    i4 -->|yes| o1
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class i1,i2,i3,i4 inp
+    class x1 bad
+    class o1 out
 ```
 
 ## Options/Flags

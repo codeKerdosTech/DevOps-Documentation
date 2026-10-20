@@ -16,37 +16,21 @@ gpasswd -R GROUP                     # restrict access to the group (newgrp)
 You need `root` rights, or you must be an administrator of the group.
 
 ## Visual Overview
-> `gpasswd` locks the group files, changes the list of members or administrators of one group, or its password, and writes `/etc/group` and `/etc/gshadow` back.
+> `gpasswd -a` adds one user to a group. The user must log out and in again before the new group applies to their session.
 
 ```mermaid
 flowchart TD
-    A[gpasswd with option and group] --> B{Caller allowed}
-    B -->|root or group admin| C{Which option}
-    B -->|No| D[Error permission denied]
-    C -->|a| E[Add the user to the member list]
-    C -->|d| F[Remove the user from the member list]
-    C -->|M| G[Replace the whole member list]
-    C -->|A| H[Replace the administrator list]
-    C -->|r or R| I[Remove or restrict the group password]
-    E --> J[Write etc group and etc gshadow]
-    F --> J
-    G --> J
-    H --> J
-    I --> J
-    J --> K[User needs a new login to see the change]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,C dec
-    class D err
-    class E,F,G,H,I proc
-    class J ok
-    class K alt
+    i1[Group docker<br/>members: alice] -->|gpasswd -a ravi docker| o1[Group docker<br/>members: alice, ravi]
+    o1 -->|ravi logs out and in again| o2[ravi can now use docker]
+    n1[gpasswd -d ravi docker removes ravi again]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class o1,o2 out
+    class n1 note
 ```
 
 ## Options/Flags

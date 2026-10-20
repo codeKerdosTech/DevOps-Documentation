@@ -25,33 +25,22 @@ tar -t [OPTIONS] -f ARCHIVE
 ```
 
 ## Visual Overview
-> To create, `tar` reads the files, writes them one after another into one stream with headers, and optionally pipes the stream through a compressor. To extract, it reads the stream (decompressing if needed) and recreates each file with its saved permissions.
+> `tar` packs many files into one archive, and the same flags letters unpack or list it. Read the arrows as the command you type.
 
 ```mermaid
-flowchart LR
-    A[Files and directories] --> B[tar -c]
-    B --> C[Single stream]
-    C --> D{Compression flag}
-    D -->|None| E[archive.tar]
-    D -->|z| F[archive.tar.gz]
-    D -->|j| G[archive.tar.bz2]
-    D -->|J| H[archive.tar.xz]
-    E --> I[tar -x]
-    F --> I
-    G --> I
-    H --> I
-    I --> J[Files restored with permissions]
-    E --> K[tar -t lists contents]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A start
-    class B,C,I proc
-    class D dec
-    class E,F,G,H out
-    class J,K ok
+flowchart TD
+    i1[logs folder<br/>app.log and db.log] -->|tar -czf logs.tar.gz logs| o1[logs.tar.gz<br/>one compressed file]
+    o1 -->|tar -xzf logs.tar.gz| o2[logs folder restored]
+    o1 -->|tar -tzf logs.tar.gz| o3[only the names are printed]
+    n1[c create   x extract   t list<br/>z gzip   f archive name follows]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class o1,o2,o3 out
+    class n1 note
 ```
 
 ## Options/Flags

@@ -24,36 +24,22 @@ alice P 2026-10-01 0 90 7 14
 | 7 | The inactivity period in days (`-1` means never) |
 
 ## Visual Overview
-> `passwd` asks PAM to check the old password and the quality of the new one, hashes the new password and writes it to `/etc/shadow`. The other options change the lock and the aging fields in the same file.
+> `passwd` changes a password. The flags lock, unlock or expire an account without needing to know the password.
 
 ```mermaid
-flowchart TD
-    A[passwd with or without user] --> B{Caller is root}
-    B -->|No| C[Ask for the current password]
-    B -->|Yes| D[Skip the current password]
-    C --> E{Option given}
-    D --> E
-    E -->|None| F[Ask for the new password twice]
-    E -->|l or u| G[Add or remove the lock mark in the hash]
-    E -->|e or d| H[Expire or delete the password]
-    E -->|n x w i| I[Set the aging fields]
-    E -->|S| J[Print the status line]
-    F --> K{PAM quality check passes}
-    K -->|No| L[Refuse and ask again]
-    K -->|Yes| M[Write the hash to etc shadow]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,E,K dec
-    class C,D,F,G,H,I proc
-    class J out
-    class L err
-    class M ok
+flowchart LR
+    c1[passwd ravi] --> o1[no flag<br/>asks for a new password twice]
+    c1 --> o2[-l<br/>lock the account]
+    c1 --> o3[-u<br/>unlock it]
+    c1 --> o4[-e<br/>force a change at next login]
+    c1 --> o5[-S<br/>show the status]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class o1,o2,o3,o4,o5 out
 ```
 
 ## Options/Flags

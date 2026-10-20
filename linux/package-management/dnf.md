@@ -28,34 +28,24 @@ sudo dnf install [-y] PACKAGE[-VERSION]
 ```
 
 ## Visual Overview
-> `dnf` reads repo files, downloads metadata, uses a solver to calculate the whole transaction, downloads and verifies the `.rpm` files and lets `rpm` install them. Each transaction gets an ID in the history.
+> `dnf` is the package manager for Fedora, RHEL and Rocky. It plans the whole change first, asks you, then runs it as one recorded transaction.
 
 ```mermaid
 flowchart TD
-    A[dnf install or upgrade] --> B[Read repo files in /etc/yum.repos.d]
-    B --> C[Load or refresh metadata cache]
-    C --> D[Solver builds transaction]
-    D --> E[Show summary and ask]
-    E --> F{Confirm}
-    F -->|No| G[Abort]
-    F -->|Yes| H[Download rpm files]
-    H --> I{GPG check}
-    I -->|Fail| J[Abort]
-    I -->|OK| K[rpm installs or removes]
-    K --> L[Transaction saved with ID]
-    L --> M[dnf history undo can reverse it]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,C,D,E,H,K proc
-    class F,I dec
-    class L ok
-    class G,J err
-    class M alt
+    c1[dnf install nginx] --> i1[Read repos in /etc/yum.repos.d<br/>refresh the metadata]
+    i1 --> c2[Solve dependencies<br/>show the plan, ask y or n]
+    c2 -->|y| c3[Download rpm files<br/>check the GPG signature]
+    c3 --> o1[rpm installs<br/>transaction saved with an ID]
+    o1 -->|dnf history undo ID| x1[Change reversed]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1,c2,c3 cmd
+    class i1 inp
+    class o1 out
+    class x1 bad
 ```
 
 ## Options/Flags

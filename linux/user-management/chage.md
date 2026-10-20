@@ -23,34 +23,24 @@ alice:$6$...:20727:0:90:7:14:20800:
 ```
 
 ## Visual Overview
-> `chage` reads the aging fields of the user from `/etc/shadow` and shows or changes them. At the login, PAM compares these fields with today's date, and warns, blocks or asks for a new password.
+> `chage` controls password aging. Here is the timeline of one password with maximum age 90, warning 7 and inactive 14 days.
 
 ```mermaid
-flowchart LR
-    A[chage option and user] --> B{List or change}
-    B -->|l| C[Read the fields of etc shadow]
-    C --> D[Print a readable report]
-    B -->|change| E[Update the fields in etc shadow]
-    E --> F[PAM checks the dates at every login]
-    F --> G{Password or account expired}
-    G -->|Warning period| H[User is warned]
-    G -->|Password expired| I[User must set a new password]
-    G -->|Inactive days passed| J[Account is locked]
-    G -->|Account expiry date passed| K[Login is refused]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,G dec
-    class C,E proc
-    class D out
-    class F alt
-    class H,I ok
-    class J,K err
+flowchart TD
+    i1[Day 0<br/>password set] --> o1[Day 83<br/>user is warned at each login]
+    o1 --> c1[Day 90<br/>password expired, must be changed]
+    c1 --> x1[Day 104<br/>account locked after 14 inactive days]
+    n1[chage -l ravi shows these dates<br/>chage -M 90 -W 7 -I 14 ravi sets them]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class o1 out
+    class c1 cmd
+    class x1 bad
+    class n1 note
 ```
 
 ## Options/Flags

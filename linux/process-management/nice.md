@@ -27,30 +27,21 @@ Without a command, `nice` prints the current niceness of the shell. With a comma
 | `127` | The command was not found |
 
 ## Visual Overview
-> The scheduler of the kernel shares the CPU time between the processes that want to run. A higher niceness gives a process a smaller share. It matters only when the CPU is busy.
+> Niceness is how polite a process is. A high number means it gives way to others, which is what you want for backups and batch jobs.
 
 ```mermaid
 flowchart LR
-    A[nice with adjustment] --> B[Set niceness of the new process]
-    B --> C[Start the command]
-    C --> D{CPU is busy}
-    D -->|No| E[Command gets all it needs]
-    D -->|Yes| F{Niceness}
-    F -->|High number| G[Gets a small share]
-    F -->|Low number| H[Gets a big share]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,C proc
-    class D,F dec
-    class E ok
-    class G alt
-    class H out
+    i1[-20<br/>least nice<br/>highest priority<br/>root only] --- n1[0<br/>default] --- o1[19<br/>most nice<br/>lowest priority]
+    c1[nice -n 19 backup.sh] --> o2[backup.sh runs, but steps aside<br/>when other work needs the CPU]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class n1 note
+    class o1,o2 out
+    class c1 cmd
 ```
 
 ## Options/Flags

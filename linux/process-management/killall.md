@@ -20,32 +20,22 @@ You can give several names. The name is compared with the name of the program of
 | `1` | No process was found, or a signal could not be sent |
 
 ## Visual Overview
-> `killall` lists the processes, picks those whose program name is equal to the name you gave (and the other filters), and sends the signal to each of them.
+> `killall` sends the signal to every process with that exact name. Other programs are not touched.
 
 ```mermaid
 flowchart LR
-    A[Program name] --> B[killall]
-    C[proc filesystem] --> B
-    B --> D{Name matches}
-    D -->|No| E[Skip the process]
-    D -->|Yes| F{Other filters pass}
-    F -->|No| E
-    F -->|Yes| G[Send the signal]
-    G --> H[Process stops or reacts]
-    B --> I[Exit code 1 if nothing found]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A,C start
-    class B proc
-    class D,F dec
-    class E alt
-    class G,H ok
-    class I err
+    i1[Running processes<br/>nginx 101<br/>nginx 102<br/>nginx 103<br/>sshd 55] --> c1[killall nginx]
+    c1 -->|SIGTERM| o1[nginx 101, 102, 103<br/>all three stop]
+    c1 -.->|not matched| n1[sshd 55<br/>keeps running]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class c1 cmd
+    class o1 out
+    class n1 note
 ```
 
 ## Options/Flags

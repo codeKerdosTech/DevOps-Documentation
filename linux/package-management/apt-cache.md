@@ -23,29 +23,22 @@ apt-cache [OPTIONS] COMMAND [PACKAGE...]
 ```
 
 ## Visual Overview
-> `apt update` fills the local package index. `apt-cache` only reads that index and prints answers. It never contacts the network and never changes the system.
+> `apt-cache` only reads the local package list, so it never changes your system. Run `apt update` first so the list is fresh.
 
 ```mermaid
 flowchart LR
-    A[Repositories] -->|apt update| B[Local package index]
-    B --> C[apt-cache search]
-    B --> D[apt-cache show]
-    B --> E[apt-cache policy]
-    B --> F[apt-cache depends]
-    B --> G[apt-cache rdepends]
-    C --> H[Matching package names]
-    D --> I[Full package details]
-    E --> J[Installed and candidate versions]
-    F --> K[Dependencies]
-    G --> L[Reverse dependencies]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A start
-    class B proc
-    class C,D,E,F,G ok
-    class H,I,J,K,L out
+    i1[Local package index<br/>filled by apt update] --> o1[apt-cache search web server<br/>matching package names]
+    i1 --> o2[apt-cache show nginx<br/>version, size, description]
+    i1 --> o3[apt-cache policy nginx<br/>installed and candidate version]
+    i1 --> o4[apt-cache depends nginx<br/>what it needs]
+    i1 --> o5[apt-cache rdepends nginx<br/>what needs it]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class o1,o2,o3,o4,o5 out
 ```
 
 ## Options/Flags

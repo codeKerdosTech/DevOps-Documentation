@@ -30,31 +30,20 @@ nohup --version
 | `127` | The command was not found |
 
 ## Visual Overview
-> `nohup` prepares the command so that it ignores the hang up signal and does not depend on the terminal, then starts it with `exec`. When the terminal closes, the command keeps running.
+> When you close the terminal, the shell sends `SIGHUP` to its programs and they die. `nohup` makes the program ignore that signal.
 
 ```mermaid
 flowchart LR
-    A[nohup command] --> B[Ignore SIGHUP]
-    B --> C{Output is a terminal}
-    C -->|Yes| D[Write output to nohup.out]
-    C -->|No| E[Keep the redirection]
-    D --> F[Start the command]
-    E --> F
-    F --> G[Terminal is closed]
-    G --> H[Command keeps running]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,F proc
-    class C dec
-    class D,E alt
-    class G err
-    class H ok
+    c1[./job.sh] -->|you close the terminal<br/>SIGHUP is sent| x1[job.sh dies]
+    c2[nohup ./job.sh &] -->|you close the terminal<br/>SIGHUP is ignored| o1[job.sh keeps running<br/>output goes to nohup.out]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1,c2 cmd
+    class x1 bad
+    class o1 out
 ```
 
 ## Options/Flags

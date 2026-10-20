@@ -21,36 +21,23 @@ Without arguments, `lsblk` shows all the block devices (except RAM disks and the
 | `MOUNTPOINTS` | Where it is mounted (several, for example for a bind mount). Older versions: `MOUNTPOINT` |
 
 ## Visual Overview
-> `lsblk` collects the block devices from `sysfs`, adds the file system data from `udev`, builds the parent and child relations, and prints them as a tree or in another format.
+> `lsblk` draws the disks as a tree: each disk, its partitions and where they are mounted.
 
 ```mermaid
 flowchart TD
-    A[sysfs block devices] --> D[lsblk]
-    B[udev database] --> D
-    C[proc self mountinfo] --> D
-    D --> E[Build the parent and child tree]
-    E --> F{Output option}
-    F -->|None| G[Tree with default columns]
-    F -->|f| H[Add FSTYPE LABEL UUID]
-    F -->|l or r| I[Flat list or raw list]
-    F -->|J or P| J[JSON or key value pairs]
-    G --> K[Terminal]
-    H --> K
-    I --> K
-    J --> L[Script or jq]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A,B,C start
-    class D,E proc
-    class F dec
-    class G,H,I,J ok
-    class K out
-    class L alt
+    c1[lsblk] --> i1[sda<br/>50G disk]
+    c1 --> i2[sdb<br/>100G disk]
+    i1 --> o1[sda1 1G<br/>mounted on /boot]
+    i1 --> o2[sda2 49G<br/>mounted as root]
+    i2 --> o3[sdb1 100G<br/>not mounted]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class i1,i2 inp
+    class o1,o2,o3 out
 ```
 
 ## Options/Flags

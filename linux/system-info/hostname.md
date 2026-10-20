@@ -20,34 +20,22 @@ Without arguments, `hostname` prints the name that the **kernel** uses now (the 
 | `/etc/machine-info` | The "pretty" name and other data, used by `hostnamectl` |
 
 ## Visual Overview
-> `hostname` asks the kernel for the host name. For the FQDN and the addresses it also asks the resolver, which looks into `/etc/hosts` and then into DNS.
+> `hostname` prints the name of this machine. Other options print its fully qualified name or its IP addresses.
 
 ```mermaid
-flowchart TD
-    A[hostname with option] --> B{Which option}
-    B -->|None| C[Read the kernel name]
-    B -->|s| D[Cut the name at the first dot]
-    B -->|d or f| E[Ask the resolver etc hosts and DNS]
-    B -->|i or I| F[Look up addresses of the name or of the interfaces]
-    B -->|NAME or F| G[Set the kernel name, root only, temporary]
-    C --> H[Print]
-    D --> H
-    E --> H
-    F --> H
-    G --> I[Lost at the next boot unless saved in etc hostname]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B dec
-    class C,D,E,F proc
-    class G alt
-    class H out
-    class I err
+flowchart LR
+    c1[hostname] --> o1[web01]
+    c1 --> o2[hostname -f<br/>web01.example.com<br/>full name]
+    c1 --> o3[hostname -I<br/>10.0.0.5<br/>IP addresses]
+    c2[hostname newname] --> x1[Changes the name until reboot only<br/>use hostnamectl to keep it]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1,c2 cmd
+    class o1,o2,o3 out
+    class x1 bad
 ```
 
 ## Options/Flags

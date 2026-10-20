@@ -9,19 +9,19 @@ modinfo [OPTIONS] MODULE
 ```
 
 ## Visual Overview
-> `modinfo` finds the module file for the running kernel and prints the fields stored inside it.
+> `modinfo` reads the details stored inside a module file without loading it.
 
 ```mermaid
 flowchart LR
-    A[modinfo NAME] --> B[Find ko file for running kernel]
-    B --> C[Read module header]
-    C --> D[Print fields]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    class A start
-    class B,C proc
-    class D out
+    c1[modinfo e1000] --> i1[Finds the module file<br/>for the running kernel] --> o1[filename<br/>description<br/>author<br/>depends<br/>parm options]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class i1 inp
+    class o1 out
 ```
 
 ## Options/Flags

@@ -20,33 +20,21 @@ Without arguments, `df` shows all the mounted file systems. With a file or a dir
 | `Mounted on` | The directory where the file system is attached |
 
 ## Visual Overview
-> `df` reads the list of mounts, asks the kernel for the statistics of each file system (`statfs`), and prints the numbers in the unit that you choose. It does not walk through the files.
+> `df` answers how full each disk is. `du` answers which folder is using the space. Use `df` first, then `du` to find the cause.
 
 ```mermaid
-flowchart LR
-    A[etc mtab or proc mounts] --> B[df]
-    C[Path arguments] --> B
-    B --> D[Ask the kernel statfs for each file system]
-    D --> E{Filter options t x l}
-    E -->|Passes| F[Format the numbers h k or B]
-    E -->|Filtered out| G[Skip]
-    F --> H[Print the table]
-    H --> I[Terminal]
-    H --> J[Pipe to awk or sort]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A,C start
-    class B,D proc
-    class E dec
-    class F,H ok
-    class G err
-    class I out
-    class J alt
+flowchart TD
+    i1[Disk /dev/sda1 mounted as root] -->|df -h| o1[Size 50G   Used 40G<br/>Avail 10G   Use% 80%]
+    o1 -->|nearly full, so ask which folder| c1[du -sh /var/*]
+    c1 --> o2[2.1G /var/log<br/>the folder to clean]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class o1,o2 out
+    class c1 cmd
 ```
 
 ## Options/Flags

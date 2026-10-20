@@ -28,35 +28,24 @@ sudo apt install [OPTIONS] PACKAGE[=VERSION] ...
 ```
 
 ## Visual Overview
-> `apt update` downloads fresh package lists. Install and upgrade commands read those lists, work out dependencies, download the `.deb` files and pass them to `dpkg`, which unpacks and configures them.
+> `apt` works in two steps: first refresh the list of available packages, then install. `dpkg` does the actual unpacking.
 
 ```mermaid
 flowchart TD
-    A[apt update] --> B[Download package lists from repositories]
-    B --> C[Local package index updated]
-    D[apt install or upgrade] --> E[Read local package index]
-    C --> E
-    E --> F[Resolve dependencies]
-    F --> G[Download deb files to apt cache]
-    G --> H{Signatures and checksums OK}
-    H -->|No| I[Abort with error]
-    H -->|Yes| J[dpkg unpacks and configures]
-    J --> K[Package database updated]
-    L[apt remove or purge] --> M[dpkg removes files]
-    M --> K
-    N[apt autoremove] --> O[Find unused dependencies]
-    O --> M
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A,D,L,N start
-    class B,E,F,G,J,M,O proc
-    class H dec
-    class C,K ok
-    class I err
+    i1[Repositories on the internet] -->|apt update| c1[Local package list refreshed]
+    c1 -->|apt install nginx| c2[Resolve dependencies<br/>download .deb files]
+    c2 -->|signatures checked| o1[dpkg unpacks and configures<br/>nginx is installed]
+    o1 -->|apt remove nginx| x1[Program removed<br/>config files kept]
+    o1 -->|apt purge nginx| x2[Program and config removed]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class c1,c2 cmd
+    class o1 out
+    class x1,x2 bad
 ```
 
 ## Options/Flags

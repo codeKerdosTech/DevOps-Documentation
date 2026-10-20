@@ -10,35 +10,20 @@ scp [OPTIONS] SOURCE... DESTINATION
 A remote path is written as `[USER@]HOST:PATH`.
 
 ## Visual Overview
-> `scp` opens an SSH connection, then copies the file or directory in the direction you describe: local to remote (upload), remote to local (download) or remote to remote.
+> `scp` copies files between machines over SSH, so the transfer is encrypted. The order is always `source` then `destination`.
 
 ```mermaid
 flowchart LR
-    A[scp SOURCE DEST] --> B{Direction}
-    B -->|local to remote| C[Upload over SSH]
-    B -->|remote to local| D[Download over SSH]
-    B -->|remote to remote| E[Copy between two hosts]
-    C --> F[SSH authentication]
-    D --> F
-    E --> F
-    F --> G{Directory}
-    G -->|Yes with r| H[Copy recursively]
-    G -->|No| I[Copy single file]
-    H --> J[Progress shown]
-    I --> J
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,G dec
-    class C,D,E alt
-    class F proc
-    class H,I ok
-    class J out
+    c1[Your machine] -->|scp app.tar ravi@10.0.0.5:/tmp/| c2[Remote server]
+    c2 -->|scp ravi@10.0.0.5:/tmp/log.txt .| c1
+    n1[-r copies a whole folder<br/>-P sets a different port]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1,c2 cmd
+    class n1 note
 ```
 
 ## Options/Flags

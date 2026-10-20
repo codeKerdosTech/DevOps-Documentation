@@ -13,33 +13,22 @@ command | grep [OPTIONS] PATTERN
 The exit code is `0` if a line matched, `1` if nothing matched and `2` if an error happened. Scripts use this in `if grep -q ...; then`.
 
 ## Visual Overview
-> `grep` reads input line by line, tests every line against the pattern and prints the lines that match (or the lines that do not match when `-v` is used).
+> `grep` keeps the lines that contain the pattern and drops the rest. `-v` inverts that and `-c` only counts.
 
 ```mermaid
-flowchart LR
-    A[file or stdin] --> B[Read next line]
-    B --> C{Line matches pattern}
-    C -->|Yes| D[Print the line]
-    C -->|No| E[Skip the line]
-    D --> F[Terminal]
-    D --> G[Pipe to next command]
-    D --> H[Exit code 0]
-    E --> B
-    B -->|End of input and no match| I[Exit code 1]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B proc
-    class C dec
-    class D,H ok
-    class E,I err
-    class F out
-    class G alt
+flowchart TD
+    i1[access.log<br/>GET /home 200<br/>GET /pay 500<br/>GET /about 200<br/>GET /cart 500] --> c1[grep 500 access.log]
+    c1 --> o1[GET /pay 500<br/>GET /cart 500]
+    i1 -->|grep -v 500| o2[the other two lines]
+    i1 -->|grep -c 500| o3[2<br/>only the count]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class c1 cmd
+    class o1,o2,o3 out
 ```
 
 ## Options/Flags

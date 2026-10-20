@@ -20,31 +20,20 @@ timeout [OPTIONS] DURATION COMMAND [ARGUMENTS]...
 | Other | If the command ended in time, `timeout` returns its exit status |
 
 ## Visual Overview
-> `timeout` starts the command and a timer. If the command ends first, its exit code is returned. If the timer ends first, the signal is sent, and exit code `124` is returned.
+> `timeout` runs a command with a time limit. If the limit passes, it sends a signal and returns 124. Scripts use this so nothing hangs forever.
 
 ```mermaid
-flowchart LR
-    A[timeout DURATION COMMAND] --> B[Start the command and a timer]
-    B --> C{Which ends first}
-    C -->|Command| D[Return the exit code of the command]
-    C -->|Timer| E[Send the signal TERM]
-    E --> F{Option k used and command still alive}
-    F -->|Yes| G[Send SIGKILL after the extra time]
-    F -->|No| H[Return 124]
-    G --> I[Return 137]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B proc
-    class C,F dec
-    class D ok
-    class E alt
-    class G,H,I err
+flowchart TD
+    c1[timeout 5 sleep 100] -->|5 seconds pass| x1[sleep gets SIGTERM<br/>exit status 124]
+    c2[timeout 5 sleep 1] -->|finishes in 1 second| o1[exit status of the command itself<br/>here 0]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1,c2 cmd
+    class x1 bad
+    class o1 out
 ```
 
 ## Options/Flags

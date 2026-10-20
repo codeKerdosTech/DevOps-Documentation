@@ -31,33 +31,21 @@ rpm -V [PACKAGE]
 ```
 
 ## Visual Overview
-> `rpm` has three modes. Install and upgrade modes unpack a `.rpm` file and update the database. Query mode only reads the database or a file. Verify mode compares the disk against the database.
+> `rpm` works on single `.rpm` files and on the list of installed packages. Each flag picks one mode.
 
 ```mermaid
-flowchart TD
-    A[rpm] --> B[Install mode i U F]
-    A --> C[Erase mode e]
-    A --> D[Query mode q]
-    A --> E[Verify mode V and K]
-    B --> F{Dependencies met}
-    F -->|No| G[Fail and list missing]
-    F -->|Yes| H[Run pre scripts]
-    H --> I[Unpack files]
-    I --> J[Run post scripts]
-    J --> K[Update /var/lib/rpm]
-    C --> K
-    D --> L[Read database or rpm file]
-    E --> M[Compare disk with database]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    class A start
-    class B,C,D,E,H,I,J,L,M proc
-    class F dec
-    class K ok
-    class G err
+flowchart LR
+    c1[rpm] --> o1[-ivh pkg.rpm<br/>install]
+    c1 --> o2[-e name<br/>erase]
+    c1 --> o3[-qa   -ql name   -qf file<br/>query what is installed]
+    c1 --> o4[-V name<br/>verify files changed on disk]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class o1,o2,o3,o4 out
 ```
 
 ## Options/Flags

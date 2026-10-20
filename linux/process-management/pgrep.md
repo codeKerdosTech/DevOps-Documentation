@@ -18,32 +18,20 @@ Without a pattern you must give at least one other selection option (like `-u US
 | `3` | Fatal error (for example out of memory) |
 
 ## Visual Overview
-> `pgrep` reads the list of processes from `/proc`, tests each one against all your selection options and prints the PIDs of the processes that pass.
+> `pgrep` finds processes by name and prints only their PIDs, so it is safe to use inside scripts and in `$(...)`.
 
 ```mermaid
 flowchart LR
-    A[proc filesystem] --> B[pgrep]
-    C[Pattern and selection options] --> B
-    B --> D{Process matches all options}
-    D -->|Yes| E[Add the PID to the result]
-    D -->|No| F[Skip it]
-    E --> G[Print PIDs]
-    G --> H[Terminal or script]
-    G --> I[Pipe to kill or top]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A,C start
-    class B proc
-    class D dec
-    class E,G ok
-    class F err
-    class H out
-    class I alt
+    i1[Running processes<br/>nginx 101<br/>nginx 102<br/>sshd 55] --> c1[pgrep nginx]
+    c1 --> o1[101<br/>102]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class c1 cmd
+    class o1 out
 ```
 
 ## Options/Flags

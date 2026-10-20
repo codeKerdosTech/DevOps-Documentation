@@ -11,29 +11,18 @@ sleep OPTION
 Without a suffix, the number is in **seconds**. The GNU version accepts decimals and several arguments. Some other systems (macOS, BusyBox, POSIX) accept only whole seconds, and no suffixes.
 
 ## Visual Overview
-> `sleep` sets a timer, blocks the process until the time is over, and then returns `0`. A signal such as `SIGINT` (Ctrl+C) or `SIGTERM` ends it earlier.
+> `sleep` does nothing for a given time and uses no CPU. Scripts use it to wait for a service to start or to pace a loop.
 
 ```mermaid
 flowchart LR
-    A[sleep time] --> B{Time valid}
-    B -->|No| C[Error invalid time interval and status 1]
-    B -->|Yes| D[Add all given times]
-    D --> E[Wait with no CPU use]
-    E --> F{Signal received}
-    F -->|Yes| G[Stop early with status above 128]
-    F -->|No| H[Time over and status 0]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,F dec
-    class D,E proc
-    class C,G err
-    class H ok
+    c1[systemctl start app] --> c2[sleep 10<br/>wait 10 seconds] --> o1[curl localhost:8080<br/>check the app answers]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1,c2 cmd
+    class o1 out
 ```
 
 ## Options/Flags

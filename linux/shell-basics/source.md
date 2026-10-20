@@ -11,30 +11,20 @@ source FILE [ARGUMENTS]
 If `FILE` has no `/`, Bash searches it in the directories of `PATH` (and, if not found there, in the current directory, unless the POSIX mode is on). The `ARGUMENTS` become `$1`, `$2`, ... inside the file.
 
 ## Visual Overview
-> `source` finds the file and runs each line in the current shell, so the changes stay after the file has ended.
+> `source` runs a file inside your current shell, so the variables and functions it sets stay with you. Running `./env.sh` uses a child shell that disappears.
 
 ```mermaid
 flowchart LR
-    A[source file args] --> B{File has slash}
-    B -->|Yes| C[Use the path as given]
-    B -->|No| D[Search in PATH then current directory]
-    C --> E{File readable}
-    D --> E
-    E -->|No| F[Error file not found and status 1]
-    E -->|Yes| G[Run every line in the current shell]
-    G --> H[Variables functions cd stay set]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class C,D,G proc
-    class B,E dec
-    class F err
-    class H ok
+    c1[./env.sh<br/>contains export MODE=prod] --> x1[Runs in a child shell<br/>echo $MODE prints nothing]
+    c2[source env.sh] --> o1[Runs in your shell<br/>echo $MODE prints prod]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1,c2 cmd
+    class x1 bad
+    class o1 out
 ```
 
 ## Options/Flags

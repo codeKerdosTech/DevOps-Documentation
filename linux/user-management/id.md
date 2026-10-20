@@ -22,33 +22,22 @@ uid=1001(deploy) gid=1001(deploy) groups=1001(deploy),27(sudo),33(www-data),999(
 | `context=...` | Shown on SELinux systems |
 
 ## Visual Overview
-> `id` asks the system databases (`/etc/passwd`, `/etc/group`, and also LDAP or SSSD) for the user and the groups, and prints the numbers and the names in one line, or in the form that you choose.
+> `id` shows the numbers behind a user: user id, primary group id and all group ids. Permissions are checked with these numbers, not with names.
 
 ```mermaid
 flowchart LR
-    A[id with option and user] --> B{User given}
-    B -->|No| C[Use the current process identity]
-    B -->|Yes| D[Look up the user in passwd]
-    D --> E{User found}
-    E -->|No| F[Error no such user]
-    E -->|Yes| G[Find the groups in group database]
-    C --> H{Option chosen}
-    G --> H
-    H -->|None| I[Print uid gid and groups]
-    H -->|u g or G| J[Print only the number]
-    H -->|n added| K[Print the name instead]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,E,H dec
-    class C,D,G proc
-    class F err
-    class I,J,K out
+    c1[id ravi] --> o1[uid=1001 ravi<br/>the user]
+    c1 --> o2[gid=1001 ravi<br/>the primary group]
+    c1 --> o3[groups=1001 ravi, 27 sudo, 999 docker<br/>every group]
+    n1[-u  -g  -G print only the numbers<br/>add -n for names]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class o1,o2,o3 out
+    class n1 note
 ```
 
 ## Options/Flags

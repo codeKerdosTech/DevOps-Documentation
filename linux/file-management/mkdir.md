@@ -9,25 +9,20 @@ mkdir [OPTIONS] DIRECTORY...
 ```
 
 ## Visual Overview
-> `mkdir` creates the directory if the parent exists. With `-p` it also creates every missing parent.
+> `mkdir` creates a folder. Add `-p` to create every missing parent folder in one go.
 
 ```mermaid
 flowchart TD
-    A[mkdir PATH] --> B{Parent exists}
-    B -->|Yes| C[Create directory]
-    B -->|No and p used| D[Create parents then directory]
-    B -->|No and no p| E[Error No such file or directory]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B dec
-    class C,D ok
-    class E err
+    c1[mkdir -p app/logs/2025] --> o1[app] --> o2[logs] --> o3[2025]
+    c2[mkdir app/logs/2025<br/>without -p, app does not exist] --> x1[Error<br/>No such file or directory]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1,c2 cmd
+    class o1,o2,o3 out
+    class x1 bad
 ```
 
 ## Options/Flags

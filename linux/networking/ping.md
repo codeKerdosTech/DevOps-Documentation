@@ -9,32 +9,24 @@ ping [OPTIONS] DESTINATION
 ```
 
 ## Visual Overview
-> `ping` sends an ICMP echo request to the target. If the target answers, `ping` prints the round trip time. If not, the packet counts as lost. At the end it prints statistics.
+> `ping` sends a small test packet and waits for the reply. A reply proves the host is reachable and tells you how long the trip took.
 
 ```mermaid
-flowchart LR
-    A[ping HOST] --> B[Resolve name to IP]
-    B --> C[Send ICMP echo request]
-    C --> D{Reply received}
-    D -->|Yes| E[Print bytes ttl and time]
-    D -->|No| F[Request timeout or unreachable]
-    E --> G[Next packet after interval]
-    F --> G
-    G --> H[Print loss and rtt statistics]
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class B,C proc
-    class D dec
-    class E ok
-    class F err
-    class G alt
-    class H out
+flowchart TD
+    c1[ping -c 3 8.8.8.8] -->|echo request| i1[Remote host]
+    i1 -->|echo reply| o1[64 bytes from 8.8.8.8<br/>time=12 ms]
+    i1 -.->|no reply| x1[Request timeout<br/>host down or blocked]
+    o1 --> n1[Summary<br/>3 sent, 3 received, 0% loss]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class c1 cmd
+    class i1 inp
+    class o1 out
+    class x1 bad
+    class n1 note
 ```
 
 ## Options/Flags

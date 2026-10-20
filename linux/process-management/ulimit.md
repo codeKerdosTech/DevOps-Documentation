@@ -13,31 +13,22 @@ ulimit [-SH] [-a] [-RbcdefiklmnpqrstuvxPT] [LIMIT]
 - Without a resource option, `-f` (the file size) is used.
 
 ## Visual Overview
-> `ulimit` changes the limits of the shell process with the kernel call `setrlimit`. Children made with `fork` get a copy of the limits, so the change affects the programs started after it.
+> `ulimit` sets resource limits for the shell and everything it starts. The soft limit is the one in force. You can raise it only up to the hard limit.
 
 ```mermaid
 flowchart TD
-    A[ulimit command] --> B{Limit value given}
-    B -->|No| C[Call getrlimit and print soft or hard value]
-    B -->|Yes| D{New value above hard limit}
-    D -->|Yes and not root| E[Error cannot modify limit]
-    D -->|No| F[Call setrlimit for the shell]
-    F --> G[Child programs inherit the limits]
-    C --> H[Print result]
-    G --> H
-    classDef start fill:#6C5CE7,stroke:#4834D4,stroke-width:2px,color:#fff
-    classDef proc fill:#00B8D9,stroke:#0087A8,stroke-width:2px,color:#fff
-    classDef dec fill:#FFC312,stroke:#E1A100,stroke-width:2px,color:#222
-    classDef ok fill:#2ECC71,stroke:#1E8449,stroke-width:2px,color:#fff
-    classDef err fill:#FF4757,stroke:#C0392B,stroke-width:2px,color:#fff
-    classDef out fill:#FD79A8,stroke:#E84393,stroke-width:2px,color:#fff
-    classDef alt fill:#FF9F43,stroke:#E67E22,stroke-width:2px,color:#fff
-    class A start
-    class C,F proc
-    class B,D dec
-    class G ok
-    class E err
-    class H out
+    i1[Hard limit 65535<br/>ceiling, only root can raise it] --> c1[Soft limit 1024<br/>the limit really enforced<br/>ulimit -n 4096 raises it]
+    c1 -->|inherited by| o1[Every program started from this shell]
+    o1 -->|opens more than the limit| x1[Too many open files]
+    classDef inp fill:#DCEBFF,stroke:#2F6FDE,color:#10213F
+    classDef cmd fill:#FFF0C2,stroke:#C98A00,color:#3A2A00
+    classDef out fill:#D9F5E3,stroke:#1F9D55,color:#0B2E1A
+    classDef bad fill:#FDE0E0,stroke:#D13B3B,color:#4A0F0F
+    classDef note fill:#ECEFF3,stroke:#7B8794,color:#1F2933
+    class i1 inp
+    class c1 cmd
+    class o1 out
+    class x1 bad
 ```
 
 ## Options/Flags
